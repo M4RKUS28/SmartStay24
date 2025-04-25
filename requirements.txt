@@ -6,3 +6,5 @@ pre_commit==4.2.0
 # Example:
 # pandas==2.2.3
 openai==1.76.0
+requests==2.31.0
+dotenv
