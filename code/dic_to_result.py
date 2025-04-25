@@ -13,15 +13,22 @@ def filter_hotels(hotels: list[dict[str, object]], hard_list: list[(str, str)]):
         list: The filtered hotel list.
     """
 
-    #TODO <= und >=
-
     hotels_to_remove = []
 
     for hotel_dict in hotels:
         for (filter_attribute, filter_value) in hard_list:
-            if (hotel_dict.get(filter_attribute) != filter_value):
-                hotels_to_remove.append(hotel_dict)
-                break
+            if (filter_value[:1] == "<"):
+                if (float(hotel_dict.get(filter_attribute)) > float(filter_value[1:])):
+                    hotels_to_remove.append(hotel_dict)
+                    break
+            elif (filter_value[:1] == ">"):
+                if (float(hotel_dict.get(filter_attribute)) < float(filter_value[1:])):
+                    hotels_to_remove.append(hotel_dict)
+                    break
+            else:
+                if (str(hotel_dict.get(filter_attribute)) != filter_value[1:]):
+                    hotels_to_remove.append(hotel_dict)
+                    break
 
     for hotel in hotels_to_remove:
         hotels.remove(hotel)
