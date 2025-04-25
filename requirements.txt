@@ -7,3 +7,4 @@ pre_commit
 # pandas==2.2.3
 openai
 pydantic
+dotenv

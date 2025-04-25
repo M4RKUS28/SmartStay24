@@ -6,20 +6,20 @@ def query_to_dict(client, user_query: str) -> dict[str, str]:
     """
     Convert user message to standard JSON format.
     """
-    response = client.chat.completions.create(
-        model="gpt-4o",
+    response = client.beta.chat.completions.parse(
+        model="o3-mini-0131-eu",
         messages=[
             system_message_user_prompt_to_standard_json,
             { "role": "user", "content": user_query }
         ],
-        stream=False,
-        text_format = HotelFeatures,
+        response_format = HotelFeatures,
     )
+    print(response)
     try:
         # Parse the response to extract the JSON content
         json_response = json.loads(response.choices[0].message.content)
         if json_response.get("status") == "success":
-            return json_response.get("data", {})
+            return json_response.get("features", {})
         else:
             # Handle the case where the response indicates an error
             return {
