@@ -13,6 +13,8 @@ def filter_hotels(hotels: list[dict[str, object]], hard_list: list[(str, str)]):
         list: The filtered hotel list.
     """
 
+    #TODO? Function fulfills_attribute(hotel_dict, filter_attribute, filter_value)
+
     hotels_to_remove = []
 
     for hotel_dict in hotels:
