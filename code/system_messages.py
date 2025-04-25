@@ -1,6 +1,5 @@
 
 
-
 # Systemnachricht, die das JSON-Format strikt vorgibt
 system_message_user_prompt_to_standard_json = {
     "role": "system",
