@@ -1,0 +1,21 @@
+"""
+Logger for User Prompts
+"""
+import logging
+import os
+import requests
+from dotenv import load_dotenv
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+
+load_dotenv()
+url = os.getenv("POST")
+
+def log(message: str):
+    """
+    Log a User Prompt
+    """
+    requests.post(url=url, json={"query": message}, timeout=5)
+    logger.info("Log message sent: %s", message)
+    return
