@@ -8,7 +8,6 @@ def filter_hotels(hotels: list[dict[str, object]], hard_list: list[(str, object)
     Args:
         hotels (list): The hotels to be filtered.
         hard_list (list): The specified hard filters.
-        ...
 
     Returns:
         list: The filtered hotel list.
@@ -36,9 +35,11 @@ def rank_hotels(hotels: list[dict[str, object]], soft_list: list[(str, object)])
 
     Args:
         hotels (list): The hotels to be ranked.
-        ....
+        soft_list (list): The specified soft filters.
 
     Returns:
         list: The ranked list of hotels.
     """
+    for filter in soft_list:
+        print("Test")
     return hotels
