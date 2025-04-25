@@ -5,7 +5,10 @@ const Header = () => {
   return (
     <header className="header">
       <div className="header-logo">
-        <span className="logo-text">SmartStay24</span>
+        <div className="check24-style-logo">
+          <span className="logo-text">SMARTSTAY<span className="logo-number">24</span></span>
+          <span className="logo-arrow">⟩</span>
+        </div>
       </div>
       <nav className="header-nav">
         <a href="#" className="nav-item">Hilfe</a>
