@@ -5,3 +5,4 @@ pre_commit==4.2.0
 # Add your additional dependencies with version numbers
 # Example:
 # pandas==2.2.3
+openai==1.76.0
