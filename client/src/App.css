@@ -88,8 +88,8 @@ body {
 }
 
 .bot-avatar {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -97,8 +97,7 @@ body {
   background-color: white;
   border: 2px solid var(--check24-light-blue);
   color: var(--check24-light-blue);
-  font-weight: bold;
-  font-size: 14px;
+  font-size: 20px; /* Increased for the icon */
 }
 
 .hotels-list {
@@ -242,16 +241,19 @@ body {
 
 .logo-text {
   font-size: 28px; /* Increased from 22px */
-  font-weight: 600; /* Slightly reduced from 800 for smoother look */
-  letter-spacing: 0.7px; /* Slightly increased for better spacing */
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; /* Smoother system fonts */
+  font-weight: 800; /* Extra bold for the thick look */
+  letter-spacing: 0.5px;
+  font-family: Arial, Helvetica, sans-serif; /* Using a standard sans-serif for reliability */
   -webkit-font-smoothing: antialiased; /* Better font rendering */
   -moz-osx-font-smoothing: grayscale;
+  font-style: italic; /* Adding the slight slant like CHECK24 logo */
+  text-transform: uppercase; /* Ensuring it's all caps */
 }
 
 .logo-number {
-  font-weight: 700; /* Still bold, but slightly reduced for smoother look */
+  font-weight: 800; /* Extra bold for consistency */
   position: relative;
+  font-style: italic; /* Keeping the same style as the rest of the logo */
 }
 
 .logo-arrow {
