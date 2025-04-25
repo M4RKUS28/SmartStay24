@@ -1,9 +1,8 @@
 import json
-from system_messages import system_message_user_prompt_to_standard_json
+from gpt_utils import system_message_user_prompt_to_standard_json, HotelFeatures
 
 
-
-def get_standard_json_from_user_message(client, user_query: str) -> dict[str, str]:
+def query_to_dict(client, user_query: str) -> dict[str, str]:
     """
     Convert user message to standard JSON format.
     """
@@ -14,6 +13,7 @@ def get_standard_json_from_user_message(client, user_query: str) -> dict[str, st
             { "role": "user", "content": user_query }
         ],
         stream=False,
+        text_format = HotelFeatures,
     )
     try:
         # Parse the response to extract the JSON content

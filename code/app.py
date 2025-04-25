@@ -1,5 +1,6 @@
 from openai import OpenAI
 import json
+from query_to_json import query_to_dict
 
 
 # OpenAI-Client initialisieren
@@ -28,6 +29,8 @@ def find_matching_hotels(
     Returns:
         list[str] | None: List of hotel_names that match the query, or None if the query is not hotel related.
     """
+
+
     # TODO: Implement the logic to find matching hotels based on the query.
 
     # ( Step 1: Check if the query is related to hotels. Do this in Step 2 )
