@@ -1,0 +1,7 @@
+black==24.1.1
+isort==5.13.2
+pre_commit==4.2.0
+
+# Add your additional dependencies with version numbers
+# Example:
+# pandas==2.2.3
