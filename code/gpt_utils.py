@@ -1,4 +1,9 @@
+from typing import Tuple, Any
+from pydantic import BaseModel
 
+class HotelFeatures(BaseModel):
+    status: str
+    features: dict[str, Tuple[object, int]]
 
 # Systemnachricht, die das JSON-Format strikt vorgibt
 system_message_user_prompt_to_standard_json = {
