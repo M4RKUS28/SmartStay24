@@ -39,7 +39,7 @@ def find_matching_hotels(
                 "hotel_name": {
                     "name": str,
                     "rating": float,
-                    "distance_to_beach": float,
+                    "distance_to_beach": float,ltr_score
                     ...
                 },
                 ...
