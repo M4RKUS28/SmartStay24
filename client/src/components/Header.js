@@ -7,7 +7,7 @@ const Header = () => {
       <div className="header-logo">
         <div className="check24-style-logo">
           <span className="logo-text">SMARTSTAY<span className="logo-number">24</span></span>
-          <span className="logo-arrow">⟩</span>
+          <img src="/assets/arrow.png" alt="CHECK24 arrow" className="logo-arrow" />
         </div>
       </div>
       <nav className="header-nav">
