@@ -1,18 +1,27 @@
 
 import json
 
-def filter_json(json_data):
+def filter_hotels(hotels: dict[str, dict[str, object]], hard_list: list[(str, object)]):
     """
-    Filters the JSON data based on ...
+    Filters the hotels based on the hard_list
 
     Args:
-        json_data (list): The JSON data to filter.
+        hotels (dict): The hotels to be filtered.
+        hard_list (list): The specified hard filters.
         ...
 
     Returns:
-        list: The filtered JSON data.
+        dict: The filtered hotel dics.
     """
-    return json_data
+    keys_to_remove = []
+    for hotel_name, hotel_dict in hotels.items():
+        for (filter_attribute, filter_value) in hard_list:
+            if (hotel_dict.get(filter_attribute) != filter_value):
+                keys_to_remove.append(hotel_name)
+                break
+    for key in keys_to_remove:
+        del hotels[key]
+    return hotels
 
 
 
