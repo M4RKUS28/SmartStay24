@@ -1,4 +1,4 @@
-def dic_to_list(dic_input):
+def dic_to_list(dic_input: dict[str, (str, int)]):
     """
     Filters the JSON data based on ...
 

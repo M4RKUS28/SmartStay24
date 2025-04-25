@@ -1,7 +1,7 @@
 
 import json
 
-def filter_hotels(hotels: list[dict[str, object]], hard_list: list[(str, object)]):
+def filter_hotels(hotels: list[dict[str, object]], hard_list: list[(str, str)]):
     """
     Filters the hotels based on the hard_list
 
@@ -12,6 +12,8 @@ def filter_hotels(hotels: list[dict[str, object]], hard_list: list[(str, object)
     Returns:
         list: The filtered hotel list.
     """
+
+    #TODO <= und >=
 
     hotels_to_remove = []
 
