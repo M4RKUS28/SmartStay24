@@ -219,11 +219,11 @@ body {
 .header {
   background-color: var(--check24-blue);
   color: white;
-  padding: 12px 20px;
+  padding: 16px 24px; /* Increased padding */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid var(--check24-light-blue);
+  border-bottom: 2px solid var(--check24-yellow); /* Changed to yellow border */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -241,25 +241,26 @@ body {
 }
 
 .logo-text {
-  font-size: 22px;
-  font-weight: bold;
-  letter-spacing: 0.5px;
+  font-size: 28px; /* Increased from 22px */
+  font-weight: 600; /* Slightly reduced from 800 for smoother look */
+  letter-spacing: 0.7px; /* Slightly increased for better spacing */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; /* Smoother system fonts */
+  -webkit-font-smoothing: antialiased; /* Better font rendering */
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .logo-number {
-  font-weight: 800;
+  font-weight: 700; /* Still bold, but slightly reduced for smoother look */
   position: relative;
 }
 
 .logo-arrow {
   position: absolute;
-  bottom: -10px;
-  right: 0;
-  color: white;
-  font-size: 20px;
-  transform: rotate(90deg);
-  display: inline-block;
-  line-height: 1;
+  bottom: -3px;
+  right: 1px;
+  width: 30px; /* Increased from 24px */
+  height: auto;
+  filter: brightness(0) invert(1);
 }
 
 .header-nav {
@@ -270,13 +271,14 @@ body {
 .nav-item {
   color: white;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 16px; /* Increased from 14px */
   display: flex;
   align-items: center;
   gap: 4px;
-  padding: 5px 10px;
+  padding: 6px 12px; /* Slightly increased */
   border-radius: 4px;
   transition: background-color 0.2s;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; /* Smoother font */
 }
 
 .nav-item:hover {
