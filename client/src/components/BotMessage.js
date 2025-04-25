@@ -1,6 +1,7 @@
 // src/components/BotMessage.js
 import React from 'react';
 import HotelList from './HotelList';
+import { VscRobot } from "react-icons/vsc";
 
 const BotMessage = ({ content }) => {
   // Function to detect if content is a hotel list
@@ -15,7 +16,9 @@ const BotMessage = ({ content }) => {
 
   return (
     <div className="bot-message-container">
-      <div className="bot-avatar">S</div>
+      <div className="bot-avatar">
+        <VscRobot />
+      </div>
       <div className="message bot-message">
         {isHotelList(content) ? (
           <>
