@@ -1,7 +1,7 @@
 // src/components/Header.js
 import React from 'react';
 
-const Header = () => {
+const Header = ({ apiAvailable }) => {
   return (
     <header className="header">
       <div className="header-logo">
@@ -13,6 +13,11 @@ const Header = () => {
       <nav className="header-nav">
         <a href="#" className="nav-item">Hilfe</a>
         <a href="#" className="nav-item">Kontakt</a>
+        {apiAvailable !== undefined && (
+          <span className={`nav-item status-indicator ${apiAvailable ? 'online' : 'offline'}`}>
+            {apiAvailable ? 'Live' : 'Demo'}
+          </span>
+        )}
       </nav>
     </header>
   );
