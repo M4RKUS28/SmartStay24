@@ -1,9 +1,9 @@
-def dic_to_list(dic_input: dict[str, (str, int)]):
+def dict_to_list(dict_input: dict[str, (str, int)]):
     """
     Filters the JSON data based on ...
 
     Args:
-        dic_input (dic): Input as dic.
+        dict_input (dict): Input as dict.
 
     Returns:
         hard_list: List of attributes with importance = 100.
@@ -11,7 +11,7 @@ def dic_to_list(dic_input: dict[str, (str, int)]):
     """
     soft_list = []
     hard_list = []
-    for name, (value, importance) in dic_input.items():
+    for name, (value, importance) in dict_input.items():
         if (importance == 100):
             hard_list.append((name, value))
         else:
@@ -30,7 +30,7 @@ attribute_dict = {
     'attr5': ('value5', 75)
 }
 
-hard_list, soft_list = dic_to_list(attribute_dict)
+hard_list, soft_list = dict_to_list(attribute_dict)
 for i in hard_list:
     print(i)
 print("----------")
