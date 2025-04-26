@@ -17,8 +17,11 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [isApiAvailable, setIsApiAvailable] = useState(false);
   const [currentCity, setCurrentCity] = useState('Copenhagen');
+  const [viewportHeight, setViewportHeight] = useState(window.innerHeight);
+  const [isKeyboardOpen, setIsKeyboardOpen] = useState(false);
   const demoMessageShown = useRef(false);
   const messagesEndRef = useRef(null);
+  const previousHeight = useRef(window.innerHeight);
 
   // Check API availability on component mount
   useEffect(() => {
@@ -118,13 +121,45 @@ function App() {
     }
   };
 
-  // Fix for iOS Safari viewport height issues
+  // Detect keyboard open/close on mobile
   useEffect(() => {
     const handleResize = () => {
       // Set a custom property with the viewport height
       const vh = window.innerHeight * 0.01;
       document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+      // Update viewport height state
+      setViewportHeight(window.innerHeight);
+
+      // Detect if keyboard is likely open (for mobile devices)
+      // If height decreased significantly, keyboard is probably open
+      const heightDifference = previousHeight.current - window.innerHeight;
+      const threshold = 150; // Threshold in pixels to consider keyboard open
+
+      if (heightDifference > threshold) {
+        setIsKeyboardOpen(true);
+        // Set a CSS class on body for keyboard open state
+        document.body.classList.add('keyboard-open');
+      } else if (heightDifference < -50) { // Negative threshold for keyboard closing
+        setIsKeyboardOpen(false);
+        document.body.classList.remove('keyboard-open');
+      }
+
+      previousHeight.current = window.innerHeight;
     };
+
+    // Handle focus events to scroll input into view on mobile
+    const handleFocus = () => {
+      // On iOS, wait a moment for the keyboard to appear
+      setTimeout(() => {
+        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+      }, 300);
+    };
+
+    const inputElements = document.querySelectorAll('input');
+    inputElements.forEach(input => {
+      input.addEventListener('focus', handleFocus);
+    });
 
     // Run once on mount and on resize
     handleResize();
@@ -134,16 +169,19 @@ function App() {
     return () => {
       window.removeEventListener('resize', handleResize);
       window.removeEventListener('orientationchange', handleResize);
+      inputElements.forEach(input => {
+        input.removeEventListener('focus', handleFocus);
+      });
     };
   }, []);
 
   return (
-    <div className="app-wrapper">
+    <div className={`app-wrapper ${isKeyboardOpen ? 'keyboard-open' : ''}`}>
       <Header
         apiAvailable={isApiAvailable}
         onCityChange={handleCityChange}
       />
-      <div className="content-wrapper">
+      <div className="content-wrapper" style={{ height: `${viewportHeight}px` }}>
         <BackgroundImages />
         <div className="app">
           <ChatContainer
