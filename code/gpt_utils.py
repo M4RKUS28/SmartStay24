@@ -1,25 +1,26 @@
-from typing import Any, Dict, Optional
-from pydantic import BaseModel
 from pathlib import Path
+from typing import Any, Dict, Optional
+
+from pydantic import BaseModel
+
 
 # GPT structure for the feature
 class FeatureDetail(BaseModel):
     value: str
     importance: int
 
+
 # Main GPT structure
 class HotelFeatures(BaseModel):
     status: str
     features: Optional[Dict[str, FeatureDetail]] = None
 
-# Read attributes .txt file into string
-content = Path('../data/useful_attributes.txt').read_text(encoding='utf-8')
 
 # Systemnachricht, die das JSON-Format strikt vorgibt
 system_message_user_prompt_to_standard_json = lambda attributes: {
     "role": "system",
     "content": f"""
-    
+
 You are a highly specialized Text-to-JSON parser for hotel booking requests.
 Your task is to analyze a user prompt and extract relevant hotel features.
 
@@ -40,10 +41,10 @@ Your task is to analyze a user prompt and extract relevant hotel features.
         ```
         {str(attributes)}
         ```
-    *   **Important:** Do not invent new names or deviate from the exact spelling. 
+    *   **Important:** Do not invent new names or deviate from the exact spelling.
     *   If a user query cannot be mapped exactly to one of the features, try to find ways to express the request with your available features.
     *   Distances (e.g. distancetobeach) are always given in kilometers.
-    *   **EXTREMELY IMPORTANT:** 
+    *   **EXTREMELY IMPORTANT:**
         The same feature in the client description can apply to multiple attributes. Example: I will bring a dog -> amenity_Haustiere erlaubt, amenity_Haustierfreundliches and more
         You can then rank these attributes using the importance, if there are several useful ones you can also make some of them low importance, e.g. 1-4.
         Please try to find as many fitting attributes as possible. All attributes that are not specifically mentioned in the query should have a lower importance, e.g. 1,2,3,4
@@ -89,5 +90,5 @@ Your task is to analyze a user prompt and extract relevant hotel features.
     *(Note: The feature names like `amenity_Haustiere_erlaubt` and `amenity_Fitnesseinrichtung` in the example output must exactly match names present in the valid feature name list).*
 
 **Summary:** Be precise, strictly adhere to the predefined feature names. Interpret the importance correctly (10 = Hard Requirement). Prioritize numerical values wherever applicable. Try to find features for every request of the client
-"""
+""",
 }

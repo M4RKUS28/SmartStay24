@@ -1,13 +1,13 @@
-from openai import AzureOpenAI
 import json
 import os
-from query_to_json import query_to_dict
-from dotenv import load_dotenv
-import pandas as pd
+from code.dic_to_result import filter_hotels, rank_hotels
+from code.logger import log
+from code.query_to_json import query_to_dict
+from code.utils import chatGPT_to_list, check24_to_attribute_list, check24_to_list
 
-from utils import check24_to_list, chatGPT_to_list, check24_to_attribute_list
-from dic_to_result import filter_hotels, rank_hotels
-from logger import log
+import pandas as pd
+from dotenv import load_dotenv
+from openai import AzureOpenAI
 
 # Load the environment variables from .env file
 load_dotenv(dotenv_path="../.env")
@@ -16,7 +16,7 @@ load_dotenv(dotenv_path="../.env")
 client = AzureOpenAI(
     azure_endpoint=os.environ.get("AZURE_OPENAI_ENDPOINT"),
     api_key=os.environ.get("AZURE_OPENAI_API_KEY"),
-    api_version="2025-01-01-preview"  # As specified in your project description
+    api_version="2025-01-01-preview",  # As specified in your project description
 )
 
 
@@ -43,10 +43,13 @@ def find_matching_hotels(
         list[str] | None: List of hotel_names that match the query, or None if the query is not hotel related.
     """
     # Logging
+    # check commit
     log(query, str(hotels))
     # Get attribute list
     att_list = check24_to_attribute_list(hotels)
     dream_hotel = query_to_dict(client, query, att_list)
+    if dream_hotel is None:
+        return None
     print(dream_hotel)
     hotel_list = check24_to_list(hotels)
     hard_list, soft_list = chatGPT_to_list(dream_hotel)
@@ -59,7 +62,6 @@ def find_matching_hotels(
     print(f"Ranked List: {ranked_hotels}")
     return ranked_hotels
 
-
     # TODO: Implement the logic to find matching hotels based on the query.
 
     # ( Step 1: Check if the query is related to hotels. Do this in Step 2 )
@@ -68,9 +70,10 @@ def find_matching_hotels(
     # Step 4: Use AI to rank existing hotels.
     # Step 5: Return the list of hotel names that match the query.
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     # Step 1: Load the parquet file
-    df = pd.read_parquet('../data/hotels/resultlist_Kopenhagen.parquet')
+    df = pd.read_parquet("../data/hotels/resultlist_Kopenhagen.parquet")
 
     # Step 2: Convert it to the desired dict format
     hotels_dict = {}
@@ -83,15 +86,15 @@ if __name__ == '__main__':
 
     # hotels_dict is now in your format
     example_queries = [
-    "I'm travelling with a dog and need a parking space.",
-    "I'm looking for a hotel with a breathtaking view and a luxurious wellness center where I can truly relax.",
-    "I'd love to find a family-friendly hotel surrounded by nature, perfect for a peaceful getaway, that also allows an extra bed for children.",
-    "Stylish, modern hotel that not only offers great design but also serves an good breakfast.",
-    "Find me a hotel with rating at least 9.3 and cheaper than 40 EUR per night.",
-    "I want to make a vacation on the beach.",
-    "What is a good recipe for pancakes?"
-]
-    hotels = find_matching_hotels(example_queries[4], hotels_dict)
+        "I'm travelling with a dog and need a parking space.",
+        "I'm looking for a hotel with a breathtaking view and a luxurious wellness center where I can truly relax.",
+        "I'd love to find a family-friendly hotel surrounded by nature, perfect for a peaceful getaway, that also allows an extra bed for children.",
+        "Stylish, modern hotel that not only offers great design but also serves an good breakfast.",
+        "Find me a hotel with rating at least 9.3 and cheaper than 40 EUR per night.",
+        "I want to make a vacation on the beach.",
+        "What is a good recipe for pancakes?",
+    ]
+    hotels = find_matching_hotels(example_queries[6], hotels_dict)
     print(hotels)
     if hotels is not None:
         print(f"Amount of Hotels found: {len(hotels)}")

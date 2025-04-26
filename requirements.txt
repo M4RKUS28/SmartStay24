@@ -1,13 +1,14 @@
 black
+dotenv
+fastparquet
 isort
-pre_commit
 
 # Add your additional dependencies with version numbers
 # Example:
 # pandas==2.2.3
 openai
-pydantic
-dotenv
 pandas
+pre_commit
 pyarrow
-fastparquet
+pydantic
+requests
