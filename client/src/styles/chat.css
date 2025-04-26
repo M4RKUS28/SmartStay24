@@ -75,6 +75,24 @@
   background-color: rgba(8, 116, 196, 0.05);
 }
 
+/* Add these new styles to client/src/styles/chat.css */
+
+.hotel-details {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hotel-price {
+  background-color: white;
+  color: var(--check24-blue);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: bold;
+  border: 1px solid var(--check24-light-blue);
+}
+
+/* Update existing hotel-item to better accommodate the new layout */
 .hotel-item {
   background-color: white;
   padding: 10px 12px;
@@ -85,6 +103,7 @@
   border-left: 3px solid var(--check24-yellow);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
+
 
 .hotel-rating {
   background-color: white;
@@ -165,4 +184,282 @@
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+
+.hotel-details {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hotel-price {
+  background-color: white;
+  color: var(--check24-blue);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: bold;
+  border: 1px solid var(--check24-light-blue);
+}
+
+.hotel-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.hotel-rank {
+  font-weight: bold;
+  color: var(--check24-blue);
+  min-width: 20px;
+  font-size: 14px;
+}
+
+.hotel-name {
+  flex: 1;
+}
+
+
+
+/* Hotel list styles - modified for expandable details */
+.hotels-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: rgba(8, 116, 196, 0.05);
+}
+
+.hotel-item-container {
+  display: flex;
+  flex-direction: column;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.hotel-item {
+  background-color: white;
+  padding: 10px 12px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-left: 3px solid var(--check24-yellow);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.hotel-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hotel-rating {
+  background-color: white;
+  color: var(--check24-blue);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: bold;
+  border: 1px solid var(--check24-yellow);
+}
+
+.info-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border-radius: 50%;
+  color: var(--check24-light-blue);
+  transition: all 0.2s;
+}
+
+.info-button:hover {
+  background-color: rgba(8, 116, 196, 0.1);
+}
+
+.info-icon {
+  font-size: 16px;
+}
+
+/* Hotel details expansion */
+.hotel-details {
+  background-color: white;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  border-top: 1px solid var(--border-gray);
+  margin-top: -2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.hotel-details-content {
+  padding: 12px;
+}
+
+.hotel-details-content h4 {
+  margin: 0 0 10px 0;
+  color: var(--check24-blue);
+  font-size: 14px;
+}
+
+.hotel-attributes-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 8px;
+}
+
+.hotel-attribute {
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  border-radius: 4px;
+  background-color: rgba(8, 116, 196, 0.05);
+}
+
+.attribute-name {
+  font-weight: bold;
+  color: var(--check24-grey);
+  margin-bottom: 2px;
+}
+
+.attribute-value {
+  color: var(--text-dark);
+}
+
+.close-details-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 10px;
+  padding: 6px 12px;
+  background-color: var(--light-gray);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--check24-grey);
+  margin-left: auto;
+  transition: background-color 0.2s;
+}
+
+.close-details-button:hover {
+  background-color: var(--border-gray);
+}
+
+/* Responsive adjustments for hotel details */
+@media (max-width: 480px) {
+  .hotel-attributes-list {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+
+  .hotel-details-content h4 {
+    font-size: 13px;
+  }
+
+  .hotel-attribute {
+    font-size: 11px;
+  }
+}
+
+/* Additional mobile keyboard handling */
+@media (max-height: 400px) {
+  .hotel-attributes-list {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .hotel-details-content {
+    padding: 8px;
+  }
+}
+
+
+/* Updates for chat.css */
+
+/* Slightly increase message max-width */
+.message {
+  max-width: 85%; /* Increased from 80% */
+  padding: 12px 16px;
+  border-radius: 12px;
+  position: relative;
+  word-wrap: break-word;
+}
+
+/* Hotel item styling enhancements */
+.hotel-item {
+  background-color: white;
+  padding: 10px 12px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-left: 3px solid var(--check24-yellow);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.hotel-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.hotel-rank {
+  font-weight: bold;
+  color: var(--check24-blue);
+  min-width: 20px;
+  font-size: 14px;
+}
+
+.hotel-name {
+  flex: 1;
+}
+
+.hotel-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hotel-rating {
+  background-color: white;
+  color: var(--check24-blue);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: bold;
+  border: 1px solid var(--check24-yellow);
+}
+
+.hotel-price {
+  background-color: white;
+  color: var(--check24-blue);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: bold;
+  border: 1px solid var(--check24-light-blue);
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .message {
+    max-width: 90%; /* Even wider on mobile */
+  }
+
+  .hotel-item-actions {
+    gap: 4px;
+  }
+
+  .hotel-rating, .hotel-price {
+    font-size: 12px;
+    padding: 1px 4px;
+  }
 }
