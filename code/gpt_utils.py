@@ -12,6 +12,7 @@ class HotelFeatures(BaseModel):
     status: str
     features: Optional[Dict[str, FeatureDetail]] = None
 
+
 # Systemnachricht, die das JSON-Format strikt vorgibt
 system_message_user_prompt_to_standard_json = {
     "role": "system",
