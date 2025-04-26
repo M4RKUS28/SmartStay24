@@ -114,6 +114,29 @@ function App() {
     }
   };
 
+  // Add an event listener to handle viewport issues on mobile
+  useEffect(() => {
+    // Fix for iOS Safari viewport height issues
+    const handleResize = () => {
+      // Set a custom property with the viewport height
+      document.documentElement.style.setProperty(
+        '--vh',
+        `${window.innerHeight * 0.01}px`
+      );
+    };
+
+    // Run once on mount
+    handleResize();
+
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('orientationchange', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('orientationchange', handleResize);
+    };
+  }, []);
+
   return (
     <div className="app">
       <BackgroundImages />
@@ -127,6 +150,7 @@ function App() {
           useAdvancedLoading={false} // Set to true to use advanced loading UI
         />
       </main>
+      <div ref={messagesEndRef} style={{ height: 0, width: 0 }} />
     </div>
   );
 }
