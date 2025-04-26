@@ -69,4 +69,4 @@ def rank_hotels(hotels: list[dict[str, object]], soft_list: list[(str, object, i
         result_list.append((hotel_dict.get("name"), hotel_importance))
     result_list.sort(key=lambda x: x[1], reverse=True)
     result_list = [x[0] for x in result_list]
-    return result_list
+    return result_list[:10]
