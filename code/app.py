@@ -7,6 +7,7 @@ import pandas as pd
 
 from utils import check24_to_list, chatGPT_to_list, check24_to_attribute_list
 from dic_to_result import filter_hotels, rank_hotels
+from logger import log
 
 # Load the environment variables from .env file
 load_dotenv(dotenv_path="../.env")
@@ -45,6 +46,7 @@ def find_matching_hotels(
     att_list = check24_to_attribute_list(hotels)
     dream_hotel = query_to_dict(client, query, att_list)
     print(dream_hotel)
+    log(query)
     hotel_list = check24_to_list(hotels)
     hard_list, soft_list = chatGPT_to_list(dream_hotel)
     print(f"Hard_List: {hard_list}\n Soft_List: {soft_list}")
