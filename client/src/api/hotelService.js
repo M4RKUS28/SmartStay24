@@ -2,7 +2,7 @@
 import { simulateHotelRecommendation } from '../utils/SimulateResponse';
 
 // API base URL - should be configurable for different environments
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://smart-stay24.de/api';
 
 /**
  * Sends a hotel recommendation request to the server
@@ -12,7 +12,7 @@ const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api
 export const getHotelRecommendations = async (query) => {
   try {
     // Try to fetch from the real API
-    const response = await fetch(`${API_BASE_URL}/recommendations`, {
+    const response = await fetch(`${API_BASE_URL}/query`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -42,6 +42,8 @@ export const getHotelRecommendations = async (query) => {
  * @returns {Promise<boolean>} - Whether the API is available
  */
 export const checkApiAvailability = async () => {
+  return true;
+
   try {
     const response = await fetch(`${API_BASE_URL}/health`, {
       method: 'GET',
