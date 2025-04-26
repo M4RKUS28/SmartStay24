@@ -52,7 +52,20 @@ function App() {
     setMessages(prevMessages => [...prevMessages, newUserMessage]);
     setIsLoading(true);
 
-    // Add slight delay for natural conversation flow
+    if (message.trim() === 'Bombardino') {
+      setTimeout(() => {
+        const specialResponse = {
+          id: messages.length + 2,
+          type: 'bot',
+          content: 'crocodilo!'
+        };
+        setMessages(prevMessages => [...prevMessages, specialResponse]);
+        setIsLoading(false);
+      }, 800);
+      return;
+    }
+
+    // Regular hotel recommendation flow continues here
     setTimeout(async () => {
       try {
         // Get recommendations from API (will fall back to simulation if API fails)
@@ -71,7 +84,7 @@ function App() {
         const errorMessage = {
           id: messages.length + 2,
           type: 'bot',
-          content: 'Es tut mir leid, aber es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.'
+          content: 'I\'m sorry, but an error has occurred. Please try again.'
         };
 
         setMessages(prevMessages => [...prevMessages, errorMessage]);
@@ -85,10 +98,10 @@ function App() {
     <div className="app">
       <Header apiAvailable={isApiAvailable} />
       <main className="main-content">
-        <ChatContainer 
+        <ChatContainer
           messages={messages}
-          isLoading={isLoading} 
-          onSendMessage={handleSendMessage} 
+          isLoading={isLoading}
+          onSendMessage={handleSendMessage}
         />
       </main>
     </div>
