@@ -7,7 +7,7 @@ const leftBackgroundStyle = {
   top: 0,
   left: 0,
   height: '100vh',
-  width: '50vw',
+  width: '60vw',
   zIndex: -1,
   opacity: 0.9,
   pointerEvents: 'none',
@@ -45,7 +45,7 @@ const BackgroundImages = () => {
     <>
       <div style={leftBackgroundStyle}>
         <img
-          src={process.env.PUBLIC_URL + '/assets/palmtree.jpg'}
+          src={process.env.PUBLIC_URL + '/assets/palm3.jpeg'}
           alt=""
           style={{...imageStyle, objectPosition: 'right center'}}
         />
