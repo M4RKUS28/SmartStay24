@@ -64,7 +64,7 @@ def add_message(message: MessageRequest):
     
     # Return the hotels found
     print("Hotels found.")
-    return {"recommendations": [{"name": name} for name in hotels]}
+    return {"recommendations": [{"name": name, "rating": hotels_dict.get(name).get("rating")} for name in hotels]}
 
 
 @app.get("/api/health/")
