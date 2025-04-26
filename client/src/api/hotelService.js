@@ -12,7 +12,7 @@ const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://smart-stay24.de/a
 export const getHotelRecommendations = async (query) => {
   try {
     // Try to fetch from the real API
-    const response = await fetch(`${API_BASE_URL}/query`, {
+    const response = await fetch(`${API_BASE_URL}/query/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -29,7 +29,7 @@ export const getHotelRecommendations = async (query) => {
 
     const data = await response.json();
     console.log('API response:', data);
-    
+
     return data.recommendations || [];
   } catch (error) {
     console.warn('API request failed, falling back to simulation', error);
@@ -44,10 +44,8 @@ export const getHotelRecommendations = async (query) => {
  * @returns {Promise<boolean>} - Whether the API is available
  */
 export const checkApiAvailability = async () => {
-  return true;
-
   try {
-    const response = await fetch(`${API_BASE_URL}/health`, {
+    const response = await fetch(`${API_BASE_URL}/health/`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
