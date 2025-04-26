@@ -49,4 +49,4 @@ def find_matching_hotels(
     # Step 5: Return the list of hotel names that match the query.
 
 if __name__ == '__main__':
-    find_matching_hotels("Find me a hotel with rating at least 9.3 and should ideally be cheaper than 40 EUR per night.", None)
+    find_matching_hotels("Stylish, modern hotel that not only offers great design but also serves an good breakfast.", None)

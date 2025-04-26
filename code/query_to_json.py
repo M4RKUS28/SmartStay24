@@ -6,6 +6,8 @@ def query_to_dict(client, user_query: str) -> dict[str, str]:
     """
     Convert user message to standard JSON format.
     """
+    #gpt-4o-mini-0718-eu
+    #o3-mini-0131-eu
     response = client.beta.chat.completions.parse(
         model="o3-mini-0131-eu",
         messages=[
