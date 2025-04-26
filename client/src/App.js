@@ -16,6 +16,7 @@ function App() {
   ]);
   const [isLoading, setIsLoading] = useState(false);
   const [isApiAvailable, setIsApiAvailable] = useState(false);
+  const [currentCity, setCurrentCity] = useState('Copenhagen');
   const demoMessageShown = useRef(false);
   const messagesEndRef = useRef(null);
 
@@ -26,7 +27,6 @@ function App() {
       setIsApiAvailable(available);
 
       // Add a system message about API status if not available
-      // Use ref to prevent duplicate messages in StrictMode
       if (!available && !demoMessageShown.current) {
         demoMessageShown.current = true;
         setMessages(prev => [
@@ -48,16 +48,19 @@ function App() {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  // Handle resize to ensure proper layout
-  useEffect(() => {
-    const handleResize = () => {
-      // Force scroll to bottom on resize to keep input visible
-      messagesEndRef.current?.scrollIntoView({ behavior: 'auto' });
+  // Handle city change
+  const handleCityChange = (city) => {
+    setCurrentCity(city);
+
+    // Add message about city change
+    const newBotMessage = {
+      id: messages.length + 1,
+      type: 'bot',
+      content: `Switched to ${city}. How can I help you find a hotel in ${city}?`
     };
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+    setMessages(prevMessages => [...prevMessages, newBotMessage]);
+  };
 
   const handleSendMessage = async (message) => {
     // Add user message to chat
@@ -90,7 +93,8 @@ function App() {
       await new Promise(resolve => setTimeout(resolve, 800));
 
       // Get recommendations from API (will fall back to simulation if API fails)
-      const response = await getHotelRecommendations(message);
+      // Pass the current city to the API if needed
+      const response = await getHotelRecommendations(message, currentCity);
 
       const newBotMessage = {
         id: messages.length + 2,
@@ -114,20 +118,16 @@ function App() {
     }
   };
 
-  // Add an event listener to handle viewport issues on mobile
+  // Fix for iOS Safari viewport height issues
   useEffect(() => {
-    // Fix for iOS Safari viewport height issues
     const handleResize = () => {
       // Set a custom property with the viewport height
-      document.documentElement.style.setProperty(
-        '--vh',
-        `${window.innerHeight * 0.01}px`
-      );
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
     };
 
-    // Run once on mount
+    // Run once on mount and on resize
     handleResize();
-
     window.addEventListener('resize', handleResize);
     window.addEventListener('orientationchange', handleResize);
 
@@ -138,18 +138,23 @@ function App() {
   }, []);
 
   return (
-    <div className="app">
-      <BackgroundImages />
-      <Header apiAvailable={isApiAvailable} />
-      <main className="main-content">
-        <ChatContainer
-          messages={messages}
-          isLoading={isLoading}
-          onSendMessage={handleSendMessage}
-          messagesEndRef={messagesEndRef}
-          useAdvancedLoading={false} // Set to true to use advanced loading UI
-        />
-      </main>
+    <div className="app-wrapper">
+      <Header
+        apiAvailable={isApiAvailable}
+        onCityChange={handleCityChange}
+      />
+      <div className="content-wrapper">
+        <BackgroundImages />
+        <div className="app">
+          <ChatContainer
+            messages={messages}
+            isLoading={isLoading}
+            onSendMessage={handleSendMessage}
+            messagesEndRef={messagesEndRef}
+            useAdvancedLoading={false}
+          />
+        </div>
+      </div>
       <div ref={messagesEndRef} style={{ height: 0, width: 0 }} />
     </div>
   );

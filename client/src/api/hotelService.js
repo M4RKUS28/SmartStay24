@@ -7,9 +7,10 @@ const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://smart-stay24.de/a
 /**
  * Sends a hotel recommendation request to the server
  * @param {string} query - The user's search query
+ * @param {string} city - The selected city (Copenhagen, Mallorca, New York)
  * @returns {Promise} - Promise resolving to hotel recommendations
  */
-export const getHotelRecommendations = async (query) => {
+export const getHotelRecommendations = async (query, city = 'Copenhagen') => {
   try {
     // Try to fetch from the real API
     const response = await fetch(`${API_BASE_URL}/query/`, {
@@ -17,7 +18,10 @@ export const getHotelRecommendations = async (query) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ query }),
+      body: JSON.stringify({
+        query,
+        city // Include the city in the request
+      }),
       // Set timeout to not wait too long if server is slow
       signal: AbortSignal.timeout(5000)
     });
@@ -29,7 +33,7 @@ export const getHotelRecommendations = async (query) => {
 
     const data = await response.json();
     console.log('API response:', data);
-    
+
     // Handle different response formats
     // The API might return "No hotels found" or "Invalid request" as string responses
     if (typeof data === 'string') {
@@ -51,8 +55,8 @@ export const getHotelRecommendations = async (query) => {
   } catch (error) {
     console.warn('API request failed, falling back to simulation', error);
 
-    // Fall back to simulation
-    return simulateHotelRecommendation(query);
+    // Fall back to simulation - pass the city to the simulation function
+    return simulateHotelRecommendation(query, city);
   }
 };
 

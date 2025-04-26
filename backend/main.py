@@ -8,8 +8,34 @@ import pandas as pd
 
 
 app = FastAPI()
-df = pd.read_parquet("./data/hotels/resultlist_Kopenhagen.parquet")
+df_c = pd.read_parquet("./data/hotels/resultlist_Kopenhagen.parquet")
+df_m = pd.read_parquet("./data/hotels/resultlist_Mallorca.parquet")
+df_n = pd.read_parquet("./data/hotels/resultlist_New York.parquet")
 
+   
+# Step 2: Convert it to the desired dict format.
+hotels_dict_c = {}
+hotels_dict_m = {}
+hotels_dict_n = {}
+
+
+for _, row in df_c.iterrows():
+    hotel_name = row["hotel_name"]
+    # Drop the 'name' from the values dictionary if you don't want it repeated
+    row_dict = row.to_dict()
+    hotels_dict_c[hotel_name] = row_dict
+
+for _, row in df_m.iterrows():
+    hotel_name = row["hotel_name"]
+    # Drop the 'name' from the values dictionary if you don't want it repeated
+    row_dict = row.to_dict()
+    hotels_dict_m[hotel_name] = row_dict
+
+for _, row in df_n.iterrows():
+    hotel_name = row["hotel_name"]
+    # Drop the 'name' from the values dictionary if you don't want it repeated
+    row_dict = row.to_dict()
+    hotels_dict_n[hotel_name] = row_dict
 
 
 # POST endpoint to receive and store messages
@@ -18,15 +44,13 @@ def add_message(message: MessageRequest):
     """
     Endpoint to receive a message and return matching hotels.
     """
-   
-    # Step 2: Convert it to the desired dict format.
     hotels_dict = {}
-
-    for _, row in df.iterrows():
-        hotel_name = row["hotel_name"]
-        # Drop the 'name' from the values dictionary if you don't want it repeated
-        row_dict = row.to_dict()
-        hotels_dict[hotel_name] = row_dict
+    if message.city == "Copenhagen":
+        hotels_dict = hotels_dict_c
+    elif message.city == "Mallorca":
+        hotels_dict = hotels_dict_m
+    elif message.city == "New York":
+        hotels_dict = hotels_dict_n
 
     # hotels_dict is now in your format
     hotels = find_matching_hotels(message.query, hotels_dict)

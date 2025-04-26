@@ -28,6 +28,12 @@
     sans-serif;
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background-color: var(--background-color);
   color: var(--text-dark);
@@ -40,39 +46,37 @@ code {
     monospace;
 }
 
-/* Base app structure */
+/* App wrapper - Contains header and content */
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Use viewport height */
+  height: calc(var(--vh, 1vh) * 100); /* Fallback for mobile */
+  width: 100%;
+}
+
+/* Content wrapper - Contains everything below header */
+.content-wrapper {
+  flex: 1; /* Take all available space */
+  display: flex;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Main app container */
 .app {
   display: flex;
   flex-direction: column;
-  height: 100vh; /* Fallback */
-  height: calc(var(--vh, 1vh) * 100); /* Use custom property for better mobile support */
+  width: 60%;
   max-width: 1200px;
-  margin: 0 auto;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  height: 100%; /* Fill the content wrapper */
   background-color: white;
   position: relative;
-  z-index: 1;
-  overflow: hidden;
-}
-
-.main-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  max-height: calc(100vh - 70px); /* Fallback */
-}
-
-/* Desktop-specific styles */
-@media (min-width: 1201px) {
-  body {
-    background-color: #f5f5f5;
-  }
-
-  .app {
-    width: 60%; /* Adjust width to leave space for background images */
-    margin: 0 auto;
-  }
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-bottom-left-radius: 15px; /* Add 15px border radius to bottom corners */
+  border-bottom-right-radius: 15px;
+  overflow: hidden; /* Ensure content doesn't overflow rounded corners */
 }
 
 /* Mobile-specific styles */
@@ -80,5 +84,41 @@ code {
   .app {
     width: 100%;
     max-width: 100%;
+    border-bottom-left-radius: 0; /* Remove border radius on mobile */
+    border-bottom-right-radius: 0;
+  }
+}
+
+/* Add these new styles to ensure the chat area fills the available space */
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Fill the app container */
+}
+
+.messages-wrapper {
+  flex: 1; /* Take all available space */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.message-input {
+  flex-shrink: 0; /* Don't shrink */
+  border-bottom-left-radius: 15px; /* Match the app container border radius */
+  border-bottom-right-radius: 15px;
+}
+
+/* For desktop only - keep border radius */
+@media (min-width: 1201px) {
+  .message-input {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
   }
 }

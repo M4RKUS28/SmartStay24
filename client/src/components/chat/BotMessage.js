@@ -14,12 +14,12 @@ const BotMessage = ({ content }) => {
 
   // Function to detect if content is a special message
   const isSpecialMessage = (content) => {
-    return content === "No hotels found" || content === "Invalid request" || content === [];
+    return content === "No hotels found" || content === "Invalid request";
   };
 
   // Get the appropriate message for special cases
   const getSpecialMessage = (content) => {
-    if (content === "No hotels found" || (Array.isArray(content) && content.length === 0)) {
+    if (content === "No hotels found") {
       return "Sorry, I couldn't find any hotels that match your preferences. Please try with different criteria.";
     } else if (content === "Invalid request") {
       return "I'm sorry, but I don't understand your request. Please enter a hotel-related query.";

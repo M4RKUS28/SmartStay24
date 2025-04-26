@@ -5,18 +5,64 @@
 .header {
   background-color: var(--check24-blue);
   color: white;
-  padding: 16px 24px;
+  width: 100%;
+  padding: 16px 0;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--check24-yellow);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  flex-shrink: 0; /* Don't shrink */
+}
+
+.header-inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 2px solid var(--check24-yellow);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0 2%; /* Add 2% margin on left and right */
+}
+
+/* City Selector */
+.city-selector {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.city-option {
+  padding: 5px 12px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 20px;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.city-option:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.city-option.selected {
+  background-color: var(--check24-yellow);
+  color: var(--check24-blue);
+  font-weight: bold;
+}
+
+/* On desktop, limit inner header width to match app container */
+@media (min-width: 1201px) {
+  .header-inner {
+    width: 60%;
+  }
 }
 
 .header-logo {
   display: flex;
   align-items: center;
-  gap: 12px;
 }
 
 .check24-style-logo {
@@ -106,12 +152,12 @@
   background-position: center;
   opacity: 0.9;
   pointer-events: none;
+  height: 100%;
 }
 
 .left-image {
   top: 0;
   left: 0;
-  height: 100vh;
   width: 40vw;
   background-position: right center;
 }
@@ -119,7 +165,6 @@
 .right-image {
   top: 0;
   right: 0;
-  height: 100vh;
   width: 40vw;
   background-position: left center;
 }
@@ -139,12 +184,24 @@
 
 @media (max-width: 768px) {
   .header {
-    padding: 10px 16px;
-    min-height: 56px;
+    padding: 15px 0;
+  }
+
+  .header-inner {
+    padding: 0 4%;
   }
 
   .logo-text {
     font-size: 24px;
+  }
+
+  .city-selector {
+    gap: 4px;
+  }
+
+  .city-option {
+    padding: 4px 8px;
+    font-size: 12px;
   }
 
   .header-nav {
@@ -154,11 +211,23 @@
 
 @media (max-width: 480px) {
   .header {
-    padding: 8px 12px;
-    min-height: 48px;
+    padding: 12px 0;
+  }
+
+  .header-inner {
+    padding: 0 4%;
   }
 
   .logo-text {
-    font-size: 20px;
+    font-size: 10px;
+  }
+
+  .city-selector {
+    gap: 2px;
+  }
+
+  .city-option {
+    padding: 3px 6px;
+    font-size: 11px;
   }
 }

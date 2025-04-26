@@ -1,23 +1,44 @@
 // src/utils/SimulateResponse.js
 
 // Sample hotel names for demonstration
-const SAMPLE_HOTELS = [
-  "Grand Hotel Miramar",
-  "Seaside Resort & Spa",
-  "City Comfort Inn",
-  "Mountain View Lodge",
-  "Sunset Beach Hotel",
-  "Lakeside Retreat",
-  "Park Plaza Hotel",
-  "Royal Palm Resort",
-  "Golden Sands Hotel",
-  "Riverside Inn",
-  "Harbor View Hotel",
-  "Blue Ocean Resort",
-  "Urban Boutique Hotel",
-  "Forest Lodge & Spa",
-  "Luxury Plaza Hotel"
-];
+const CITY_HOTELS = {
+  'Copenhagen': [
+    "Copenhagen Grand Hotel",
+    "Tivoli Gardens Resort",
+    "Nyhavn Waterfront Hotel",
+    "Danish Design Hotel",
+    "Harbor View Copenhagen",
+    "Scandic Royal Copenhagen",
+    "Nordic Comfort Hotel",
+    "Copenhagen City Plaza",
+    "Øresund Bay Resort",
+    "The Little Mermaid Hotel"
+  ],
+  'Mallorca': [
+    "Mallorca Beach Resort",
+    "Palma Bay Hotel & Spa",
+    "Mediterranean Sunset Resort",
+    "Playa de Palma Grand Hotel",
+    "Alcudia Beach Club",
+    "Port de Sóller Retreat",
+    "Sierra de Tramuntana Lodge",
+    "Balearic Sea View Hotel",
+    "Cala d'Or Luxury Resort",
+    "Mallorca Golf & Spa Resort"
+  ],
+  'New York': [
+    "Manhattan Skyline Hotel",
+    "Central Park Plaza",
+    "Times Square Executive Hotel",
+    "Broadway Lights Boutique Hotel",
+    "Hudson River View Resort",
+    "Empire State Luxury Suites",
+    "Fifth Avenue Grand Hotel",
+    "SoHo Designer Hotel",
+    "Brooklyn Bridge View Inn",
+    "Greenwich Village Boutique Hotel"
+  ]
+};
 
 // Keywords that indicate hotel-related queries
 const HOTEL_KEYWORDS = [
@@ -31,11 +52,16 @@ const HOTEL_KEYWORDS = [
 /**
  * Simulates a hotel recommendation API response
  * @param {string} query - The user's search query
+ * @param {string} city - The selected city (Copenhagen, Mallorca, New York)
  * @returns {Array|string} - List of hotels, "No hotels found", or "Invalid request"
  */
-export const simulateHotelRecommendation = (query) => {
+export const simulateHotelRecommendation = (query, city = 'Copenhagen') => {
   // Convert query to lowercase for easier matching
   const queryLower = query.toLowerCase();
+
+  // Make sure we have a valid city
+  const validCity = CITY_HOTELS[city] ? city : 'Copenhagen';
+  const cityHotels = CITY_HOTELS[validCity];
 
   // Check if query is hotel-related
   const isHotelQuery = HOTEL_KEYWORDS.some(keyword => queryLower.includes(keyword));
@@ -57,7 +83,7 @@ export const simulateHotelRecommendation = (query) => {
   const numMatches = Math.floor(Math.random() * 10) + 1;
 
   // Shuffle the sample hotels array and take the first 'numMatches' hotels
-  return shuffleArray(SAMPLE_HOTELS).slice(0, numMatches);
+  return shuffleArray(cityHotels).slice(0, numMatches);
 };
 
 /**
