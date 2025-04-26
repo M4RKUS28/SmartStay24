@@ -1,6 +1,7 @@
 // src/App.js
 import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
+import './styles/MobileOptimizations.css'; // Import the new mobile optimizations
 import Header from './components/layout/Header';
 import ChatContainer from './components/layout/ChatContainer';
 import BackgroundImages from './components/layout/BackgroundImages';
@@ -17,6 +18,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [isApiAvailable, setIsApiAvailable] = useState(false);
   const demoMessageShown = useRef(false);
+  const messagesEndRef = useRef(null);
 
   // Check API availability on component mount
   useEffect(() => {
@@ -40,6 +42,22 @@ function App() {
     };
 
     checkApi();
+  }, []);
+
+  // Scroll to bottom whenever messages change
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
+
+  // Handle resize to ensure proper layout
+  useEffect(() => {
+    const handleResize = () => {
+      // Force scroll to bottom on resize to keep input visible
+      messagesEndRef.current?.scrollIntoView({ behavior: 'auto' });
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   const handleSendMessage = async (message) => {
@@ -105,8 +123,11 @@ function App() {
           messages={messages}
           isLoading={isLoading}
           onSendMessage={handleSendMessage}
+          messagesEndRef={messagesEndRef}
         />
       </main>
+      {/* Invisible element to scroll to */}
+      <div ref={messagesEndRef} />
     </div>
   );
 }
