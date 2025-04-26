@@ -21,6 +21,7 @@ def query_to_dict(client, user_query: str, att_list: List[str]) -> dict[str, str
             { "role": "user", "content": user_query }
         ],
         response_format = HotelFeatures,
+        temperature = 0
     )
     end = time.time()
 

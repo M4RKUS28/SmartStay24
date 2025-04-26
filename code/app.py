@@ -88,6 +88,6 @@ if __name__ == '__main__':
     "Stylish, modern hotel that not only offers great design but also serves an good breakfast.",
     "Find me a hotel with rating at least 9.3 and cheaper than 40 EUR per night."
 ]
-    hotels = find_matching_hotels(example_queries[1], hotels_dict)
+    hotels = find_matching_hotels(example_queries[4], hotels_dict)
     print(hotels)
     print(f"Amount of Hotels found: {len(hotels)}")

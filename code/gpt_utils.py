@@ -46,8 +46,8 @@ Your task is to analyze a user prompt and extract relevant hotel features.
     *   Example: "I want to make a beach vacation". -> `distancetobeach`: `{{ "value": "<0.5", ... }}`. Distance are always given in kilometers.
     *   **EXTREMELY IMPORTANT:** 
         The same feature in the client description can apply to multiple attributes. Example: I will bring a dog -> amenity_Haustiere erlaubt, amenity_Haustierfreundliches and more
-        You can then rank these attributes using the importance, some may also have a very low importance like 0-4.
-        Please try to find as many fitting attributes as possible. Usually a client prompt corresponds to up to 6 attributes.
+        You can then rank these attributes using the importance, if there are several useful ones you can also make some of them low importance, e.g. 1-4.
+        Please try to find as many fitting attributes as possible. All attributes that are not specifically mentioned in the query should have a lower importance, e.g. 1,2,3,4
 
 2.  **Feature Value (`value`):**
     *   The `value` is a string describing the user's requirement.
@@ -65,7 +65,7 @@ Your task is to analyze a user prompt and extract relevant hotel features.
 
 3.  **Importance (`importance`):**
     *   This is an integer between 0 (unimportant) and 10 (absolutely necessary).
-    *   **`importance: 10` (Hard Requirement):** Use `10` **only** if the feature is a **mandatory, non-negotiable requirement**. Hotels not meeting this criterion are not usable and will not be in the result list.
+    *   **`importance: 10` (Hard Requirement):** Use `10` **only** if the feature is a **mandatory, non-negotiable requirement**.
         *   *Example:* "The price **has to** exceed 90€." -> `price`: `{{ "value": "<90", "importance": 10 }}`
         *   *Example:* "I **must** be able to bring my dog." -> `amenity_Haustiere_erlaubt`: `{{ "value": "=1", "importance": 10 }}`
         *   *Example:* "Accessibility is **essential**." -> `amenity_Accessibility` (or similar name from list): `{{ "value": "=1", "importance": 10 }}`
