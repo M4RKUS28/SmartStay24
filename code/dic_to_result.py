@@ -41,6 +41,9 @@ def filter_hotels(hotels: list[dict[str, object]], hard_list: list[(str, str)]):
                 hotels_to_remove.append(hotel_dict)
                 break
 
+    #for hotel in hotels_to_remove:
+        #print(hotel)
+
     for hotel in hotels_to_remove:
         hotels.remove(hotel)
 
@@ -49,7 +52,7 @@ def filter_hotels(hotels: list[dict[str, object]], hard_list: list[(str, str)]):
 
 
 
-def rank_hotels(hotels: list[dict[str, object]], soft_list: list[(str, object)]):
+def rank_hotels(hotels: list[dict[str, object]], soft_list: list[(str, object, int)]):
     """
     Ranks the hotels based on the soft_list
 
@@ -67,7 +70,6 @@ def rank_hotels(hotels: list[dict[str, object]], soft_list: list[(str, object)])
             if fulfills_attribute(hotel_dict, filter_attribute, filter_value):
                 hotel_importance += filter_importance
         result_list.append((hotel_dict.get("name"), hotel_importance))
-        
-    result_list.sort(key=lambda x: x[1])
+    result_list.sort(key=lambda x: x[1], reverse=True)
     result_list = [x[0] for x in result_list]
     return result_list
