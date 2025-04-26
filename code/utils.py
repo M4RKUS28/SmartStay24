@@ -32,41 +32,49 @@ Example:
     }
 """
 
-def dict_to_list(dict_input: dict[str, (str, int)]):
+def check24_to_list(dict_input: dict[str, dict[str, object]]):
     """
-    Filters the JSON data based on ...
+    Formats the hotel dict from check24 to a list of dicts
+    and sorts them by their ltr_score
 
     Args:
         dict_input (dict): Input as dict.
 
     Returns:
-        hard_list: List of attributes with importance = 100.
-        soft_list: List of remaining attributes ordered by importance.
+        hotel_list (list): List of hotels as dicts.
+    """
+    hotel_list = []
+    for hotel in dict_input.values():
+        hotel_list.append(hotel)
+    hotel_list.sort(key=lambda x: x.get("ltr_score"), reverse=True)
+    return hotel_list
+
+
+def chatGPT_to_list(dict_input: dict[str, object]):
+    """
+    Formats the dict from check24 to one of two list of tuples,
+    depending on whether its a hard or soft requirement
+    Args:
+        dict_input (dict): Input as dict.
+
+    Returns:
+        hard_list: List of attributes with importance = 10.
+        soft_list: List of remaining attributes.
     """
     soft_list = []
     hard_list = []
-    for name, (value, importance) in dict_input.items():
-        if (importance == 100):
-            hard_list.append((name, value))
+
+    for key, value in dict_input.items():
+        if (value['importance'] == 10):
+            hard_list.append((key, value['value']))
         else:
-            soft_list.append((name, value, importance))
-    #soft_list.sort(key = lambda x: x[2])
-    #soft_list = [(name, value) for name, value, _ in soft_list]
+            soft_list.append((key, value['value'], value['importance']))
 
     return hard_list, soft_list
 
+def check24_to_attribute_list(dict_input: dict[str, dict[str, object]]):
+    attributes = set()
+    for key, val in dict_input.items():
+        attributes.update(val.keys())
 
-attribute_dict = {
-    'attr1': ('value1', 100),
-    'attr2': ('value2', 50),
-    'attr3': ('value3', 20),
-    'attr4': ('value4', 100),
-    'attr5': ('value5', 75)
-}
-
-hard_list, soft_list = dict_to_list(attribute_dict)
-for i in hard_list:
-    print(i)
-print("----------")
-for i in soft_list:
-    print(i)
+    return list(attributes)

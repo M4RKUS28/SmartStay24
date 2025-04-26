@@ -10,6 +10,8 @@ def fulfills_attribute(hotel_dict, filter_attribute, filter_value):
     Returns:
         Boolean: True, if the hotel satisfies the attribute.
     """
+    if hotel_dict.get(filter_attribute) is None:
+        return True
     if (filter_value[:1] == "<"):
         if (float(hotel_dict.get(filter_attribute)) > float(filter_value[1:])):
             return False
@@ -41,9 +43,6 @@ def filter_hotels(hotels: list[dict[str, object]], hard_list: list[(str, str)]):
                 hotels_to_remove.append(hotel_dict)
                 break
 
-    #for hotel in hotels_to_remove:
-        #print(hotel)
-
     for hotel in hotels_to_remove:
         hotels.remove(hotel)
 
@@ -52,7 +51,7 @@ def filter_hotels(hotels: list[dict[str, object]], hard_list: list[(str, str)]):
 
 
 
-def rank_hotels(hotels: list[dict[str, object]], soft_list: list[(str, object)]):
+def rank_hotels(hotels: list[dict[str, object]], soft_list: list[(str, object, int)]):
     """
     Ranks the hotels based on the soft_list
 
@@ -69,34 +68,7 @@ def rank_hotels(hotels: list[dict[str, object]], soft_list: list[(str, object)])
         for (filter_attribute, filter_value, filter_importance) in soft_list:
             if fulfills_attribute(hotel_dict, filter_attribute, filter_value):
                 hotel_importance += filter_importance
-        result_list.append((hotel_dict.get("name"), hotel_importance))
-
-    result_list.sort(key=lambda x: x[1])
+        result_list.append((hotel_dict.get("hotel_name"), hotel_importance))
+    result_list.sort(key=lambda x: x[1], reverse=True)
     result_list = [x[0] for x in result_list]
-    return result_list
-
-
-hotels = [
-    {'name': 'Seaside Escape', 'stars': '5', 'location': 'beach', 'price': '300', 'pool': 'yes'},
-    {'name': 'Urban Nest', 'stars': '4', 'location': 'city', 'price': '180', 'pool': 'no'},
-    {'name': 'Budget Inn', 'stars': '2', 'location': 'highway', 'price': '60', 'pool': 'no'},
-    {'name': 'Mountain Lodge', 'stars': '3', 'location': 'mountains', 'price': '150', 'pool': 'yes'},
-    {'name': 'Luxury Palace', 'stars': '5', 'location': 'city', 'price': '500', 'pool': 'yes'},
-    {'name': 'Beach Bliss', 'stars': '4', 'location': 'beach', 'price': '220', 'pool': 'yes'},
-    {'name': 'Country Comfort', 'stars': '3', 'location': 'countryside', 'price': '120', 'pool': 'no'},
-    {'name': 'Sky High Hotel', 'stars': '5', 'location': 'city', 'price': '350', 'pool': 'yes'},
-    {'name': 'Eco Stay', 'stars': '3', 'location': 'forest', 'price': '100', 'pool': 'no'},
-    {'name': 'The Grand Bay', 'stars': '5', 'location': 'beach', 'price': '450', 'pool': 'yes'},
-]
-
-hard_list = [
-    ('stars', '>4'),
-    ('location', '=beach'),
-    ('pool', '=yes'),
-    ('price', '<400')
-]
-
-hotels = filter_hotels(hotels, hard_list)
-for hotel in hotels:
-    print(hotel)
-# Expected: [{'stars': 5, 'location': 'beach'}]
+    return result_list[:10]

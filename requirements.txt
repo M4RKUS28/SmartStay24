@@ -8,3 +8,6 @@ pre_commit
 openai
 pydantic
 dotenv
+pandas
+pyarrow
+fastparquet
