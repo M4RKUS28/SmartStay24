@@ -9,7 +9,7 @@ import pandas as pd
 from dotenv import load_dotenv
 from openai import AzureOpenAI
 
-# Load the environment variables from .env file
+# Load the environment variables from .env file.
 load_dotenv(dotenv_path="../.env")
 
 # Initialize the Azure OpenAI client

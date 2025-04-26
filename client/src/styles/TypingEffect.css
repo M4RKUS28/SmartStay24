@@ -1,0 +1,28 @@
+/* src/styles/TypingEffect.css */
+.typing-effect {
+  display: inline;
+}
+
+.typing-cursor {
+  display: inline-block;
+  margin-left: 2px;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  from, to { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.hotel-list-container {
+  margin-top: 10px;
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
