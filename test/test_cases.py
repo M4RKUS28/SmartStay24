@@ -1,26 +1,26 @@
+from tqdm import tqdm
+
 from code.app import find_matching_hotels
+from test.load_data import load_test_data
 import pandas as pd
 import csv
-
-
+import time
 
 if __name__ == "__main__":
-
     # Step 1: Load the parquet file
-    df = pd.read_parquet("../data/hotels/resultlist_Kopenhagen.parquet")
+    print("Start data loading")
+    start = time.time()
+    data = load_test_data("../data/messages.json")
+    end = time.time()
+    print(f"Data loading finished! Took {end - start} seconds")
 
     # Step 2: Convert it to the desired dict format
-    hotels_dict = {}
-
-    for _, row in df.iterrows():
-        hotel_name = row["hotel_name"]
-        # Drop the 'name' from the values dictionary if you don't want it repeated
-        row_dict = row.to_dict()
-        hotels_dict[hotel_name] = row_dict
+    hotels_dict = data[0][1]
 
     data = []
-    with open('your_file.csv', newline='', encoding='utf-8') as csvfile:
+    with open('./valid_check.csv', newline='', encoding='utf-8') as csvfile:
         reader = csv.reader(csvfile)
+        next(reader)
         for row in reader:
             text = row[0]
             number = int(row[1])
@@ -31,4 +31,7 @@ if __name__ == "__main__":
         result = find_matching_hotels(querie, hotels_dict)
         if (result is None and is_valid == 0) or (result is not None and is_valid == 1):
             points += 1
+        else:
+            print(querie, is_valid)
     score = points / len(data)
+    print(score)
