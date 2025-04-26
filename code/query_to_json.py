@@ -1,4 +1,5 @@
 import json
+import time
 from gpt_utils import system_message_user_prompt_to_standard_json, HotelFeatures
 
 
@@ -16,7 +17,7 @@ def query_to_dict(client, user_query: str) -> dict[str, str]:
         ],
         response_format = HotelFeatures,
     )
-    print(response)
+
     try:
         # Parse the response to extract the JSON content
         json_response = json.loads(response.choices[0].message.content)
@@ -26,8 +27,8 @@ def query_to_dict(client, user_query: str) -> dict[str, str]:
             # Handle the case where the response indicates an error
             return {
                 "status": "error",
-                "data": {
-                    "message": "Error in response from OpenAI."
+                "features": {
+                    "message": "This is not a valid hotel request"
                 }
             }
     except json.JSONDecodeError:
