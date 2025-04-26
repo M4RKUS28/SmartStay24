@@ -93,7 +93,7 @@ if __name__ == '__main__':
     "I want to make a vacation on the beach.",
     "What is a good recipe for pancakes?"
 ]
-    hotels = find_matching_hotels(example_queries[5], hotels_dict)
+    hotels = find_matching_hotels(example_queries[4], hotels_dict)
     print(hotels)
     if hotels is not None:
         print(f"Amount of Hotels found: {len(hotels)}")
