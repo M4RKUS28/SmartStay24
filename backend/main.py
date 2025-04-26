@@ -36,17 +36,17 @@ def add_message(message: MessageRequest):
 
     if hotels is None:
         print("No hotels found.")
-        return {"message": "No hotels found."}
+        return {"recommendations": []}
     
     # Return the hotels found
     print("Hotels found.")
-    return {"message": hotels}
+    return {"recommendations": [{"name": name} for name in hotels]}
 
 
-@app.get("/api/")
+@app.get("/api/health/")
 def read_root():
     """
     Root endpoint to check if the server is running.
     """
-    return {"Hello": "World"}
+    return {"status": "ok"}
 
