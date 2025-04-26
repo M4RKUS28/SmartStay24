@@ -12,7 +12,7 @@ logger.setLevel(logging.INFO)
 load_dotenv()
 url = os.getenv("POST")
 
-def log(message: str, hotels: dict[str, dict[str, object]]):
+def log(message: str, hotels: str) -> None:
     """
     Log a User Prompt
     """
