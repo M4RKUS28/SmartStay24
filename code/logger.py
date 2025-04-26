@@ -16,6 +16,10 @@ def log(message: str, hotels: str) -> None:
     """
     Log a User Prompt
     """
-    requests.post(url=url, json={"query": message, "hotels": hotels}, timeout=50)
-    logger.info("Log message sent: %s", message)
+    try:
+        requests.post(url=url, json={"query": message, "hotels": hotels}, timeout=50)
+        logger.info("Log message sent: %s", message)
+    except Exception as e:
+        print(e)
+        return
     return
