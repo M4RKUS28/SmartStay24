@@ -104,6 +104,7 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
+
 .hotel-rating {
   background-color: white;
   color: var(--check24-blue);
@@ -183,4 +184,38 @@
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+
+.hotel-details {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hotel-price {
+  background-color: white;
+  color: var(--check24-blue);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: bold;
+  border: 1px solid var(--check24-light-blue);
+}
+
+.hotel-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.hotel-rank {
+  font-weight: bold;
+  color: var(--check24-blue);
+  min-width: 20px;
+  font-size: 14px;
+}
+
+.hotel-name {
+  flex: 1;
 }

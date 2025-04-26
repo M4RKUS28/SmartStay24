@@ -30,7 +30,10 @@ const HotelList = ({ hotels }) => {
 
         return (
           <div key={index} className="hotel-item">
-            <span>{hotelName}</span>
+            <div className="hotel-info">
+              <span className="hotel-rank">{index + 1}.</span>
+              <span className="hotel-name">{hotelName}</span>
+            </div>
             <div className="hotel-details">
               <span className="hotel-rating">{rating}</span>
               <span className="hotel-price">{price} €</span>
