@@ -1,0 +1,84 @@
+
+I’m looking for a weekend escape from the everyday hustle.,[],"[[""locationtype"", ""=l\u00e4ndlich"", 8], [""Wellness"", ""=1"", 7], [""Spa/Entspannung"", ""=1"", 6], [""Infinity-Pool"", ""=1"", 5], [""Privater Strand"", ""=1"", 4]]"
+
+"'Looking for a hotel with breakfast, a buffet would be awesome, and a good star rating.'","[[""Fr\u00fchst\u00fcck"", ""=1""]]","[[""Fr\u00fchst\u00fccksbuffet"", ""=1"", 8], [""stars"", "">3"", 7]]"
+
+I want a peaceful place to recharge my batteries,"[[""Wellnesslounge/Ruhebereich"", ""=1""]]","[[""Spa/Entspannung"", ""=1"", 8], [""l\u00e4ndlich"", ""=1"", 7], [""Wellnesshotel"", ""=1"", 6], [""Infinity-Pool"", ""=1"", 5]]"
+
+"'Family-friendly resort with fun stuff for kids, good childcare, and golf or sports for the parents.'","[[""Familienzimmer vorhanden"", ""=1""], [""Betreute Kinderaktivit\u00e4ten"", ""=1""]]","[[""Golf/Sport"", ""=1"", 8], [""Kinderclub"", ""=1"", 7], [""Kinderspielplatz"", ""=1"", 7], [""Golfplatz (max. 3 km entfernt)"", ""=1"", 6]]"
+
+"'Looking for a hotel with 24-hour reception, good for kids, and a nice balcony to take in the views.'","[[""24-Stunden-Rezeption"", ""=1""]]","[[""Familienzimmer vorhanden"", ""=1"", 8], [""Balkon"", ""=1"", 7]]"
+
+"'Family-friendly hotel with childcare services, a gym, and different room types.'","[[""Familienzimmer vorhanden"", ""=1""], [""Baby-/ Kinderbetreuung"", ""=1""]]","[[""Fitnesseinrichtung"", ""=1"", 7], [""roomconfiguration"", ""=Standard Doppelzimmer"", 5]]"
+
+"'Looking for a hotel with a 24/7 front desk, full-body massages, and a sauna to chill in after a long day.'","[[""24-Stunden-Rezeption"", ""=1""]]","[[""Ganzk\u00f6rpermassage"", ""=1"", 8], [""Sauna"", ""=1"", 8]]"
+
+I’m looking for a destination that feels like a warm hug,[],"[[""locationtype"", ""=l\u00e4ndlich"", 8], [""Wellness"", ""=1"", 7], [""Spa/Entspannung"", ""=1"", 7], [""Massage"", ""=1"", 6], [""Gemeinschaftslounge/TV-Bereich"", ""=1"", 5], [""Fr\u00fchst\u00fcck"", ""=1"", 5], [""Garten"", ""=1"", 4], [""Terrasse"", ""=1"", 4]]"
+
+'Hotel for families with a nice indoor pool and a chill sauna to relax after a long day.',"[[""Familienzimmer vorhanden"", ""=1""]]","[[""Innenpool"", ""=1"", 8], [""Sauna"", ""=1"", 7]]"
+
+I’d love to be surrounded by beauty – inside and out,[],"[[""Boutique-/Designhotel"", ""=1"", 8], [""Panoramahotel"", ""=1"", 7], [""Garten"", ""=1"", 6], [""Kunstgalerie im Hotel"", ""=1"", 5], [""Dachterrasse"", ""=1"", 4]]"
+
+I’m dreaming of a space where I can just be me,None
+
+"'Accessible hotel close to the beach, around $150 a night.'","[[""Barrierefrei"", ""=1""]]","[[""distance_to_beach"", ""<1"", 8], [""pricepernight"", ""=150"", 7]]"
+
+I’d love a trip where I can unplug and reconnect with myself,[],"[[""Wellnesslounge/Ruhebereich"", ""=1"", 8], [""Spa/Entspannung"", ""=1"", 7], [""Yoga"", ""=1"", 6], [""Wellnesshotel"", ""=1"", 5], [""Wellnessangebote"", ""=1"", 5], [""Massage"", ""=1"", 5], [""Meditation"", ""=1"", 5]]"
+
+"'Find me a resort with good golf, an indoor pool for chilling, and close to the beach.'","[[""Resort"", ""=1""]]","[[""Golfplatz (max. 3 km entfernt)"", ""=1"", 8], [""Innenpool"", ""=1"", 7], [""distance_to_beach"", ""<1"", 9]]"
+
+I’d love to start each day with coffee and a beautiful view,"[[""Tee-/Kaffeezubereiter"", ""=1""]]","[[""Panoramahotel"", ""=1"", 8], [""Dachterrasse"", ""=1"", 7]]"
+
+I’d love a weekend that feels like a warm memory in the making,[],"[[""locationtype"", ""=l\u00e4ndlich"", 8], [""Luxushotel"", ""=1"", 7], [""Spa/Entspannung"", ""=1"", 6], [""Fr\u00fchst\u00fccksbuffet"", ""=1"", 5], [""Wellnessangebote"", ""=1"", 4], [""Romantik/Flitterwochen"", ""=1"", 3]]"
+
+"'Want a hotel with seasonal outdoor pools and some fun activities, plus awesome dinner options in the evenings.'","[[""Au\u00dfenpool (saisonal)"", ""=1""]]","[[""Animation (Erwachsene)"", ""=1"", 7], [""Motto-Dinnerabende"", ""=1"", 8], [""Restaurant"", ""=1"", 9], [""Pub Crawl"", ""=1"", 6], [""Live-Musik/Performance"", ""=1"", 5]]"
+
+"I need to focus on work during my stay, but still want a calm environment.","[[""Arbeitsbereich f\u00fcr Arbeit mit Laptop geeignet"", ""=1""]]","[[""l\u00e4ndlich"", ""=1"", 7], [""Wellnesslounge/Ruhebereich"", ""=1"", 5]]"
+
+"'Looking for a hotel with a gym, buffet breakfast, and an elevator for easy access to the upper floors. Any recommendations?'","[[""Fitnesseinrichtung"", ""=1""]]","[[""Fr\u00fchst\u00fccksbuffet"", ""=1"", 8], [""Aufzug"", ""=1"", 9]]"
+
+I’d love to curl up with a book and let the hours drift by,"[[""Bibliothek"", ""=1""]]","[[""B\u00fccher"", ""=1"", 8], [""Wellnesslounge/Ruhebereich"", ""=1"", 7]]"
+
+hotel cheaper than 50 Euro per night,"[[""pricepernight"", ""<50""]]",[]
+
+hotel with elevator and indoor pool,"[[""Aufzug"", ""=1""], [""Innenpool"", ""=1""]]",[]
+
+cancelable hotel with five stars,"[[""cancelable"", ""=1""], [""stars"", ""=5""]]",[]
+
+hotel room less thatn 50 Euro per night,"[[""pricepernight"", ""<50""]]",[]
+
+2 stars rating with at least 20000 reviews,"[[""stars"", ""=2""], [""ratingscount"", "">20000""]]",[]
+
+hotel cheaper than 100 Euro per night,"[[""pricepernight"", ""<100""]]",[]
+
+hotel with family and dinner,"[[""Familie"", ""=1""]]","[[""Abendessen"", ""=1"", 8], [""Familienzimmer vorhanden"", ""=1"", 9]]"
+
+cancelable hotel with golf course,"[[""Golfplatz (max. 3 km entfernt)"", ""=1""], [""Cancelable"", ""=1""]]","[[""Golfunterricht"", ""=1"", 5], [""Golf/Sport"", ""=1"", 5]]"
+
+Business 5 stars hotel with free cancelation option,"[[""stars"", ""=5""], [""cancelable"", ""=1""]]","[[""Businesshotel"", ""=1"", 8]]"
+
+Spa & Wellness hotel with airport transfer,"[[""Spa & Wellnesscenter"", ""=1""], [""Flughafenshuttle"", ""=1""]]","[[""Wellnesshotel"", ""=1"", 8]]"
+
+hotel with indoor pool and cheaper than 100 Euro per night,"[[""pricepernight"", ""<100""], [""Innenpool"", ""=1""]]",[]
+
+3 stars hotel for family with children and with elevator,"[[""stars"", ""=3""], [""Familienzimmer vorhanden"", ""=1""], [""Aufzug"", ""=1""]]",[]
+
+Find a hotel where I can bring my elephant,"[[""Haustiere erlaubt"", ""=1""], [""Haustierfreundliches Hotel"", ""=1""], [""Nur Hunde und Katzen sind erlaubt"", ""=0""]]",[]
+
+What hotel can I buy for money laundering?,None
+
+How do I make a good impression in a job interview?,None
+
+How do I train my dog to sit?,None
+
+How do I start a YouTube channel?,None
+
+Give me some tips for improving my chess strategy?,None
+
+What’s the best way to meditate and reduce stress?,None
+
+Tell me a funny joke?,None
+
+What are the top fashion trends this year?,None
+
+What’s the best way to learn a new language?,None
