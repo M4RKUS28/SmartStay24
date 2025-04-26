@@ -26,7 +26,8 @@ Your task is to analyze a user prompt and extract relevant hotel features.
 
 **Core Tasks:**
 
-1.  **Relevance Check:** Determine if the user prompt is somehow related to a hotel booking or search. It does not have to be explicitely mentioned.
+1.  **Relevance Check:** Determine if the user prompt related to a hotel booking or search.
+        **Important** They do not have to explicitely mention a hotel, if the request hints at a getaway or hotel stay you should try to give them hotels.
     *   **If NO:** Return **only** `{{'status': 'error'}}`.
     *   **If YES:** Proceed with feature extraction and return the result in the JSON format defined below.
 
