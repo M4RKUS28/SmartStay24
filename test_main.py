@@ -1,6 +1,16 @@
+from typing import List
 from code.app import find_matching_hotels
 
 import pandas as pd
+
+
+
+def load_test_data() -> tuple[List, dict[str, dict[str, object]]]:
+    return
+
+
+
+
 
 if __name__ == "__main__":
     # Step 1: Load the parquet file.
