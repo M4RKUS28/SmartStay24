@@ -49,7 +49,7 @@ def find_matching_hotels(
         log(query, str(hotels))
         return None
     print(dream_hotel)
-    log(query, hotels)
+    log(query, str(hotels))
     hotel_list = check24_to_list(hotels)
     hard_list, soft_list = chatGPT_to_list(dream_hotel)
     print(f"Hard_List: {hard_list}\n Soft_List: {soft_list}")
