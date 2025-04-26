@@ -7,15 +7,24 @@ import pandas as pd
 
 import math
 
+import math
+
 def clean_nan(obj):
     if isinstance(obj, dict):
-        return {k: clean_nan(v) for k, v in obj.items()}
+        cleaned = {}
+        for k, v in obj.items():
+            cleaned_v = clean_nan(v)
+            # Remove fields with value False or "No"
+            if cleaned_v not in (False, "No"):
+                cleaned[k] = cleaned_v
+        return cleaned
     elif isinstance(obj, list):
         return [clean_nan(v) for v in obj]
     elif isinstance(obj, float) and math.isnan(obj):
         return None
     else:
         return obj
+
 
 app = FastAPI()
 df_c = pd.read_parquet("./data/hotels/resultlist_Kopenhagen.parquet")
