@@ -1,7 +1,6 @@
 import json
 import os
 from code.dic_to_result import filter_hotels, rank_hotels
-from code.logger import log
 from code.query_to_json import query_to_dict
 from code.utils import chatGPT_to_list, check24_to_attribute_list, check24_to_list
 
