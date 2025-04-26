@@ -42,7 +42,7 @@ def filter_hotels(hotels: list[dict[str, object]], hard_list: list[(str, str)]):
 
     for hotel_dict in hotels:
         for filter_attribute, filter_value in hard_list:
-            print(f"Filter Attribute: {filter_attribute}, Filter Value: {filter_value}")
+            print(f"Filter Attribute: {hotel_dict.get(filter_attribute)}, Filter Value: {filter_value}")
             # Print if fullfuls_attribute is True or False
             print(f"Fulfills Attribute: {fulfills_attribute(hotel_dict, filter_attribute, filter_value)}")
             if not fulfills_attribute(hotel_dict, filter_attribute, filter_value):
