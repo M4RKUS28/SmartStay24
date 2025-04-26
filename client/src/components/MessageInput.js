@@ -18,11 +18,11 @@ const MessageInput = ({ onSendMessage, isLoading }) => {
         type="text"
         value={message}
         onChange={(e) => setMessage(e.target.value)}
-        placeholder="Fragen Sie nach Hotels (z.B. Hotel mit Pool und Sauna in der Nähe vom Zentrum)..."
+        placeholder="Ask for hotels (e.g., hotel with pool and sauna near the center)..."
         disabled={isLoading}
       />
       <button type="submit" disabled={!message.trim() || isLoading}>
-        Senden
+        Send
       </button>
     </form>
   );

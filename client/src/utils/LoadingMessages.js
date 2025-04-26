@@ -1,83 +1,83 @@
 // src/utils/LoadingMessages.js
 
 /**
- * Sammlung kreativer Ladehinweise für SmartStay24
- * Diese Nachrichten erzeugen den Eindruck einer KI, die aktiv
- * durch einen ausgeklügelten Prozess arbeitet, um perfekte Hotelübereinstimmungen zu finden
+ * Collection of creative loading messages for SmartStay24
+ * These messages create the impression of an AI actively
+ * working through a sophisticated process to find perfect hotel matches
  */
 
-// Erste Suchphase - die KI beginnt mit der Verarbeitung der Anfrage
+// First search phase - the AI begins processing the request
 export const initialSearchMessages = [
-  "Scanne nach perfekten Übereinstimmungen...",
-  "Durchsuche Tausende von Hotels für Sie...",
-  "Analysiere Ihre Präferenzen...",
-  "Aktiviere Hotel-Suchalgorithmen...",
-  "Starte personalisierte Hotelsuche...",
-  "Ihre Hotelsuche wird gestartet...",
-  "Durchsuche globale Hoteldatenbank...",
-  "Lese zwischen den Zeilen Ihrer Anfrage...",
-  "Bereite mich vor, Ihren idealen Aufenthalt zu finden...",
-  "Hotel-Radar aktiviert...",
-  "Aktiviere meine Hotelsuche-Neuronen...",
-  "Interpretiere Ihre Reisewünsche...",
-  "Suche nach verborgenen Hotel-Perlen...",
-  "Entschlüssele Ihre perfekten Hotelkriterien...",
-  "Übersetze Ihre Bedürfnisse in Hotelmerkmale..."
+  "Scanning for perfect matches...",
+  "Searching thousands of hotels for you...",
+  "Analyzing your preferences...",
+  "Activating hotel search algorithms...",
+  "Starting personalized hotel search...",
+  "Initiating your hotel search...",
+  "Searching global hotel database...",
+  "Reading between the lines of your request...",
+  "Preparing to find your ideal stay...",
+  "Hotel radar activated...",
+  "Activating my hotel search neurons...",
+  "Interpreting your travel wishes...",
+  "Searching for hidden hotel gems...",
+  "Decoding your perfect hotel criteria...",
+  "Translating your needs into hotel features..."
 ];
 
-// Verarbeitungsphase - die KI bewertet und vergleicht Optionen
+// Processing phase - the AI evaluates and compares options
 export const processingMessages = [
-  "Vergleiche Annehmlichkeiten über Hunderte von Unterkünften...",
-  "Bewerte Preis-Leistungs-Verhältnisse...",
-  "Vergleiche Standorte mit Ihren Präferenzen...",
-  "Filtere Hotels, die Ihrem Stil entsprechen...",
-  "Berechne optimale Preis-Qualitäts-Verhältnisse...",
-  "Vergleiche Hotelbewertungen für Sie...",
-  "Priorisiere Ihre unverzichtbaren Merkmale...",
-  "Bewerte die Nähe der Hotels zu Sehenswürdigkeiten...",
-  "Überprüfe Verfügbarkeit für Ihre Daten...",
-  "Analysiere Bewertungen früherer Gäste...",
-  "Wäge Komfortfaktoren gegen Preispunkte ab...",
-  "Sichte Tausende von Hoteloptionen...",
-  "Prüfe Ausstattungsmerkmale der Hotels...",
-  "Gleiche Ihre Kriterien mit verfügbaren Unterkünften ab...",
-  "Berechne Entfernung zu wichtigen Sehenswürdigkeiten..."
+  "Comparing amenities across hundreds of accommodations...",
+  "Evaluating price-performance ratios...",
+  "Comparing locations with your preferences...",
+  "Filtering hotels that match your style...",
+  "Calculating optimal price-quality ratios...",
+  "Comparing hotel ratings for you...",
+  "Prioritizing your essential features...",
+  "Assessing hotel proximity to attractions...",
+  "Checking availability for your dates...",
+  "Analyzing reviews from previous guests...",
+  "Weighing comfort factors against price points...",
+  "Sifting through thousands of hotel options...",
+  "Checking hotel amenities...",
+  "Matching your criteria with available accommodations...",
+  "Calculating distance to important attractions..."
 ];
 
-// Verfeinerungsphase - die KI finalisiert und optimiert Ergebnisse
+// Refinement phase - the AI finalizes and optimizes results
 export const refinementMessages = [
-  "Optimiere Ergebnisse für Ihre perfekte Übereinstimmung...",
-  "Sortiere die besten Ergebnisse für Sie...",
-  "Wende finale Präferenzfilter an...",
-  "Ordne Hotels nach Relevanz für Ihre Bedürfnisse...",
-  "Optimiere Empfehlungen speziell für Sie...",
-  "Erstelle maßgeschneiderte Empfehlungen...",
-  "Verfeinere die perfekte Hotel-Auswahlliste...",
-  "Stelle sicher, dass wir Ihre idealen Optionen gefunden haben...",
-  "Füge den letzten Schliff zu Ihren Ergebnissen hinzu...",
-  "Die passenden Hotels werden gleich angezeigt...",
-  "Bereite Ihre personalisierte Hotelauswahl vor...",
-  "Überprüfe die Übereinstimmungsqualität...",
-  "Stelle die Top-Empfehlungen zusammen...",
-  "Finalisiere Ihre perfekten Hotelübereinstimmungen...",
-  "Ordne Empfehlungen nach Relevanz..."
+  "Optimizing results for your perfect match...",
+  "Sorting the best results for you...",
+  "Applying final preference filters...",
+  "Ranking hotels by relevance to your needs...",
+  "Optimizing recommendations specifically for you...",
+  "Creating tailored recommendations...",
+  "Refining the perfect hotel selection list...",
+  "Making sure we've found your ideal options...",
+  "Adding the finishing touches to your results...",
+  "Your matching hotels will be displayed shortly...",
+  "Preparing your personalized hotel selection...",
+  "Verifying the match quality...",
+  "Compiling the top recommendations...",
+  "Finalizing your perfect hotel matches...",
+  "Ordering recommendations by relevance..."
 ];
 
-// Gelegentliche Spaß-/Persönlichkeitsnachrichten, die zufällig eingestreut werden können
+// Occasional fun/personality messages that can be randomly inserted
 export const personalityMessages = [
-  "Jage nach versteckten Hotelschätzen nur für Sie...",
-  "Ich flüstere mit den Hotel-Datenbanken...",
-  "Meine Hotelfindungskräfte kribbeln...",
-  "Trenne die guten von den großartigen Hotels...",
-  "Verhandle mit Pixeln, um Ihren perfekten Aufenthalt zu finden...",
-  "Consulte die Hotel-Kristallkugel...",
-  "Braue die perfekten Hotelempfehlungen...",
-  "Frage die Hotelgötter nach ihrer Weisheit...",
-  "Denke härter nach als ein Concierge an Silvester...",
-  "Mein künstliches Gehirn arbeitet auf Hochtouren..."
+  "Hunting for hidden hotel treasures just for you...",
+  "Whispering to the hotel databases...",
+  "My hotel-finding powers are tingling...",
+  "Separating the good hotels from the great ones...",
+  "Negotiating with pixels to find your perfect stay...",
+  "Consulting the hotel crystal ball...",
+  "Brewing the perfect hotel recommendations...",
+  "Asking the hotel gods for their wisdom...",
+  "Thinking harder than a concierge on New Year's Eve...",
+  "My artificial brain is working at full capacity..."
 ];
 
-// Kombiniertes Array mit allen Nachrichten für einfache Zufallsauswahl
+// Combined array with all messages for easy random selection
 export const allLoadingMessages = [
   ...initialSearchMessages,
   ...processingMessages,
@@ -86,8 +86,8 @@ export const allLoadingMessages = [
 ];
 
 /**
- * Gibt eine zufällige Ladenachricht zurück
- * @returns {string} Eine zufällige Ladenachricht
+ * Returns a random loading message
+ * @returns {string} A random loading message
  */
 export const getRandomMessage = () => {
   const randomIndex = Math.floor(Math.random() * allLoadingMessages.length);
@@ -95,13 +95,13 @@ export const getRandomMessage = () => {
 };
 
 /**
- * Gibt eine Sequenz von Ladenachrichten basierend auf der Suchphase zurück
- * @param {number} phase - 0: anfänglich, 1: Verarbeitung, 2: Verfeinerung
- * @returns {string} Eine Ladenachricht, die für die aktuelle Phase geeignet ist
+ * Returns a sequence of loading messages based on the search phase
+ * @param {number} phase - 0: initial, 1: processing, 2: refinement
+ * @returns {string} A loading message appropriate for the current phase
  */
 export const getPhaseMessage = (phase) => {
   const phases = [initialSearchMessages, processingMessages, refinementMessages];
-  const safePhase = Math.min(Math.max(phase, 0), 2); // Stelle sicher, dass die Phase 0-2 ist
+  const safePhase = Math.min(Math.max(phase, 0), 2); // Ensure phase is 0-2
   const messageArray = phases[safePhase];
   const randomIndex = Math.floor(Math.random() * messageArray.length);
   return messageArray[randomIndex];

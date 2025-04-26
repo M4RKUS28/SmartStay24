@@ -10,7 +10,7 @@ function App() {
     {
       id: 1,
       type: 'bot',
-      content: 'Hallo! Ich bin SmartStay, Ihr persönlicher Hotel-Assistent. Wie kann ich Ihnen bei der Hotelsuche helfen?'
+      content: 'Hello! I\'m SmartStay, your personal hotel assistant. How can I help you find a hotel?'
     }
   ]);
   const [isLoading, setIsLoading] = useState(false);
@@ -32,7 +32,7 @@ function App() {
           {
             id: prev.length + 1,
             type: 'bot',
-            content: 'Hinweis: Ich arbeite derzeit im Demo-Modus, da keine Verbindung zum Server besteht.'
+            content: 'Note: I\'m currently working in demo mode as there\'s no connection to the server.'
           }
         ]);
       }
