@@ -5,6 +5,9 @@ from query_to_json import query_to_dict
 from dotenv import load_dotenv
 import pandas as pd
 
+from utils import check24_to_list, chatGPT_to_list
+from dic_to_result import filter_hotels, rank_hotels
+
 # Load the environment variables from .env file
 load_dotenv(dotenv_path="../.env")
 
@@ -40,6 +43,17 @@ def find_matching_hotels(
     """
     dream_hotel = query_to_dict(client, query)
     print(dream_hotel)
+    hotel_list = check24_to_list(hotels)
+    hard_list, soft_list = chatGPT_to_list(dream_hotel)
+    print(f"Hard_List: {hard_list}\n Soft_List: {soft_list}")
+    filtered_hotels = filter_hotels(hotel_list, hard_list)
+    print(f"Length of Filtered List: {len(filtered_hotels)}")
+    for hotel in filtered_hotels:
+        print(f"Hotel Name: {hotel['hotel_name']}")
+    ranked_hotels = rank_hotels(filtered_hotels, soft_list)
+    print(f"Ranked List: {ranked_hotels}")
+    return ranked_hotels
+
 
     # TODO: Implement the logic to find matching hotels based on the query.
 
@@ -51,16 +65,17 @@ def find_matching_hotels(
 
 if __name__ == '__main__':
     # Step 1: Load the parquet file
-    df = pd.read_parquet('your_file.parquet')
+    df = pd.read_parquet('../data/hotels/resultlist_Kopenhagen.parquet')
 
     # Step 2: Convert it to the desired dict format
     hotels_dict = {}
 
     for _, row in df.iterrows():
-        hotel_name = row["name"]
+        hotel_name = row["hotel_name"]
         # Drop the 'name' from the values dictionary if you don't want it repeated
         row_dict = row.to_dict()
         hotels_dict[hotel_name] = row_dict
 
     # hotels_dict is now in your format
-    find_matching_hotels("Stylish, modern hotel that not only offers great design but also serves an good breakfast.", None)
+    hotels = find_matching_hotels("Stylish, modern hotel that not only offers great design but also serves an good breakfast.", hotels_dict)
+    print(hotels)
