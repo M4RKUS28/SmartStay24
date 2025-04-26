@@ -1,9 +1,9 @@
 // src/App.js
 import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
-import Header from './components/Header';
-import ChatContainer from './components/ChatContainer';
-import BackgroundImages from './components/BackgroundImages';
+import Header from './components/layout/Header';
+import ChatContainer from './components/layout/ChatContainer';
+import BackgroundImages from './components/layout/BackgroundImages';
 import { getHotelRecommendations, checkApiAvailability } from './api/hotelService';
 
 function App() {

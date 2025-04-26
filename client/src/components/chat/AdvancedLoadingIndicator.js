@@ -1,6 +1,6 @@
 // src/components/AdvancedLoadingIndicator.js
 import React, { useState, useEffect, useRef } from 'react';
-import { initialSearchMessages, processingMessages, refinementMessages, personalityMessages } from '../utils/LoadingMessages';
+import { initialSearchMessages, processingMessages, refinementMessages, personalityMessages } from '../../utils/LoadingMessages';
 import { FaSearch, FaHotel, FaStar } from 'react-icons/fa';
 
 // Define icons for each phase
