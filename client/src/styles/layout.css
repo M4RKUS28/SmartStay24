@@ -184,7 +184,7 @@
 
 @media (max-width: 768px) {
   .header {
-    padding: 10px 0;
+    padding: 15px 0;
   }
 
   .header-inner {
@@ -211,7 +211,7 @@
 
 @media (max-width: 480px) {
   .header {
-    padding: 8px 0;
+    padding: 12px 0;
   }
 
   .header-inner {
