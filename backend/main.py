@@ -13,7 +13,7 @@ df = pd.read_parquet("./data/hotels/resultlist_Kopenhagen.parquet")
 
 
 # POST endpoint to receive and store messages
-@app.post("/query")
+@app.post("/query", prefix="/api")
 def add_message(message: MessageRequest):
     """
     Endpoint to receive a message and return matching hotels.
@@ -43,7 +43,7 @@ def add_message(message: MessageRequest):
     return {"message": hotels}
 
 
-@app.get("/")
+@app.get("/", prefix="/api")
 def read_root():
     """
     Root endpoint to check if the server is running.
