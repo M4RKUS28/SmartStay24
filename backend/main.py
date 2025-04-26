@@ -36,7 +36,7 @@ def add_message(message: MessageRequest):
 
     if hotels is None:
         print("No hotels found.")
-        return {"message": "No hotels found."}
+        return {"recommendations": []}
     
     # Return the hotels found
     print("Hotels found.")
