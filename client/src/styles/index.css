@@ -74,6 +74,9 @@ code {
   background-color: white;
   position: relative;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-bottom-left-radius: 15px; /* Add 15px border radius to bottom corners */
+  border-bottom-right-radius: 15px;
+  overflow: hidden; /* Ensure content doesn't overflow rounded corners */
 }
 
 /* Mobile-specific styles */
@@ -81,6 +84,8 @@ code {
   .app {
     width: 100%;
     max-width: 100%;
+    border-bottom-left-radius: 0; /* Remove border radius on mobile */
+    border-bottom-right-radius: 0;
   }
 }
 
@@ -106,4 +111,14 @@ code {
 
 .message-input {
   flex-shrink: 0; /* Don't shrink */
+  border-bottom-left-radius: 15px; /* Match the app container border radius */
+  border-bottom-right-radius: 15px;
+}
+
+/* For desktop only - keep border radius */
+@media (min-width: 1201px) {
+  .message-input {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+  }
 }

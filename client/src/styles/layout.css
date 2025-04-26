@@ -6,9 +6,9 @@
   background-color: var(--check24-blue);
   color: white;
   width: 100%;
-  padding: 16px 24px;
+  padding: 16px 0;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   border-bottom: 2px solid var(--check24-yellow);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 10;
@@ -18,9 +18,39 @@
 .header-inner {
   width: 100%;
   max-width: 1200px;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 2%; /* Add 2% margin on left and right */
+}
+
+/* City Selector */
+.city-selector {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.city-option {
+  padding: 5px 12px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 20px;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.city-option:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.city-option.selected {
+  background-color: var(--check24-yellow);
+  color: var(--check24-blue);
+  font-weight: bold;
 }
 
 /* On desktop, limit inner header width to match app container */
@@ -33,7 +63,6 @@
 .header-logo {
   display: flex;
   align-items: center;
-  gap: 12px;
 }
 
 .check24-style-logo {
@@ -155,11 +184,24 @@
 
 @media (max-width: 768px) {
   .header {
-    padding: 10px 16px;
+    padding: 10px 0;
+  }
+
+  .header-inner {
+    padding: 0 4%;
   }
 
   .logo-text {
     font-size: 24px;
+  }
+
+  .city-selector {
+    gap: 4px;
+  }
+
+  .city-option {
+    padding: 4px 8px;
+    font-size: 12px;
   }
 
   .header-nav {
@@ -169,10 +211,23 @@
 
 @media (max-width: 480px) {
   .header {
-    padding: 8px 12px;
+    padding: 8px 0;
+  }
+
+  .header-inner {
+    padding: 0 4%;
   }
 
   .logo-text {
     font-size: 20px;
+  }
+
+  .city-selector {
+    gap: 2px;
+  }
+
+  .city-option {
+    padding: 3px 6px;
+    font-size: 11px;
   }
 }

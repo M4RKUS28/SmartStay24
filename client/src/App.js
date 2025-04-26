@@ -16,6 +16,7 @@ function App() {
   ]);
   const [isLoading, setIsLoading] = useState(false);
   const [isApiAvailable, setIsApiAvailable] = useState(false);
+  const [currentCity, setCurrentCity] = useState('Copenhagen');
   const demoMessageShown = useRef(false);
   const messagesEndRef = useRef(null);
 
@@ -46,6 +47,20 @@ function App() {
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
+
+  // Handle city change
+  const handleCityChange = (city) => {
+    setCurrentCity(city);
+
+    // Add message about city change
+    const newBotMessage = {
+      id: messages.length + 1,
+      type: 'bot',
+      content: `Switched to ${city}. How can I help you find a hotel in ${city}?`
+    };
+
+    setMessages(prevMessages => [...prevMessages, newBotMessage]);
+  };
 
   const handleSendMessage = async (message) => {
     // Add user message to chat
@@ -78,7 +93,8 @@ function App() {
       await new Promise(resolve => setTimeout(resolve, 800));
 
       // Get recommendations from API (will fall back to simulation if API fails)
-      const response = await getHotelRecommendations(message);
+      // Pass the current city to the API if needed
+      const response = await getHotelRecommendations(message, currentCity);
 
       const newBotMessage = {
         id: messages.length + 2,
@@ -123,7 +139,10 @@ function App() {
 
   return (
     <div className="app-wrapper">
-      <Header apiAvailable={isApiAvailable} />
+      <Header
+        apiAvailable={isApiAvailable}
+        onCityChange={handleCityChange}
+      />
       <div className="content-wrapper">
         <BackgroundImages />
         <div className="app">

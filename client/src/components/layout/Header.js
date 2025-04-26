@@ -1,7 +1,16 @@
 // src/components/layout/Header.js
-import React from 'react';
+import React, { useState } from 'react';
 
-const Header = ({ apiAvailable }) => {
+const Header = ({ apiAvailable, onCityChange }) => {
+  const [selectedCity, setSelectedCity] = useState('Copenhagen');
+
+  const handleCityChange = (city) => {
+    setSelectedCity(city);
+    if (onCityChange) {
+      onCityChange(city);
+    }
+  };
+
   return (
     <header className="header">
       <div className="header-inner">
@@ -11,6 +20,28 @@ const Header = ({ apiAvailable }) => {
             <img src="/assets/arrow.png" alt="CHECK24 arrow" className="logo-arrow" />
           </div>
         </div>
+
+        <div className="city-selector">
+          <button
+            className={`city-option ${selectedCity === 'Copenhagen' ? 'selected' : ''}`}
+            onClick={() => handleCityChange('Copenhagen')}
+          >
+            Copenhagen
+          </button>
+          <button
+            className={`city-option ${selectedCity === 'Mallorca' ? 'selected' : ''}`}
+            onClick={() => handleCityChange('Mallorca')}
+          >
+            Mallorca
+          </button>
+          <button
+            className={`city-option ${selectedCity === 'New York' ? 'selected' : ''}`}
+            onClick={() => handleCityChange('New York')}
+          >
+            New York
+          </button>
+        </div>
+
         <nav className="header-nav">
           <a href="#" className="nav-item">Help</a>
           <a href="#" className="nav-item">Contact</a>
