@@ -3,7 +3,11 @@ Logger for User Prompts
 """
 import logging
 import os
-import requests
+try:
+    import requests
+except ImportError as e:
+    #print("requests module not found. Please install it using 'pip install requests'.")
+    pass
 from dotenv import load_dotenv
 
 logger = logging.getLogger(__name__)
@@ -20,6 +24,5 @@ def log(message: str, hotels: str) -> None:
         requests.post(url=url, json={"query": message, "hotels": hotels}, timeout=50)
         logger.info("Log message sent: %s", message)
     except Exception as e:
-        print(e)
         return
     return
