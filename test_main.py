@@ -34,10 +34,6 @@ test_data = load_test_data('./data/messages.json')
 
 if __name__ == "__main__":
 
-    for query, hotels in test_data:
-        print(query)
-        print(hotels)
-
     # Step 1: Load the parquet file.
     df = pd.read_parquet("./data/hotels/resultlist_Kopenhagen.parquet")
 
