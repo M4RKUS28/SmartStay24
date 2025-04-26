@@ -17,7 +17,7 @@
 @media (max-width: 768px) {
   /* Ensure the header is appropriate size */
   .header {
-    padding: 10px 16px;
+    padding: 15px 16px;
     height: var(--header-height);
   }
 
@@ -80,7 +80,7 @@
 /* Small devices (phones) */
 @media (max-width: 480px) {
   .header {
-    padding: 8px 12px;
+    padding: 12px 12px;
     height: var(--header-height);
   }
 
