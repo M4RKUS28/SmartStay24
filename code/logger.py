@@ -8,7 +8,6 @@ import os
 try:
     import requests
 except ImportError as e:
-    print("requests module not found. Please install it using 'pip install requests'.")
     pass
 from dotenv import load_dotenv
 
