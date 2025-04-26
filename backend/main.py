@@ -77,8 +77,11 @@ def add_message(message: MessageRequest):
 
     # hotels_dict is now in your format
     hotels, hard, soft = find_matching_hotels_extended(message.query, hotels_dict)
+    print("Hard:", hard)
+    print("Soft:", soft)
 
     allowed_keys = build_allowed_keys(hard, soft)
+    print(f"Allowed keys: {allowed_keys}")
 
     if hotels is not None:
         print(f"Amount of Hotels found: {len(hotels)}")
@@ -88,8 +91,8 @@ def add_message(message: MessageRequest):
         return {"recommendations": []}
     
     # Return the hotels found
-    return {
-        "recommendations": [
+
+    recom = { "recommendations": [
             clean_nan({
                 **hotels_dict.get(name, {}),
                 "name": name,  # force this at the end to overwrite
@@ -98,6 +101,9 @@ def add_message(message: MessageRequest):
             for name in hotels
         ]
     }
+    print(f"Recommendations: {recom}")
+    return recom
+
 
 @app.get("/api/health/")
 def read_root():
