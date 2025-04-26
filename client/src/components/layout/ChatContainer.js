@@ -1,7 +1,7 @@
 // src/components/ChatContainer.js
 import React, { useEffect, useRef, useState } from 'react';
-import MessageList from './MessageList';
-import MessageInput from './MessageInput';
+import MessageList from '../MessageList';
+import MessageInput from '../MessageInput';
 
 const ChatContainer = ({ messages, isLoading, onSendMessage }) => {
   const messagesEndRef = useRef(null);

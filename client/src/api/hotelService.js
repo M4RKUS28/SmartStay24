@@ -30,7 +30,24 @@ export const getHotelRecommendations = async (query) => {
     const data = await response.json();
     console.log('API response:', data);
     
-    return data.recommendations || [];
+    // Handle different response formats
+    // The API might return "No hotels found" or "Invalid request" as string responses
+    if (typeof data === 'string') {
+      return data;
+    }
+
+    // It might return an object with recommendations array
+    if (data && data.recommendations) {
+      return data.recommendations;
+    }
+
+    // Or it might return an array directly
+    if (Array.isArray(data)) {
+      return data;
+    }
+
+    // Default to empty array if response format is unexpected
+    return [];
   } catch (error) {
     console.warn('API request failed, falling back to simulation', error);
 
@@ -44,8 +61,6 @@ export const getHotelRecommendations = async (query) => {
  * @returns {Promise<boolean>} - Whether the API is available
  */
 export const checkApiAvailability = async () => {
-  return true;
-
   try {
     const response = await fetch(`${API_BASE_URL}/health`, {
       method: 'GET',

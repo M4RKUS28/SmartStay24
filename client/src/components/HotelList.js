@@ -9,12 +9,21 @@ const HotelList = ({ hotels }) => {
 
   return (
     <div className="hotels-list">
-      {hotels.map((hotel, index) => (
-        <div key={index} className="hotel-item">
-          <span>{hotel}</span>
-          <span className="hotel-rating">{generateRating()}</span>
-        </div>
-      ))}
+      {hotels.map((hotel, index) => {
+        // Check if hotel is a string (old format) or an object (new format)
+        const hotelName = typeof hotel === 'string' ? hotel : hotel.name || hotel.hotel_name;
+        // Use actual rating if available, otherwise generate a random one
+        const rating = (typeof hotel === 'object' && hotel.rating)
+          ? parseFloat(hotel.rating).toFixed(1)
+          : generateRating();
+
+        return (
+          <div key={index} className="hotel-item">
+            <span>{hotelName}</span>
+            <span className="hotel-rating">{rating}</span>
+          </div>
+        );
+      })}
     </div>
   );
 };
