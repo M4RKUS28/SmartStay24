@@ -5,3 +5,4 @@ from pydantic import BaseModel
 class MessageRequest(BaseModel):
     """ Pydantic model for the request body """
     query: str
+    city: str
