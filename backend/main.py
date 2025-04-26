@@ -2,7 +2,7 @@
 import os
 from code.app import find_matching_hotels
 from fastapi import FastAPI
-from models import MessageRequest
+from backend.models import MessageRequest
 import pandas as pd
 
 
