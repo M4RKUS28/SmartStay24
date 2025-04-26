@@ -2,12 +2,9 @@ from code.app import find_matching_hotels
 import pandas as pd
 import csv
 
-
-
 if __name__ == "__main__":
-
     # Step 1: Load the parquet file
-    df = pd.read_parquet("../data/hotels/resultlist_Kopenhagen.parquet")
+    df = pd.read_parquet("../data/hotels/resultlist_Mallorca.parquet")
 
     # Step 2: Convert it to the desired dict format
     hotels_dict = {}
@@ -19,8 +16,9 @@ if __name__ == "__main__":
         hotels_dict[hotel_name] = row_dict
 
     data = []
-    with open('your_file.csv', newline='', encoding='utf-8') as csvfile:
+    with open('./valid_check.csv', newline='', encoding='utf-8') as csvfile:
         reader = csv.reader(csvfile)
+        next(reader)
         for row in reader:
             text = row[0]
             number = int(row[1])
