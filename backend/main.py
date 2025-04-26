@@ -40,7 +40,7 @@ def add_message(message: MessageRequest):
     
     # Return the hotels found
     print("Hotels found.")
-    return {"message": hotels}
+    return {"recommendations": [{"name": name} for name in hotels]}
 
 
 @app.get("/api/")
