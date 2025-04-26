@@ -1,6 +1,6 @@
 // src/components/LoadingIndicator.js
 import React, { useState, useEffect } from 'react';
-import { initialSearchMessages, processingMessages, refinementMessages } from '../utils/LoadingMessages';
+import { initialSearchMessages, processingMessages, refinementMessages } from '../../utils/LoadingMessages';
 
 const LoadingIndicator = () => {
   const [messageIndex, setMessageIndex] = useState(0);

@@ -1,6 +1,6 @@
 // src/components/TypingEffect.js
 import React, { useState, useEffect } from 'react';
-import '../styles/TypingEffect.css'; // Changed to use styles folder
+import '../../styles/TypingEffect.css'; // Changed to use styles folder
 
 const TypingEffect = ({ content, typingSpeed = 8, onComplete = () => {} }) => {
   const [displayedContent, setDisplayedContent] = useState('');
