@@ -47,16 +47,16 @@ def find_matching_hotels(
     dream_hotel = query_to_dict(client, query, att_list)
     if dream_hotel is None:
         return None
-    # print(dream_hotel)
+    #print(dream_hotel)
     hotel_list = check24_to_list(hotels)
     hard_list, soft_list = chatGPT_to_list(dream_hotel)
-    # print(f"Hard_List: {hard_list}\n Soft_List: {soft_list}")
+    #print(f"Hard_List: {hard_list}\n Soft_List: {soft_list}")
     filtered_hotels = filter_hotels(hotel_list, hard_list)
-    # print(f"Length of Filtered List: {len(filtered_hotels)}")
-    # for hotel in filtered_hotels:
-    # print(f"Hotel Name: {hotel['hotel_name']}")
+    #print(f"Length of Filtered List: {len(filtered_hotels)}")
+    #for hotel in filtered_hotels:
+        #print(f"Hotel Name: {hotel['hotel_name']}")
     ranked_hotels = rank_hotels(filtered_hotels, soft_list)
-    # print(f"Ranked List: {ranked_hotels}")
+    #print(f"Ranked List: {ranked_hotels}")
     return ranked_hotels
 
     # TODO: Implement the logic to find matching hotels based on the query.
@@ -70,7 +70,7 @@ def find_matching_hotels(
 
 if __name__ == "__main__":
     # Step 1: Load the parquet file
-    df = pd.read_parquet("../data/hotels/resultlist_Kopenhagen.parquet")
+    df = pd.read_parquet("../data/hotels/resultlist_Mallorca.parquet")
 
     # Step 2: Convert it to the desired dict format
     hotels_dict = {}
@@ -91,7 +91,9 @@ if __name__ == "__main__":
         "I want to make a vacation on the beach.",
         "What is a good recipe for pancakes?",
     ]
-    hotels = find_matching_hotels(example_queries[6], hotels_dict)
-    # print(hotels)
-    # if hotels is not None:
-    #    print(f"Amount of Hotels found: {len(hotels)}")
+    hotels = find_matching_hotels(example_queries[0], hotels_dict)
+    print(hotels)
+    if hotels is not None:
+        print(f"Amount of Hotels found: {len(hotels)}")
+    else:
+        print("No hotel query")
