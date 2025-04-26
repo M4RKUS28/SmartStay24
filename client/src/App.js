@@ -1,8 +1,9 @@
-// src/App.js
+// client/src/App.js
 import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
-import Header from './components/Header';
-import ChatContainer from './components/ChatContainer';
+import Header from './components/layout/Header';
+import ChatContainer from './components/layout/ChatContainer';
+import BackgroundImages from './components/layout/BackgroundImages';
 import { getHotelRecommendations, checkApiAvailability } from './api/hotelService';
 
 function App() {
@@ -15,7 +16,9 @@ function App() {
   ]);
   const [isLoading, setIsLoading] = useState(false);
   const [isApiAvailable, setIsApiAvailable] = useState(false);
+  const [currentCity, setCurrentCity] = useState('Copenhagen');
   const demoMessageShown = useRef(false);
+  const messagesEndRef = useRef(null);
 
   // Check API availability on component mount
   useEffect(() => {
@@ -24,7 +27,6 @@ function App() {
       setIsApiAvailable(available);
 
       // Add a system message about API status if not available
-      // Use ref to prevent duplicate messages in StrictMode
       if (!available && !demoMessageShown.current) {
         demoMessageShown.current = true;
         setMessages(prev => [
@@ -41,6 +43,25 @@ function App() {
     checkApi();
   }, []);
 
+  // Scroll to bottom whenever messages change
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
+
+  // Handle city change
+  const handleCityChange = (city) => {
+    setCurrentCity(city);
+
+    // Add message about city change
+    const newBotMessage = {
+      id: messages.length + 1,
+      type: 'bot',
+      content: `Switched to ${city}. How can I help you find a hotel in ${city}?`
+    };
+
+    setMessages(prevMessages => [...prevMessages, newBotMessage]);
+  };
+
   const handleSendMessage = async (message) => {
     // Add user message to chat
     const newUserMessage = {
@@ -52,45 +73,89 @@ function App() {
     setMessages(prevMessages => [...prevMessages, newUserMessage]);
     setIsLoading(true);
 
-    // Add slight delay for natural conversation flow
-    setTimeout(async () => {
-      try {
-        // Get recommendations from API (will fall back to simulation if API fails)
-        const response = await getHotelRecommendations(message);
-
-        const newBotMessage = {
+    // Easter egg
+    if (message.trim().toLowerCase() === 'bombardino') {
+      setTimeout(() => {
+        const specialResponse = {
           id: messages.length + 2,
           type: 'bot',
-          content: response
+          content: 'crocodilo!'
         };
-
-        setMessages(prevMessages => [...prevMessages, newBotMessage]);
-      } catch (error) {
-        console.error('Error getting recommendations:', error);
-
-        const errorMessage = {
-          id: messages.length + 2,
-          type: 'bot',
-          content: 'Es tut mir leid, aber es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.'
-        };
-
-        setMessages(prevMessages => [...prevMessages, errorMessage]);
-      } finally {
+        setMessages(prevMessages => [...prevMessages, specialResponse]);
         setIsLoading(false);
-      }
-    }, 800); // Small delay for natural conversation flow
+      }, 800);
+      return;
+    }
+
+    // Regular hotel recommendation flow
+    try {
+      // Small delay for natural conversation flow
+      await new Promise(resolve => setTimeout(resolve, 800));
+
+      // Get recommendations from API (will fall back to simulation if API fails)
+      // Pass the current city to the API if needed
+      const response = await getHotelRecommendations(message, currentCity);
+
+      const newBotMessage = {
+        id: messages.length + 2,
+        type: 'bot',
+        content: response
+      };
+
+      setMessages(prevMessages => [...prevMessages, newBotMessage]);
+    } catch (error) {
+      console.error('Error getting recommendations:', error);
+
+      const errorMessage = {
+        id: messages.length + 2,
+        type: 'bot',
+        content: 'I\'m sorry, but an error has occurred. Please try again.'
+      };
+
+      setMessages(prevMessages => [...prevMessages, errorMessage]);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
+  // Fix for iOS Safari viewport height issues
+  useEffect(() => {
+    const handleResize = () => {
+      // Set a custom property with the viewport height
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    };
+
+    // Run once on mount and on resize
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('orientationchange', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('orientationchange', handleResize);
+    };
+  }, []);
+
   return (
-    <div className="app">
-      <Header apiAvailable={isApiAvailable} />
-      <main className="main-content">
-        <ChatContainer 
-          messages={messages}
-          isLoading={isLoading} 
-          onSendMessage={handleSendMessage} 
-        />
-      </main>
+    <div className="app-wrapper">
+      <Header
+        apiAvailable={isApiAvailable}
+        onCityChange={handleCityChange}
+      />
+      <div className="content-wrapper">
+        <BackgroundImages />
+        <div className="app">
+          <ChatContainer
+            messages={messages}
+            isLoading={isLoading}
+            onSendMessage={handleSendMessage}
+            messagesEndRef={messagesEndRef}
+            useAdvancedLoading={false}
+          />
+        </div>
+      </div>
+      <div ref={messagesEndRef} style={{ height: 0, width: 0 }} />
     </div>
   );
 }

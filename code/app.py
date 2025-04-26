@@ -1,7 +1,6 @@
 import json
 import os
 from code.dic_to_result import filter_hotels, rank_hotels
-from code.logger import log
 from code.query_to_json import query_to_dict
 from code.utils import chatGPT_to_list, check24_to_attribute_list, check24_to_list
 
@@ -9,7 +8,7 @@ import pandas as pd
 from dotenv import load_dotenv
 from openai import AzureOpenAI
 
-# Load the environment variables from .env file.
+# Load the environment variables from .env file..
 load_dotenv(dotenv_path="../.env")
 
 # Initialize the Azure OpenAI client
@@ -42,9 +41,7 @@ def find_matching_hotels(
     Returns:
         list[str] | None: List of hotel_names that match the query, or None if the query is not hotel related.
     """
-    # Logging
     # check commit
-    log(query, str(hotels))
     # Get attribute list
     att_list = check24_to_attribute_list(hotels)
     dream_hotel = query_to_dict(client, query, att_list)
@@ -73,7 +70,7 @@ def find_matching_hotels(
 
 if __name__ == "__main__":
     # Step 1: Load the parquet file
-    df = pd.read_parquet("../data/hotels/resultlist_Kopenhagen.parquet")
+    df = pd.read_parquet("../data/hotels/resultlist_Mallorca.parquet")
 
     # Step 2: Convert it to the desired dict format
     hotels_dict = {}
@@ -94,7 +91,9 @@ if __name__ == "__main__":
         "I want to make a vacation on the beach.",
         "What is a good recipe for pancakes?",
     ]
-    hotels = find_matching_hotels(example_queries[6], hotels_dict)
-    #print(hotels)
-    #if hotels is not None:
-    #    print(f"Amount of Hotels found: {len(hotels)}")
+    hotels = find_matching_hotels(example_queries[0], hotels_dict)
+    print(hotels)
+    if hotels is not None:
+        print(f"Amount of Hotels found: {len(hotels)}")
+    else:
+        print("No hotel query")

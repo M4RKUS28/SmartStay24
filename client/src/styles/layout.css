@@ -1,0 +1,233 @@
+/* client/src/styles/layout.css */
+/* Styles for layout components: header, backgrounds, etc. */
+
+/* Header styles */
+.header {
+  background-color: var(--check24-blue);
+  color: white;
+  width: 100%;
+  padding: 16px 0;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--check24-yellow);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  flex-shrink: 0; /* Don't shrink */
+}
+
+.header-inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2%; /* Add 2% margin on left and right */
+}
+
+/* City Selector */
+.city-selector {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.city-option {
+  padding: 5px 12px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 20px;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.city-option:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.city-option.selected {
+  background-color: var(--check24-yellow);
+  color: var(--check24-blue);
+  font-weight: bold;
+}
+
+/* On desktop, limit inner header width to match app container */
+@media (min-width: 1201px) {
+  .header-inner {
+    width: 60%;
+  }
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+}
+
+.check24-style-logo {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.logo-text {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-style: italic;
+  text-transform: uppercase;
+}
+
+.logo-number {
+  font-weight: 800;
+  position: relative;
+  font-style: italic;
+}
+
+.logo-arrow {
+  position: absolute;
+  bottom: -3px;
+  right: 4px;
+  width: 30px;
+  height: auto;
+  filter: brightness(0) invert(1);
+}
+
+.header-nav {
+  display: flex;
+  gap: 16px;
+}
+
+.nav-item {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.nav-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.status-indicator {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  padding-left: 20px;
+  font-size: 14px;
+}
+
+.status-indicator:before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.status-indicator.online:before {
+  background-color: #4caf50; /* Green for online */
+}
+
+.status-indicator.offline:before {
+  background-color: #ff9800; /* Orange for demo mode */
+}
+
+/* Background images */
+.background-image {
+  position: fixed;
+  z-index: -1;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.9;
+  pointer-events: none;
+  height: 100%;
+}
+
+.left-image {
+  top: 0;
+  left: 0;
+  width: 40vw;
+  background-position: right center;
+}
+
+.right-image {
+  top: 0;
+  right: 0;
+  width: 40vw;
+  background-position: left center;
+}
+
+.background-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Responsive layout styles */
+@media (max-width: 1200px) {
+  .background-image {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 15px 0;
+  }
+
+  .header-inner {
+    padding: 0 4%;
+  }
+
+  .logo-text {
+    font-size: 24px;
+  }
+
+  .city-selector {
+    gap: 4px;
+  }
+
+  .city-option {
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+
+  .header-nav {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 12px 0;
+  }
+
+  .header-inner {
+    padding: 0 4%;
+  }
+
+  .logo-text {
+    font-size: 10px;
+  }
+
+  .city-selector {
+    gap: 2px;
+  }
+
+  .city-option {
+    padding: 3px 6px;
+    font-size: 11px;
+  }
+}

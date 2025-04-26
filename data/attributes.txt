@@ -1,0 +1,432 @@
+searchid
+hotel_name
+clusterchain
+clusterbrand
+clustersubbrand
+bookingshare
+pricepernight
+rating
+ratingscount
+starcategory
+mealtype
+cancelable
+distancetoreference
+distancetocity
+distancetounderground
+distancetobeach
+distancetobathing
+distancetoairport
+distancetotrainstation
+roomcategory
+roomcategoryid
+roomconfiguration
+startson
+endson
+requesttimestamp
+numrooms
+numadults
+numchildren
+nights
+duration
+daystostart
+daystostart_bucket
+locationtype
+locationname
+locationid
+clusterid
+price
+popular_location_rank
+deviceoutput
+ltr_score
+amenity_24-Stunden-Rezeption
+amenity_24-Stunden-Sicherheitspersonal
+amenity_Abendessen
+amenity_Abenteuer
+amenity_Adapter/Ladegeräte
+amenity_Aerobic
+amenity_American Express
+amenity_Animation (Erwachsene)
+amenity_Aparthotel
+amenity_Arabisch
+amenity_Arbeitsbereich für Arbeit mit Laptop geeignet
+amenity_Assistenztiere sind von Gebühren/ Restriktionen ausgeschlossen
+amenity_Aufdeckservice
+amenity_Aufzug
+amenity_Ausflugsinformationen
+amenity_Ausgewiesene Raucherbereiche
+amenity_Autovermietung
+amenity_Außenpool
+amenity_Außenpool (saisonal)
+amenity_Baby-/ Kinderbetreuung
+amenity_Babybadewanne
+amenity_Backofen
+amenity_Bademantel
+amenity_Badewanne oder Dusche
+amenity_Balkon
+amenity_Bankettsaal
+amenity_Bar
+amenity_Barrierefrei
+amenity_Barrierefreie Dusche
+amenity_Beheizter Pool
+amenity_Behindertenfreundlich
+amenity_Behindertengerechte Parkplätze
+amenity_Besichtigungstouren
+amenity_Bestätigte Corona-Schutzmaßnahmen
+amenity_Betreute Kinderaktivitäten
+amenity_Bettwäsche
+amenity_Bibliothek
+amenity_Bidet
+amenity_Billard
+amenity_Bosnisch
+amenity_Boutique-/Designhotel
+amenity_Boutiquen/Läden
+amenity_Brettspiele/Puzzle
+amenity_Budgetorientiert
+amenity_Buggys
+amenity_Businesscenter
+amenity_Businesshotel
+amenity_Bücher
+amenity_Bügeleinrichtungen
+amenity_Bügelservice
+amenity_Café
+amenity_Cash (Bargeld)
+amenity_Computerarbeitsplatz
+amenity_Concierge Service
+amenity_Dachterrasse
+amenity_Dampfbad
+amenity_Darts
+amenity_Daunenkissen
+amenity_Deckenventilator
+amenity_Desinfektion von Geschirr
+amenity_Deutsch
+amenity_Diners Club
+amenity_Discover
+amenity_Dusch-Badewannen Kombination
+amenity_Dusche
+amenity_Duschhocker
+amenity_Eigenes Badezimmer
+amenity_Einzeln verpackte Essenspakete verfügbar
+amenity_Englisch
+amenity_Espressomaschine
+amenity_Essbereich
+amenity_Essen kann auf das Zimmer geliefert werden
+amenity_Esstisch
+amenity_Eurocard/Mastercard
+amenity_Express-Check-in/-out
+amenity_Fahrradstellplatz
+amenity_Fahrradtouren
+amenity_Fahrradvermietung
+amenity_Familie
+amenity_Familienzimmer vorhanden
+amenity_Fax/Kopierer
+amenity_Feuerlöscher
+amenity_Filme
+amenity_Fitness
+amenity_Fitnesseinrichtung
+amenity_Flachbild-TV
+amenity_Flughafenshuttle
+amenity_Französisch
+amenity_Friseur-/Schönheitssalon
+amenity_Frühstück
+amenity_Frühstücksbuffet
+amenity_Futternapf
+amenity_Fußbad
+amenity_Fußmassage
+amenity_Föhn
+amenity_Ganzkörpermassage
+amenity_Ganzkörperpackung
+amenity_Garten
+amenity_Gast kann Zimmerreinigung abmelden
+amenity_Gasthaus
+amenity_Gefrierschrank
+amenity_Geldautomat vor Ort
+amenity_Geldwechsel
+amenity_Gemeinschaftsbad
+amenity_Gemeinschaftsküche
+amenity_Gemeinschaftslounge/TV-Bereich
+amenity_Gepäckaufbewahrung
+amenity_Gesamte Wohneinheit im Erdgeschoß
+amenity_Gesamte Wohneinheit ist rollstuhlgerecht
+amenity_Geschenkeladen/ Zeitungsstand
+amenity_Geschirr für Kinder
+amenity_Gesicherte Fahrradstellplätze
+amenity_Gesicherte Parkplätze
+amenity_Gesichtsbehandlungen
+amenity_Getränke/Snackautomat
+amenity_Golf/Sport
+amenity_Golfplatz (max. 3 km entfernt)
+amenity_Golfunterricht
+amenity_Grillmöglichkeiten
+amenity_Gäste werden auf Gesundheit kontrolliert
+amenity_Haarentfernung mit Wachs
+amenity_Halboffenes Badezimmer
+amenity_Handmassage
+amenity_Handschuhe für Gäste verfügbar
+amenity_Handtücher
+amenity_Hausschuhe
+amenity_Haustiere erlaubt
+amenity_Haustierfreundliches Hotel
+amenity_Heizung
+amenity_Heizung im Zimmer steuerbar
+amenity_Heiße Quelle
+amenity_Hochzeitsservice
+amenity_Hotel
+amenity_Hundeauslaufplatz
+amenity_Hydromassage Dusche
+amenity_Hypoallergene Bettware erhältlich
+amenity_Höheres WC
+amenity_Hörhilfen
+amenity_Individuell dekoriert je Zimmer
+amenity_Individuelle Möbel je Zimmer
+amenity_Infinity-Pool
+amenity_Innenpool
+amenity_Innenpool (saisonal)
+amenity_Investitionen in lokale Nachhaltigkeitsprojekte
+amenity_Italienisch
+amenity_JCB
+amenity_Japanisch
+amenity_Kabel TV
+amenity_Kaffee/Tee in Gemeinschaftsräumen
+amenity_Kanusport
+amenity_Kapelle/Schrein
+amenity_Karaoke
+amenity_Keine Corona-Schutzmaßnahmen
+amenity_Keine oder eingeschränkte Verwendung von Plastik-Artikeln (z.B. Strohhalme, Besteck oder Einweg-Artikel)
+amenity_Kinder-/Babybetten auf Anfrage
+amenity_Kinderbecken
+amenity_Kinderbetreuung im Zimmer
+amenity_Kinderbücher
+amenity_Kinderclub
+amenity_Kinderfreundliches Buffet
+amenity_Kinderhochstuhl
+amenity_Kindermahlzeiten
+amenity_Kinderspielplatz
+amenity_Kissenauswahl
+amenity_Kitchenette
+amenity_Klimaanlage im Zimmer
+amenity_Klimaanlage im Zimmer steuerbar
+amenity_Klimaanlage in allen Zimmern
+amenity_Kochplatten/ Herd
+amenity_Kochutensilien
+amenity_Konferenz- und Veranstaltungsräume
+amenity_Kontaktlose Bezahlung
+amenity_Kontaktloser Check-In/out
+amenity_Kontinentales Frühstück
+amenity_Kopfmassage
+amenity_Kostenlos parken vor Ort
+amenity_Kostenloses Handdesinfektionsmittel
+amenity_Kroatisch
+amenity_Kunstgalerie im Hotel
+amenity_Körperpeeling
+amenity_Küche
+amenity_Kühl-Gefrierkombination
+amenity_Kühlschrank
+amenity_Kühlschrank im Gemeinschaftsbereich
+amenity_LAN
+amenity_LGBT-Freundlich
+amenity_Ladestation für Elektro-Autos
+amenity_Langzeitparken
+amenity_Lebensmittel aus biologischem Anbau
+amenity_Lebensmittel aus der Region
+amenity_Live-Musik/Performance
+amenity_Lokale Karten
+amenity_Lunchpakete
+amenity_Luxushotel
+amenity_Maestro
+amenity_Maniküre
+amenity_Masken für Gäste verfügbar
+amenity_Maskenpflicht
+amenity_Massage
+amenity_Massage im Zimmer
+amenity_Massagestuhl
+amenity_Maßnahmen zur Reduzierung des Energieverbrauchs
+amenity_Mehrsprachiges Personal
+amenity_Mikrowelle
+amenity_Mikrowelle im Gemeinschaftsbereich
+amenity_Mini-Kühlschrank
+amenity_Minibar
+amenity_Minigolf
+amenity_Minimarkt vor Ort
+amenity_Mitarbeiter folgen Regeln des regionalen Standards
+amenity_Mitarbeiter tragen Schutzkleidung
+amenity_Motto-Dinnerabende
+amenity_Nachhaltige Unterkunft
+amenity_Nachtclub/DJ
+amenity_Nackenmassage
+amenity_Nicht rollstuhlgerecht
+amenity_Nichtraucherunterkunft
+amenity_Nichtraucherzimmer
+amenity_Nichtschwimmerbereich
+amenity_Niederländisch
+amenity_Niedriges Waschbecken
+amenity_Niedriges Waschbecken im Bad
+amenity_Notrufleine im Bad
+amenity_Nur Assistenztiere sind erlaubt
+amenity_Nur Hunde sind erlaubt
+amenity_Nur Hunde und Katzen sind erlaubt
+amenity_Nur für Erwachsene
+amenity_Obere Stockwerke mit Fahrstuhl erreichbar
+amenity_Outdoorspielgeräte für Kinder
+amenity_Paarmassage
+amenity_Panoramahotel
+amenity_Parken vor Ort
+amenity_Parkhaus/Tiefgarage
+amenity_Parkplatz außerhalb des Hotelgeländes
+amenity_Parkservice
+amenity_Pediküre
+amenity_Pension
+amenity_Pflegeprodukte
+amenity_Picknickbereich
+amenity_Pillow-Top Matratze
+amenity_Polnisch
+amenity_Pool
+amenity_Pool Cabana
+amenity_Pool mit Rampe
+amenity_Pool-/Strandtücher
+amenity_Poolbar
+amenity_Portier/Hotelpage
+amenity_Portugiesisch
+amenity_Premium Bettwaren
+amenity_Privater Check-in/-out
+amenity_Privater Strand
+amenity_Privates Abendessen
+amenity_Privates Tauchbecken
+amenity_Privatstrand in der Nähe
+amenity_Programm zur Reduzierung von Lebensmittelabfällen
+amenity_Pub Crawl
+amenity_Radfahren
+amenity_Raucher und Nichtraucherzimmer
+amenity_Raucherzimmer
+amenity_Rauchmelder
+amenity_Recycling
+amenity_Regendusche
+amenity_Reinigung mit Desinfektionsmittel
+amenity_Reinigungsmittel gegen Coronaviren
+amenity_Reiseführer oder Empfehlungen
+amenity_Reiten
+amenity_Resort
+amenity_Restaurant
+amenity_Rezeption
+amenity_Rollstuhlgerecht
+amenity_Rollstühle verfügbar
+amenity_Romantik/Flitterwochen
+amenity_Rumänisch
+amenity_Russisch
+amenity_Räumliche Trennung von Gästen und Mitarbeitern in Hauptkontaktzonen
+amenity_Rückenmassage
+amenity_Safe an der Rezeption
+amenity_Safe im Zimmer
+amenity_Safe in Laptopgröße
+amenity_Satelliten-TV
+amenity_Sauna
+amenity_Schallisolierung
+amenity_Schlafsofa
+amenity_Schlafzimmer
+amenity_Schließfächer
+amenity_Schrank
+amenity_Schreibtisch
+amenity_Schutzkleidung für Gäste verfügbar
+amenity_Schwimmbad
+amenity_Seife
+amenity_Serbisch
+amenity_Shampoo
+amenity_Shopping
+amenity_Shuttle in die Umgebung
+amenity_Shuttle zum Bahnhof
+amenity_Shuttle zur Fähre
+amenity_Shuttleservice
+amenity_Sicherheitsalarm
+amenity_Sitzecke
+amenity_Slowakisch
+amenity_Smart TV
+amenity_Snackbar
+amenity_Social Distancing Maßnahmen
+amenity_Solarium
+amenity_Sonnenschirme
+amenity_Sonnenstühle/-liegen
+amenity_Spa & Wellnesscenter
+amenity_Spa-Anwendungen
+amenity_Spa/Entspannung
+amenity_Spanisch
+amenity_Speisen für spezielle Ernährungsbedürfnisse
+amenity_Spielbereich
+amenity_Spiele für Kinder
+amenity_Spielhalle
+amenity_Spielzeug
+amenity_Spülmaschine
+amenity_Strand
+amenity_Strand Cabana
+amenity_Strandbar
+amenity_Strandhotel
+amenity_Streaming-Dienste (z.B. Netflix)
+amenity_Streaming-Service
+amenity_Strom aus erneuerbaren Energien
+amenity_Städtereise
+amenity_TV
+amenity_Tagesbett
+amenity_Tauchbecken
+amenity_Tee-/Kaffeezubereiter
+amenity_Teile des CO²-Ausstoßes werden durch Zertifikate ausgeglichen
+amenity_Telefon
+amenity_Tennisausrüstung
+amenity_Tennisplatz
+amenity_Terrasse
+amenity_Thailändisch
+amenity_Ticketservice
+amenity_Tierkörbchen
+amenity_Tischtennis
+amenity_Toilettenpapier
+amenity_Touren/Kurse über die örtliche Kultur
+amenity_Tschechisch
+amenity_Ungarisch
+amenity_Unterkunft wird von professionellem Reinigungsservice gereinigt
+amenity_Vegan
+amenity_Vegetarisch
+amenity_Ventilator
+amenity_Veranda/Terrasse
+amenity_Verdunkelungsvorhänge
+amenity_Versiegelung des Raums nach Reinigung
+amenity_Videoüberwachung der Außenbereiche der Unterkunft
+amenity_Videoüberwachung in Gemeinschaftsbereichen
+amenity_Visa
+amenity_Visuelle Hilfe: Braille
+amenity_Visuelle Hilfe: fühlbare Zeichen
+amenity_Vollwertiges Frühstück
+amenity_WC mit Haltegriffen
+amenity_WLAN
+amenity_Wandern
+amenity_Waschsalon/Wäscheservice
+amenity_Wassereinsparende Badezimmer-Einrichtungen
+amenity_Wasserkocher
+amenity_Wasserpark
+amenity_Wasserrutsche
+amenity_Wasserspielzeug für Kinder
+amenity_Wassersportmöglichkeiten vor Ort
+amenity_Wellness
+amenity_Wellnessangebote
+amenity_Wellnessbehandlungsraum/-räume 
+amenity_Wellnesshotel
+amenity_Wellnesslounge/Ruhebereich
+amenity_Whirlpool
+amenity_Whirlpool-Badewanne
+amenity_Whirlpool/Jacuzzi
+amenity_Wickeltisch
+amenity_Wohnzimmer
+amenity_Wäsche wird nach regionalem Standard gewaschen
+amenity_Yoga
+amenity_Zahnbürste
+amenity_Zeitlicher Abstand zwischen Aufenthalten von Gästen eingeführt
+amenity_Zeitung
+amenity_Zeitungen in der Lobby
+amenity_Zimmer mit Verbindungstür
+amenity_Zimmerreinigung
+amenity_Zimmerreinigung (eingeschränkt)
+amenity_Zimmerservice
+amenity_Zimmerservice (eingeschränkt)
+amenity_Zugang über außengelegene Gänge
+amenity_Zustellbett auf Anfrage
+amenity_Zustellbetten
+amenity_direkter Strandzugang (privater Strand)
+amenity_iPod-Dockingstation
+amenity_ländlich
+amenity_Übergroße Badewanne

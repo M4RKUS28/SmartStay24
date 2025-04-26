@@ -2,22 +2,26 @@
 import { simulateHotelRecommendation } from '../utils/SimulateResponse';
 
 // API base URL - should be configurable for different environments
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://smart-stay24.de/api';
 
 /**
  * Sends a hotel recommendation request to the server
  * @param {string} query - The user's search query
+ * @param {string} city - The selected city (Copenhagen, Mallorca, New York)
  * @returns {Promise} - Promise resolving to hotel recommendations
  */
-export const getHotelRecommendations = async (query) => {
+export const getHotelRecommendations = async (query, city = 'Copenhagen') => {
   try {
     // Try to fetch from the real API
-    const response = await fetch(`${API_BASE_URL}/recommendations`, {
+    const response = await fetch(`${API_BASE_URL}/query/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ query }),
+      body: JSON.stringify({
+        query,
+        city // Include the city in the request
+      }),
       // Set timeout to not wait too long if server is slow
       signal: AbortSignal.timeout(5000)
     });
@@ -28,12 +32,31 @@ export const getHotelRecommendations = async (query) => {
     }
 
     const data = await response.json();
-    return data.recommendations || [];
+    console.log('API response:', data);
+
+    // Handle different response formats
+    // The API might return "No hotels found" or "Invalid request" as string responses
+    if (typeof data === 'string') {
+      return data;
+    }
+
+    // It might return an object with recommendations array
+    if (data && data.recommendations) {
+      return data.recommendations;
+    }
+
+    // Or it might return an array directly
+    if (Array.isArray(data)) {
+      return data;
+    }
+
+    // Default to empty array if response format is unexpected
+    return [];
   } catch (error) {
     console.warn('API request failed, falling back to simulation', error);
 
-    // Fall back to simulation
-    return simulateHotelRecommendation(query);
+    // Fall back to simulation - pass the city to the simulation function
+    return simulateHotelRecommendation(query, city);
   }
 };
 

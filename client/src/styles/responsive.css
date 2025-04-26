@@ -1,0 +1,166 @@
+/* client/src/styles/responsive.css */
+/* All responsive styles and media queries */
+
+/* Large desktops and below */
+@media (max-width: 1200px) {
+  .app {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .background-image {
+    display: none;
+  }
+}
+
+/* Tablets and below */
+@media (max-width: 768px) {
+  /* Ensure the header is appropriate size */
+  .header {
+    padding: 15px 16px;
+    height: var(--header-height);
+  }
+
+  .logo-text {
+    font-size: 24px;
+  }
+
+  .header-nav {
+    display: none;
+  }
+
+  /* Adjust chat layout */
+  .chat-messages {
+    padding: 12px 16px;
+  }
+
+  .message {
+    max-width: 95%;
+    padding: 10px 12px;
+    margin: 4px 0;
+  }
+
+  .hotels-list {
+    margin-top: 8px;
+    padding: 8px;
+  }
+
+  .hotel-item {
+    padding: 8px 10px;
+  }
+
+  .message-input {
+    padding: 10px;
+  }
+
+  .message-input input {
+    padding: 8px 12px;
+  }
+
+  .message-input button {
+    padding: 0 12px;
+  }
+
+  .bot-avatar {
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+  }
+
+  .loading-indicator {
+    max-width: 95%;
+    padding: 10px 14px;
+  }
+
+  .advanced-loading-indicator {
+    max-width: 95%;
+  }
+}
+
+/* Small devices (phones) */
+@media (max-width: 480px) {
+  .header {
+    padding: 12px 12px;
+    height: var(--header-height);
+  }
+
+  .logo-text {
+    font-size: 14px;
+  }
+
+  .chat-messages {
+    padding: 8px 12px;
+    padding-bottom: 16px; /* Extra padding at bottom for visibility */
+  }
+
+  .message-input {
+    padding: 8px;
+  }
+
+  .message {
+    margin: 3px 0;
+    max-width: 98%;
+    padding: 8px 10px;
+  }
+
+  .loading-dot {
+    width: 6px;
+    height: 6px;
+  }
+
+  .phase-indicator {
+    width: 28px;
+    height: 28px;
+  }
+
+  .bot-avatar {
+    width: 28px;
+    height: 28px;
+    font-size: 16px;
+  }
+
+  .hotel-item {
+    padding: 6px 8px;
+  }
+
+  .hotel-rating {
+    font-size: 12px;
+    padding: 1px 4px;
+  }
+}
+
+/* Fix for very small screens */
+@media (max-height: 500px) {
+  .message-input {
+    min-height: 46px;
+  }
+
+  .message-input input {
+    padding: 6px 10px;
+  }
+
+  .message-input button {
+    padding: 0 10px;
+    font-size: 14px;
+  }
+}
+
+/* Landscape orientation on mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .header {
+    height: 40px;
+    padding: 6px 10px;
+  }
+
+  .message {
+    padding: 6px 8px;
+    margin: 2px 0;
+  }
+
+  /* Force one-line display on ultra-small screens */
+  .message-input {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+  }
+}
