@@ -10,7 +10,7 @@ function App() {
     {
       id: 1,
       type: 'bot',
-      content: 'Hallo! Ich bin Carlos, Ihr persönlicher Hotel-Assistent. Wie kann ich Ihnen bei der Hotelsuche helfen?'
+      content: 'Hallo! Ich bin SmartStay, Ihr persönlicher Hotel-Assistent. Wie kann ich Ihnen bei der Hotelsuche helfen?'
     }
   ]);
   const [isLoading, setIsLoading] = useState(false);
