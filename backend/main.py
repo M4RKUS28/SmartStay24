@@ -63,7 +63,6 @@ def add_message(message: MessageRequest):
         return {"recommendations": []}
     
     # Return the hotels found
-    print("Hotels found.")
     return {
         "recommendations": [
             {
