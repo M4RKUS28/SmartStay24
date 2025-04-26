@@ -1,4 +1,4 @@
-If there are any errors during the 4pm testing, please contact us on discord (lucabzt#7943). Our function should work but we are not sure about python path and imports, modules etc.
+‼️‼️If there are any errors during the 4pm testing, please contact us on discord (lucabzt#7943). Our function should work but we are not sure about python path and imports, modules etc.‼️‼️
 
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/uIYE-hOq)
 # CHECK24 Hotel Recommender
