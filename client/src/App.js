@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 import Header from './components/Header';
 import ChatContainer from './components/ChatContainer';
+import BackgroundImages from './components/BackgroundImages';
 import { getHotelRecommendations, checkApiAvailability } from './api/hotelService';
 
 function App() {
@@ -96,6 +97,8 @@ function App() {
 
   return (
     <div className="app">
+      {/* Add BackgroundImages component */}
+      <BackgroundImages />
       <Header apiAvailable={isApiAvailable} />
       <main className="main-content">
         <ChatContainer
