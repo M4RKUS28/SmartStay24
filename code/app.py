@@ -45,10 +45,11 @@ def find_matching_hotels(
     # Get attribute list
     att_list = check24_to_attribute_list(hotels)
     dream_hotel = query_to_dict(client, query, att_list)
-    if dream_hotel["status"] == "error":
+    if dream_hotel is None:
+        log("", hotels)
         return None
     print(dream_hotel)
-    log(query)
+    log(query, hotels)
     hotel_list = check24_to_list(hotels)
     hard_list, soft_list = chatGPT_to_list(dream_hotel)
     print(f"Hard_List: {hard_list}\n Soft_List: {soft_list}")
@@ -94,4 +95,5 @@ if __name__ == '__main__':
 ]
     hotels = find_matching_hotels(example_queries[5], hotels_dict)
     print(hotels)
-    print(f"Amount of Hotels found: {len(hotels)}")
+    if hotels is not None:
+        print(f"Amount of Hotels found: {len(hotels)}")
