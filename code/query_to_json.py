@@ -34,18 +34,8 @@ def query_to_dict(client, user_query: str, att_list: List[str]) -> dict[str, str
             return json_response.get("features", {})
         else:
             # Handle the case where the response indicates an error
-            return {
-                "status": "error",
-                "features": {
-                    "message": "This is not a valid hotel request"
-                }
-            }
+            return None
     except json.JSONDecodeError:
         # Handle the case where the response is not valid JSON
-        return {
-            "status": "error",
-            "data": {
-                "message": "Invalid JSON response from OpenAI."
-            }
-        }
+        return None
 
