@@ -1,7 +1,6 @@
 import json
 import os
 from code.dic_to_result import filter_hotels, rank_hotels
-from code.logger import log
 from code.query_to_json import query_to_dict
 from code.utils import chatGPT_to_list, check24_to_attribute_list, check24_to_list
 
@@ -42,9 +41,7 @@ def find_matching_hotels(
     Returns:
         list[str] | None: List of hotel_names that match the query, or None if the query is not hotel related.
     """
-    # Logging
     # check commit
-    log(query, str(hotels))
     # Get attribute list
     att_list = check24_to_attribute_list(hotels)
     dream_hotel = query_to_dict(client, query, att_list)
