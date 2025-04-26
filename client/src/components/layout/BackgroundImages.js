@@ -1,36 +1,5 @@
-// src/components/BackgroundImages.js
+// client/src/components/layout/BackgroundImages.js
 import React from 'react';
-
-// Styles as JavaScript objects instead of CSS
-const leftBackgroundStyle = {
-  position: 'fixed',
-  top: 0,
-  left: 0,
-  height: '100vh',
-  width: '60vw',
-  zIndex: -1,
-  opacity: 0.9,
-  pointerEvents: 'none',
-  overflow: 'hidden'
-};
-
-const rightBackgroundStyle = {
-  position: 'fixed',
-  top: 0,
-  right: 0,
-  height: '100vh',
-  width: '30vw',
-  zIndex: -1,
-  opacity: 0.9,
-  pointerEvents: 'none',
-  overflow: 'hidden'
-};
-
-const imageStyle = {
-  width: '100%',
-  height: '100%',
-  objectFit: 'cover'
-};
 
 const BackgroundImages = () => {
   // Check if we're on mobile
@@ -43,19 +12,19 @@ const BackgroundImages = () => {
 
   return (
     <>
-      <div style={leftBackgroundStyle}>
+      <div className="background-image left-image">
         <img
           src={process.env.PUBLIC_URL + '/assets/palm3.jpeg'}
           alt=""
-          style={{...imageStyle, objectPosition: 'right center'}}
+          className="background-img"
         />
       </div>
 
-      <div style={rightBackgroundStyle}>
+      <div className="background-image right-image">
         <img
           src={process.env.PUBLIC_URL + '/assets/Hotel.png'}
           alt=""
-          style={{...imageStyle, objectPosition: 'left center'}}
+          className="background-img"
         />
       </div>
     </>

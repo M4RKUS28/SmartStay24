@@ -1,6 +1,7 @@
-/* src/styles/LoadingIndicator.css */
+/* client/src/styles/loading.css */
+/* Styles for all loading indicators */
 
-/* Basic Loading Indicator Styles (Compatible with current app styles) */
+/* Basic Loading Indicator */
 .loading-indicator {
   display: flex;
   align-items: center;
@@ -37,7 +38,7 @@
   animation-delay: 0.6s;
 }
 
-/* Advanced Loading Indicator Styles */
+/* Advanced Loading Indicator */
 .advanced-loading-indicator {
   display: flex;
   flex-direction: column;
@@ -135,6 +136,26 @@
   transition: width 0.5s ease;
 }
 
+/* Simple loading spinner (alternative to dots) */
+.loading-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top-color: var(--check24-light-blue);
+  animation: spin 1s linear infinite;
+  margin-left: 8px;
+}
+
+/* Typewriter effect for loading messages */
+.typewriter-message {
+  overflow: hidden;
+  border-right: 2px solid var(--check24-light-blue);
+  white-space: nowrap;
+  margin: 0;
+  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
 /* Animations */
 @keyframes pulse {
   0%, 100% {
@@ -147,34 +168,9 @@
   }
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-/* Simple loading spinner (alternative to dots) */
-.loading-spinner {
-  width: 20px;
-  height: 20px;
-  border: 2px solid rgba(0, 0, 0, 0.1);
-  border-radius: 50%;
-  border-top-color: var(--check24-light-blue);
-  animation: spin 1s linear infinite;
-  margin-left: 8px;
-}
-
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
-}
-
-/* Typewriter effect for loading messages */
-.typewriter-message {
-  overflow: hidden;
-  border-right: 2px solid var(--check24-light-blue);
-  white-space: nowrap;
-  margin: 0;
-  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
 }
 
 @keyframes typing {
