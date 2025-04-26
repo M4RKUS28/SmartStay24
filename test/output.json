@@ -6,7 +6,7 @@
             [
                 "Resort",
                 "=1",
-                8
+                7
             ],
             [
                 "Spa & Wellnesscenter",
@@ -16,33 +16,33 @@
             [
                 "Schwimmbad",
                 "=1",
-                6
+                2
             ],
             [
                 "Restaurant",
                 "=1",
-                5
+                2
             ],
             [
                 "Bar",
                 "=1",
-                5
+                2
             ]
         ]
     },
     {
         "query": "'Looking for a hotel with breakfast, a buffet would be awesome, and a good star rating.'",
-        "hard_constraints": [],
+        "hard_constraints": [
+            [
+                "Frühstück",
+                "=1"
+            ]
+        ],
         "soft_constraints": [
             [
                 "Frühstücksbuffet",
                 "=1",
                 8
-            ],
-            [
-                "Frühstück",
-                "=1",
-                7
             ],
             [
                 "stars",
@@ -93,7 +93,7 @@
             [
                 "Nackenmassage",
                 "=1",
-                1
+                2
             ]
         ]
     },
@@ -180,11 +180,6 @@
                 "Fitnesseinrichtung",
                 "=1",
                 7
-            ],
-            [
-                "roomcategory",
-                "=Standard Doppelzimmer",
-                5
             ]
         ]
     },
@@ -216,42 +211,22 @@
             [
                 "locationtype",
                 "=ländlich",
-                8
+                6
             ],
             [
                 "Wellness",
                 "=1",
-                7
+                8
             ],
             [
                 "Spa & Wellnesscenter",
                 "=1",
-                6
+                8
             ],
             [
                 "Romantik/Flitterwochen",
                 "=1",
-                5
-            ],
-            [
-                "Terrasse",
-                "=1",
-                4
-            ],
-            [
-                "Garten",
-                "=1",
                 3
-            ],
-            [
-                "Sitzecke",
-                "=1",
-                2
-            ],
-            [
-                "Wohnzimmer",
-                "=1",
-                1
             ]
         ]
     },
@@ -361,16 +336,6 @@
                 "Wellnesshotel",
                 "=1",
                 5
-            ],
-            [
-                "Luxushotel",
-                "=1",
-                4
-            ],
-            [
-                "Romantik/Flitterwochen",
-                "=1",
-                3
             ]
         ]
     },
@@ -423,37 +388,22 @@
             [
                 "Resort",
                 "=1",
-                8
+                7
             ],
             [
                 "Romantik/Flitterwochen",
                 "=1",
-                7
+                6
             ],
             [
                 "Luxushotel",
                 "=1",
-                6
+                4
             ],
             [
                 "Spa/Entspannung",
                 "=1",
-                5
-            ],
-            [
-                "Privater Strand",
-                "=1",
-                4
-            ],
-            [
-                "Panoramahotel",
-                "=1",
-                3
-            ],
-            [
-                "locationtype",
-                "=ländlich",
-                2
+                8
             ]
         ]
     },
@@ -490,17 +440,17 @@
             [
                 "Wellnesshotel",
                 "=1",
-                7
+                4
             ],
             [
                 "Spa_&_Wellnesscenter",
                 "=1",
-                6
+                4
             ],
             [
                 "locationtype",
                 "=ländlich",
-                5
+                7
             ]
         ]
     },
@@ -516,7 +466,7 @@
             [
                 "Frühstücksbuffet",
                 "=1",
-                7
+                8
             ],
             [
                 "Aufzug",
@@ -529,25 +479,20 @@
         "query": "I’d love to curl up with a book and let the hours drift by",
         "hard_constraints": [
             [
-                "Bibliothek",
+                "Bücher",
                 "=1"
             ]
         ],
         "soft_constraints": [
             [
-                "Gemeinschaftslounge/TV-Bereich",
-                "=1",
-                7
-            ],
-            [
-                "Bücher",
+                "Bibliothek",
                 "=1",
                 8
             ],
             [
                 "Sitzecke",
                 "=1",
-                6
+                3
             ]
         ]
     },
@@ -629,15 +574,13 @@
             [
                 "Familie",
                 "=1"
-            ]
-        ],
-        "soft_constraints": [
+            ],
             [
                 "Abendessen",
-                "=1",
-                8
+                "=1"
             ]
-        ]
+        ],
+        "soft_constraints": []
     },
     {
         "query": "cancelable hotel with golf course",
