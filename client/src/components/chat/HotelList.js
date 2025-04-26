@@ -22,15 +22,36 @@ const HotelList = ({ hotels }) => {
     return (7.5 + Math.random() * 2).toFixed(1);
   };
 
+  // Format price with currency symbol
+  const formatPrice = (price) => {
+    if (!price || isNaN(price)) return "€--";
+    return `€${parseFloat(price).toFixed(2)}`;
+  };
+
+  // Format attribute name to be more readable and remove "Amenity " prefix
+  const formatAttributeName = (key) => {
+    return key
+      .replace(/^amenity_/i, '') // Remove amenity_ prefix (case insensitive)
+      .replace(/^Amenity /i, '') // Remove Amenity prefix (case insensitive)
+      .replace(/([A-Z])/g, ' $1') // Add space before capital letters
+      .replace(/_/g, ' ') // Replace underscores with spaces
+      .replace(/^./, str => str.toUpperCase()); // Capitalize first letter
+  };
+
   return (
     <div className="hotels-list">
       {hotels.map((hotel, index) => {
         // Check if hotel is a string (old format) or an object (new format)
         const hotelName = typeof hotel === 'string' ? hotel : hotel.name || hotel.hotel_name;
+
         // Use actual rating if available, otherwise generate a random one
         const rating = (typeof hotel === 'object' && hotel.rating)
           ? parseFloat(hotel.rating).toFixed(1)
           : generateRating();
+
+        // Get price if available
+        const price = typeof hotel === 'object' ?
+          (hotel.pricepernight || hotel.price) : null;
 
         // Get all hotel attributes for details section
         const hotelDetails = typeof hotel === 'object' ? hotel : { name: hotelName, rating };
@@ -38,9 +59,13 @@ const HotelList = ({ hotels }) => {
         return (
           <div key={index} className="hotel-item-container">
             <div className="hotel-item">
-              <span>{hotelName}</span>
+              <span className="hotel-info">
+                <span className="hotel-rank">{index + 1}.</span>
+                <span className="hotel-name">{hotelName}</span>
+              </span>
               <div className="hotel-item-actions">
                 <span className="hotel-rating">{rating}</span>
+                <span className="hotel-price">{formatPrice(price)}</span>
                 <button
                   className="info-button"
                   onClick={() => toggleDetails(index)}
@@ -59,15 +84,20 @@ const HotelList = ({ hotels }) => {
                   <ul className="hotel-attributes-list">
                     {Object.entries(hotelDetails).map(([key, value]) => {
                       // Skip rendering certain fields or null values
-                      if (key === 'name' || key === 'hotel_name' || value === null || value === undefined) {
+                      if (
+                        key === 'name' ||
+                        key === 'hotel_name' ||
+                        key === 'rating' ||
+                        key === 'price' ||
+                        key === 'pricepernight' ||
+                        value === null ||
+                        value === undefined
+                      ) {
                         return null;
                       }
 
                       // Format the key name to be more readable
-                      const formattedKey = key
-                        .replace(/([A-Z])/g, ' $1') // Add space before capital letters
-                        .replace(/_/g, ' ') // Replace underscores with spaces
-                        .replace(/^./, str => str.toUpperCase()); // Capitalize first letter
+                      const formattedKey = formatAttributeName(key);
 
                       // Format the value based on its type
                       let formattedValue = value;

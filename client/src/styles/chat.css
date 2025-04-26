@@ -381,3 +381,85 @@
     padding: 8px;
   }
 }
+
+
+/* Updates for chat.css */
+
+/* Slightly increase message max-width */
+.message {
+  max-width: 85%; /* Increased from 80% */
+  padding: 12px 16px;
+  border-radius: 12px;
+  position: relative;
+  word-wrap: break-word;
+}
+
+/* Hotel item styling enhancements */
+.hotel-item {
+  background-color: white;
+  padding: 10px 12px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-left: 3px solid var(--check24-yellow);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.hotel-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.hotel-rank {
+  font-weight: bold;
+  color: var(--check24-blue);
+  min-width: 20px;
+  font-size: 14px;
+}
+
+.hotel-name {
+  flex: 1;
+}
+
+.hotel-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hotel-rating {
+  background-color: white;
+  color: var(--check24-blue);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: bold;
+  border: 1px solid var(--check24-yellow);
+}
+
+.hotel-price {
+  background-color: white;
+  color: var(--check24-blue);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: bold;
+  border: 1px solid var(--check24-light-blue);
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .message {
+    max-width: 90%; /* Even wider on mobile */
+  }
+
+  .hotel-item-actions {
+    gap: 4px;
+  }
+
+  .hotel-rating, .hotel-price {
+    font-size: 12px;
+    padding: 1px 4px;
+  }
+}
