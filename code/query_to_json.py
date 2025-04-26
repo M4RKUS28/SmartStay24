@@ -24,7 +24,7 @@ def query_to_dict(client, user_query: str, att_list: List[str]) -> dict[str, str
     )
     end = time.time()
 
-    print(f"ChatGPT thought for {end-start} seconds.")
+    #print(f"ChatGPT thought for {end-start} seconds.")
 
     try:
         # Parse the response to extract the JSON content
