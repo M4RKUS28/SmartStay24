@@ -5,7 +5,17 @@ from fastapi import FastAPI
 from backend.models import MessageRequest
 import pandas as pd
 
+import math
 
+def clean_nan(obj):
+    if isinstance(obj, dict):
+        return {k: clean_nan(v) for k, v in obj.items()}
+    elif isinstance(obj, list):
+        return [clean_nan(v) for v in obj]
+    elif isinstance(obj, float) and math.isnan(obj):
+        return None
+    else:
+        return obj
 
 app = FastAPI()
 df_c = pd.read_parquet("./data/hotels/resultlist_Kopenhagen.parquet")
@@ -65,11 +75,11 @@ def add_message(message: MessageRequest):
     # Return the hotels found
     return {
         "recommendations": [
-            {
+            clean_nan({
                 **hotels_dict.get(name, {}),
                 "name": name,  # force this at the end to overwrite
                 "price": hotels_dict.get(name).get("pricepernight", -1),
-            }
+            })
             for name in hotels
         ]
     }
