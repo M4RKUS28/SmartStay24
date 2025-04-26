@@ -43,7 +43,7 @@ def add_message(message: MessageRequest):
     return {"recommendations": [{"name": name} for name in hotels]}
 
 
-@app.get("/api/health/")
+@app.get("/api/health")
 def read_root():
     """
     Root endpoint to check if the server is running.
