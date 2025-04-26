@@ -1,6 +1,3 @@
-
-import json
-
 def fulfills_attribute(hotel_dict, filter_attribute, filter_value):
     """
     Checks whether the given hotel satisfies the filter_attribute
@@ -69,7 +66,8 @@ def rank_hotels(hotels: list[dict[str, object]], soft_list: list[(str, object)])
         for (filter_attribute, filter_value, filter_importance) in soft_list:
             if fulfills_attribute(hotel_dict, filter_attribute, filter_value):
                 hotel_importance += filter_importance
-        result_list.append((hotel_dict.get("name"), hotel_importance))   
+        result_list.append((hotel_dict.get("name"), hotel_importance))
+        
     result_list.sort(key=lambda x: x[1])
     result_list = [x[0] for x in result_list]
     return result_list
