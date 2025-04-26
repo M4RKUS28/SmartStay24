@@ -5,7 +5,7 @@ from query_to_json import query_to_dict
 from dotenv import load_dotenv
 import pandas as pd
 
-from utils import check24_to_list, chatGPT_to_list
+from utils import check24_to_list, chatGPT_to_list, check24_to_attribute_list
 from dic_to_result import filter_hotels, rank_hotels
 
 # Load the environment variables from .env file
@@ -41,7 +41,9 @@ def find_matching_hotels(
     Returns:
         list[str] | None: List of hotel_names that match the query, or None if the query is not hotel related.
     """
-    dream_hotel = query_to_dict(client, query)
+    # Get attribute list
+    att_list = check24_to_attribute_list(hotels)
+    dream_hotel = query_to_dict(client, query, att_list)
     print(dream_hotel)
     hotel_list = check24_to_list(hotels)
     hard_list, soft_list = chatGPT_to_list(dream_hotel)
@@ -77,5 +79,13 @@ if __name__ == '__main__':
         hotels_dict[hotel_name] = row_dict
 
     # hotels_dict is now in your format
-    hotels = find_matching_hotels("Stylish, modern hotel that not only offers great design but also serves an good breakfast.", hotels_dict)
+    example_queries = [
+    "I'm travelling with a dog and need a parking space.",
+    "I'm looking for a hotel with a breathtaking view and a luxurious wellness center where I can truly relax.",
+    "I'd love to find a family-friendly hotel surrounded by nature, perfect for a peaceful getaway, that also allows an extra bed for children.",
+    "Stylish, modern hotel that not only offers great design but also serves an good breakfast.",
+    "Find me a hotel with rating at least 9.3 and cheaper than 40 EUR per night."
+]
+    hotels = find_matching_hotels(example_queries[1], hotels_dict)
     print(hotels)
+    print(f"Amount of Hotels found: {len(hotels)}")

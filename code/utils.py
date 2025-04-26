@@ -71,3 +71,10 @@ def chatGPT_to_list(dict_input: dict[str, object]):
             soft_list.append((key, value['value'], value['importance']))
 
     return hard_list, soft_list
+
+def check24_to_attribute_list(dict_input: dict[str, dict[str, object]]):
+    attributes = set()
+    for key, val in dict_input.items():
+        attributes.update(val.keys())
+
+    return list(attributes)

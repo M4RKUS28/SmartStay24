@@ -16,7 +16,7 @@ class HotelFeatures(BaseModel):
 content = Path('../data/useful_attributes.txt').read_text(encoding='utf-8')
 
 # Systemnachricht, die das JSON-Format strikt vorgibt
-system_message_user_prompt_to_standard_json = {
+system_message_user_prompt_to_standard_json = lambda attributes: {
     "role": "system",
     "content": f"""
     
@@ -38,12 +38,16 @@ Your task is to analyze a user prompt and extract relevant hotel features.
 1.  **Feature Names (`feature_name`):**
     *   Use **only** feature names that **exactly** match one of the following predefined names:
         ```
-        {content}
+        {str(attributes)}
         ```
     *   **Important:** Do not invent new names or deviate from the exact spelling. 
     *   If a user query cannot be mapped exactly to one of the features, try to find ways to express the request with your available features.
     *   Sometimes you need to make some advanced interpretations, e.g. what km number corresponds to small distance to beach
     *   Example: "I want to make a beach vacation". -> `distancetobeach`: `{{ "value": "<0.5", ... }}`. Distance are always given in kilometers.
+    *   **EXTREMELY IMPORTANT:** 
+        The same feature in the client description can apply to multiple attributes. Example: I will bring a dog -> amenity_Haustiere erlaubt, amenity_Haustierfreundliches and more
+        You can then rank these attributes using the importance, some may also have a very low importance like 0-4.
+        Please try to find as many fitting attributes as possible. Usually a client prompt corresponds to up to 6 attributes.
 
 2.  **Feature Value (`value`):**
     *   The `value` is a string describing the user's requirement.
@@ -61,7 +65,7 @@ Your task is to analyze a user prompt and extract relevant hotel features.
 
 3.  **Importance (`importance`):**
     *   This is an integer between 0 (unimportant) and 10 (absolutely necessary).
-    *   **`importance: 10` (Hard Requirement):** Use `10` **only** if the feature is a **mandatory, non-negotiable requirement**. Hotels not meeting this criterion should **not** be displayed in the results.
+    *   **`importance: 10` (Hard Requirement):** Use `10` **only** if the feature is a **mandatory, non-negotiable requirement**. Hotels not meeting this criterion are not usable and will not be in the result list.
         *   *Example:* "The price **has to** exceed 90€." -> `price`: `{{ "value": "<90", "importance": 10 }}`
         *   *Example:* "I **must** be able to bring my dog." -> `amenity_Haustiere_erlaubt`: `{{ "value": "=1", "importance": 10 }}`
         *   *Example:* "Accessibility is **essential**." -> `amenity_Accessibility` (or similar name from list): `{{ "value": "=1", "importance": 10 }}`

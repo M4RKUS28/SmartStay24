@@ -10,6 +10,8 @@ def fulfills_attribute(hotel_dict, filter_attribute, filter_value):
     Returns:
         Boolean: True, if the hotel satisfies the attribute.
     """
+    if hotel_dict.get(filter_attribute) is None:
+        return True
     if (filter_value[:1] == "<"):
         if (float(hotel_dict.get(filter_attribute)) > float(filter_value[1:])):
             return False
