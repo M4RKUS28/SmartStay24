@@ -1,25 +1,29 @@
 """Backend code for the FastAPI application."""
 import os
-from code.app import find_matching_hotels
+from typing import List, Any, Tuple, Set
+from code.app import find_matching_hotels_extended
 from fastapi import FastAPI
 from backend.models import MessageRequest
 import pandas as pd
 
 import math
 
-import math
 
-def clean_nan(obj):
+def build_allowed_keys(list1: List[Tuple[str, Any]], list2: List[Tuple[str, Any, Any]]) -> Set[str]:
+    return {k for k, _ in list1} | {k for k, _, _ in list2}
+
+
+def clean_nan(obj, allowed_keys: Set[str]):
     if isinstance(obj, dict):
         cleaned = {}
         for k, v in obj.items():
-            cleaned_v = clean_nan(v)
-            # Remove fields with value False or "No"
-            if cleaned_v not in (False, "No"):
-                cleaned[k] = cleaned_v
+            if k not in allowed_keys:
+                continue  # Skip attributes not in allowed set
+            cleaned_v = clean_nan(v, allowed_keys)
+            cleaned[k] = cleaned_v
         return cleaned
     elif isinstance(obj, list):
-        return [clean_nan(v) for v in obj]
+        return [clean_nan(v, allowed_keys) for v in obj]
     elif isinstance(obj, float) and math.isnan(obj):
         return None
     else:
@@ -72,7 +76,9 @@ def add_message(message: MessageRequest):
         hotels_dict = hotels_dict_n
 
     # hotels_dict is now in your format
-    hotels = find_matching_hotels(message.query, hotels_dict)
+    hotels, hard, soft = find_matching_hotels_extended(message.query, hotels_dict)
+
+    allowed_keys = build_allowed_keys(hard, soft)
 
     if hotels is not None:
         print(f"Amount of Hotels found: {len(hotels)}")
@@ -88,7 +94,7 @@ def add_message(message: MessageRequest):
                 **hotels_dict.get(name, {}),
                 "name": name,  # force this at the end to overwrite
                 "price": hotels_dict.get(name).get("pricepernight", -1),
-            })
+            }, allowed_keys)
             for name in hotels
         ]
     }

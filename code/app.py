@@ -18,6 +18,22 @@ client = AzureOpenAI(
     api_version="2025-01-01-preview",  # As specified in your project description
 )
 
+def find_matching_hotels_extended(
+    query: str, hotels: dict[str, dict[str, object]]
+) -> tuple[list[str] | None, list[str], list[str]]:
+    """Extended function to find matching hotels based on the given query."""
+    att_list = check24_to_attribute_list(hotels)
+    dream_hotel = query_to_dict(client, query, att_list)
+    if dream_hotel is None:
+        return None
+
+    hotel_list = check24_to_list(hotels)
+    hard_list, soft_list = chatGPT_to_list(dream_hotel)
+    filtered_hotels = filter_hotels(hotel_list, hard_list)
+
+    ranked_hotels = rank_hotels(filtered_hotels, soft_list)
+    return ranked_hotels, hard_list, soft_list
+
 
 def find_matching_hotels(
     query: str, hotels: dict[str, dict[str, object]]
@@ -50,7 +66,7 @@ def find_matching_hotels(
     #print(dream_hotel)
     hotel_list = check24_to_list(hotels)
     hard_list, soft_list = chatGPT_to_list(dream_hotel)
-    #print(f"Hard_List: {hard_list}\n Soft_List: {soft_list}")
+    print(f"Hard_List: {hard_list}\n Soft_List: {soft_list}")
     filtered_hotels = filter_hotels(hotel_list, hard_list)
     #print(f"Length of Filtered List: {len(filtered_hotels)}")
     #for hotel in filtered_hotels:
@@ -70,7 +86,7 @@ def find_matching_hotels(
 
 if __name__ == "__main__":
     # Step 1: Load the parquet file
-    df = pd.read_parquet("../data/hotels/resultlist_Mallorca.parquet")
+    df = pd.read_parquet("./data/hotels/resultlist_Kopenhagen.parquet")
 
     # Step 2: Convert it to the desired dict format
     hotels_dict = {}
@@ -89,9 +105,9 @@ if __name__ == "__main__":
         "Stylish, modern hotel that not only offers great design but also serves an good breakfast.",
         "Find me a hotel with rating at least 9.3 and cheaper than 40 EUR per night.",
         "I want to make a vacation on the beach.",
-        "What is a good recipe for pancakes?",
+        "Show me a 5 star hotel",
     ]
-    hotels = find_matching_hotels(example_queries[0], hotels_dict)
+    hotels = find_matching_hotels(example_queries[-1], hotels_dict)
     print(hotels)
     if hotels is not None:
         print(f"Amount of Hotels found: {len(hotels)}")
