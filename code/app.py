@@ -46,7 +46,7 @@ def find_matching_hotels(
     att_list = check24_to_attribute_list(hotels)
     dream_hotel = query_to_dict(client, query, att_list)
     if dream_hotel is None:
-        log("", hotels)
+        log(query, str(hotels))
         return None
     print(dream_hotel)
     log(query, hotels)
