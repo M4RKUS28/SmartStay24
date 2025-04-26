@@ -26,7 +26,6 @@ function App() {
       setIsApiAvailable(available);
 
       // Add a system message about API status if not available
-      // Use ref to prevent duplicate messages in StrictMode
       if (!available && !demoMessageShown.current) {
         demoMessageShown.current = true;
         setMessages(prev => [
@@ -47,17 +46,6 @@ function App() {
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
-
-  // Handle resize to ensure proper layout
-  useEffect(() => {
-    const handleResize = () => {
-      // Force scroll to bottom on resize to keep input visible
-      messagesEndRef.current?.scrollIntoView({ behavior: 'auto' });
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
   const handleSendMessage = async (message) => {
     // Add user message to chat
@@ -114,20 +102,16 @@ function App() {
     }
   };
 
-  // Add an event listener to handle viewport issues on mobile
+  // Fix for iOS Safari viewport height issues
   useEffect(() => {
-    // Fix for iOS Safari viewport height issues
     const handleResize = () => {
       // Set a custom property with the viewport height
-      document.documentElement.style.setProperty(
-        '--vh',
-        `${window.innerHeight * 0.01}px`
-      );
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
     };
 
-    // Run once on mount
+    // Run once on mount and on resize
     handleResize();
-
     window.addEventListener('resize', handleResize);
     window.addEventListener('orientationchange', handleResize);
 
@@ -138,18 +122,20 @@ function App() {
   }, []);
 
   return (
-    <div className="app">
-      <BackgroundImages />
+    <div className="app-wrapper">
       <Header apiAvailable={isApiAvailable} />
-      <main className="main-content">
-        <ChatContainer
-          messages={messages}
-          isLoading={isLoading}
-          onSendMessage={handleSendMessage}
-          messagesEndRef={messagesEndRef}
-          useAdvancedLoading={false} // Set to true to use advanced loading UI
-        />
-      </main>
+      <div className="content-wrapper">
+        <BackgroundImages />
+        <div className="app">
+          <ChatContainer
+            messages={messages}
+            isLoading={isLoading}
+            onSendMessage={handleSendMessage}
+            messagesEndRef={messagesEndRef}
+            useAdvancedLoading={false}
+          />
+        </div>
+      </div>
       <div ref={messagesEndRef} style={{ height: 0, width: 0 }} />
     </div>
   );

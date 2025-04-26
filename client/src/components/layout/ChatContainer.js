@@ -21,12 +21,14 @@ const ChatContainer = ({
 }) => {
   return (
     <div className="chat-container">
-      <MessageList
-        messages={messages}
-        isLoading={isLoading}
-        messagesEndRef={messagesEndRef}
-        useAdvancedLoading={useAdvancedLoading}
-      />
+      <div className="messages-wrapper">
+        <MessageList
+          messages={messages}
+          isLoading={isLoading}
+          messagesEndRef={messagesEndRef}
+          useAdvancedLoading={useAdvancedLoading}
+        />
+      </div>
       <MessageInput onSendMessage={onSendMessage} isLoading={isLoading} />
     </div>
   );
