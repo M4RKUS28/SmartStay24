@@ -41,9 +41,6 @@ def filter_hotels(hotels: list[dict[str, object]], hard_list: list[(str, str)]):
                 hotels_to_remove.append(hotel_dict)
                 break
 
-    #for hotel in hotels_to_remove:
-        #print(hotel)
-
     for hotel in hotels_to_remove:
         hotels.remove(hotel)
 
