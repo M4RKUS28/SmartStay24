@@ -77,11 +77,11 @@ def add_message(message: MessageRequest):
 
     # hotels_dict is now in your format
     hotels, hard, soft = find_matching_hotels_extended(message.query, hotels_dict)
-    print("Hard:", hard)
-    print("Soft:", soft)
+    # print("Hard:", hard)
+    # print("Soft:", soft)
 
     allowed_keys = build_allowed_keys(hard, soft)
-    print(f"Allowed keys: {allowed_keys}")
+    # print(f"Allowed keys: {allowed_keys}")
 
     if hotels is not None:
         print(f"Amount of Hotels found: {len(hotels)}")
@@ -101,7 +101,7 @@ def add_message(message: MessageRequest):
             for name in hotels
         ]
     }
-    print(f"Recommendations: {recom}")
+    # print(f"Recommendations: {recom}")
     return recom
 
 
