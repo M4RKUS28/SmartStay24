@@ -24,12 +24,12 @@ repos:
 
 -   repo: local
     hooks:
-    -   id: python-version-check
-        name: Check Python Version
-        entry: |
-            command -v python3.12 > /dev/null || (echo "Error: Python 3.12 is required but not found. Please install Python 3.12" && exit 1) && python3.12 -c 'import sys; assert sys.version_info.minor == 12 and sys.version_info.major == 3, "Python version must be exactly 3.12"'
-        language: system
-        pass_filenames: false
+    - id: python-version-check
+      name: Check Python Version
+      entry: |
+          which python3.12 > /dev/null || (echo "Error: Python 3.12 is required but not found. Please install Python 3.12" && exit 1) && python3.12 -c 'import sys; assert sys.version_info.minor == 12 and sys.version_info.major == 3, "Python version must be exactly 3.12"'
+      language: system
+      pass_filenames: false
 
     -   id: project-structure
         name: Check Project Structure
