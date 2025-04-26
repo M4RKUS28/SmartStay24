@@ -32,6 +32,7 @@ Example:
     }
 """
 
+
 def check24_to_list(dict_input: dict[str, dict[str, object]]):
     """
     Formats the hotel dict from check24 to a list of dicts
@@ -65,12 +66,13 @@ def chatGPT_to_list(dict_input: dict[str, object]):
     hard_list = []
 
     for key, value in dict_input.items():
-        if (value['importance'] == 10):
-            hard_list.append((key, value['value']))
+        if value["importance"] == 10:
+            hard_list.append((key, value["value"]))
         else:
-            soft_list.append((key, value['value'], value['importance']))
+            soft_list.append((key, value["value"], value["importance"]))
 
     return hard_list, soft_list
+
 
 def check24_to_attribute_list(dict_input: dict[str, dict[str, object]]):
     attributes = set()
