@@ -28,6 +28,8 @@ export const getHotelRecommendations = async (query) => {
     }
 
     const data = await response.json();
+    console.log('API response:', data);
+    
     return data.recommendations || [];
   } catch (error) {
     console.warn('API request failed, falling back to simulation', error);
