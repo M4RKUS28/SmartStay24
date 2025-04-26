@@ -18,6 +18,11 @@ const MessageList = ({
   messagesEndRef,
   useAdvancedLoading = false
 }) => {
+  // Add auto scroll to bottom when new messages arrive or loading state changes
+  React.useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages, isLoading, messagesEndRef]);
+
   return (
     <div className="chat-messages">
       {messages.map(message => (
@@ -30,7 +35,8 @@ const MessageList = ({
 
       {isLoading && <LoadingIndicator advanced={useAdvancedLoading} />}
 
-      <div ref={messagesEndRef} />
+      {/* This div is always at the bottom for smooth scrolling */}
+      <div ref={messagesEndRef} style={{ padding: '10px 0' }} />
     </div>
   );
 };

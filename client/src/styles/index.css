@@ -44,14 +44,14 @@ code {
 .app {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100vh; /* Fallback */
+  height: calc(var(--vh, 1vh) * 100); /* Use custom property for better mobile support */
   max-width: 1200px;
   margin: 0 auto;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   background-color: white;
   position: relative;
   z-index: 1;
-  max-height: 100vh;
   overflow: hidden;
 }
 
@@ -60,7 +60,7 @@ code {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  max-height: calc(100vh - 70px); /* Subtract header height */
+  max-height: calc(100vh - 70px); /* Fallback */
 }
 
 /* Desktop-specific styles */
