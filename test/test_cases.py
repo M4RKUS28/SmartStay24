@@ -79,5 +79,5 @@ def create_hard_soft_file():
 
 
 if __name__ == "__main__":
-    #get_NaN_accuracy()
-    create_hard_soft_file()
+    get_NaN_accuracy()
+    #create_hard_soft_file()
