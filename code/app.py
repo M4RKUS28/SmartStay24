@@ -42,9 +42,7 @@ def find_matching_hotels(
     Returns:
         list[str] | None: List of hotel_names that match the query, or None if the query is not hotel related.
     """
-    # Logging
     # check commit
-    log(query, str(hotels))
     # Get attribute list
     att_list = check24_to_attribute_list(hotels)
     dream_hotel = query_to_dict(client, query, att_list)
