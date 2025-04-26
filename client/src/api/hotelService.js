@@ -2,6 +2,7 @@
 import { simulateHotelRecommendation } from '../utils/SimulateResponse';
 
 // API base URL - should be configurable for different environments
+//I shit my pants but at least my code is working
 const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 /**
