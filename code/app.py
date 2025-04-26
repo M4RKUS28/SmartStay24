@@ -44,22 +44,22 @@ def find_matching_hotels(
     """
     # Logging
     # check commit
-    log(query, str(hotels))
+    #log(query, str(hotels))
     # Get attribute list
     att_list = check24_to_attribute_list(hotels)
     dream_hotel = query_to_dict(client, query, att_list)
     if dream_hotel is None:
         return None
-    # print(dream_hotel)
+    print(dream_hotel)
     hotel_list = check24_to_list(hotels)
     hard_list, soft_list = chatGPT_to_list(dream_hotel)
-    # print(f"Hard_List: {hard_list}\n Soft_List: {soft_list}")
+    print(f"Hard_List: {hard_list}\n Soft_List: {soft_list}")
     filtered_hotels = filter_hotels(hotel_list, hard_list)
-    # print(f"Length of Filtered List: {len(filtered_hotels)}")
-    # for hotel in filtered_hotels:
-    # print(f"Hotel Name: {hotel['hotel_name']}")
+    print(f"Length of Filtered List: {len(filtered_hotels)}")
+    for hotel in filtered_hotels:
+        print(f"Hotel Name: {hotel['hotel_name']}")
     ranked_hotels = rank_hotels(filtered_hotels, soft_list)
-    # print(f"Ranked List: {ranked_hotels}")
+    print(f"Ranked List: {ranked_hotels}")
     return ranked_hotels
 
     # TODO: Implement the logic to find matching hotels based on the query.
@@ -93,8 +93,13 @@ if __name__ == "__main__":
         "Find me a hotel with rating at least 9.3 and cheaper than 40 EUR per night.",
         "I want to make a vacation on the beach.",
         "What is a good recipe for pancakes?",
+        "I’m dreaming of a space where I can just be me",
+        "cancelable hotel with five stars",
+        "I want to go to a hotel where I can do money laundering. It should also have a beach"
     ]
-    hotels = find_matching_hotels(example_queries[6], hotels_dict)
-    # print(hotels)
-    # if hotels is not None:
-    #    print(f"Amount of Hotels found: {len(hotels)}")
+    hotels = find_matching_hotels(example_queries[9], hotels_dict)
+    print(hotels)
+    if hotels is not None:
+        print(f"Amount of Hotels found: {len(hotels)}")
+    else:
+        print("No hotel query")
