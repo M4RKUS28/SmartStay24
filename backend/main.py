@@ -10,7 +10,7 @@ import math
 
 
 def build_allowed_keys(list1: List[Tuple[str, Any]], list2: List[Tuple[str, Any, Any]]) -> Set[str]:
-    return {k for k, _ in list1} | {k for k, _, _ in list2}
+    return {k for k, _ in list1} | {k for k, _, _ in list2} | {"name", "price", "rating"}
 
 
 def clean_nan(obj, allowed_keys: Set[str]):
