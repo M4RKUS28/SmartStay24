@@ -45,6 +45,8 @@ def find_matching_hotels(
     # Get attribute list
     att_list = check24_to_attribute_list(hotels)
     dream_hotel = query_to_dict(client, query, att_list)
+    if dream_hotel["status"] == "error":
+        return None
     print(dream_hotel)
     log(query)
     hotel_list = check24_to_list(hotels)
@@ -86,8 +88,10 @@ if __name__ == '__main__':
     "I'm looking for a hotel with a breathtaking view and a luxurious wellness center where I can truly relax.",
     "I'd love to find a family-friendly hotel surrounded by nature, perfect for a peaceful getaway, that also allows an extra bed for children.",
     "Stylish, modern hotel that not only offers great design but also serves an good breakfast.",
-    "Find me a hotel with rating at least 9.3 and cheaper than 40 EUR per night."
+    "Find me a hotel with rating at least 9.3 and cheaper than 40 EUR per night.",
+    "I want to make a vacation on the beach.",
+    "What is a good recipe for pancakes?"
 ]
-    hotels = find_matching_hotels(example_queries[4], hotels_dict)
+    hotels = find_matching_hotels(example_queries[5], hotels_dict)
     print(hotels)
     print(f"Amount of Hotels found: {len(hotels)}")

@@ -42,8 +42,7 @@ Your task is to analyze a user prompt and extract relevant hotel features.
         ```
     *   **Important:** Do not invent new names or deviate from the exact spelling. 
     *   If a user query cannot be mapped exactly to one of the features, try to find ways to express the request with your available features.
-    *   Sometimes you need to make some advanced interpretations, e.g. what km number corresponds to small distance to beach
-    *   Example: "I want to make a beach vacation". -> `distancetobeach`: `{{ "value": "<0.5", ... }}`. Distance are always given in kilometers.
+    *   Distances (e.g. distancetobeach) are always given in kilometers.
     *   **EXTREMELY IMPORTANT:** 
         The same feature in the client description can apply to multiple attributes. Example: I will bring a dog -> amenity_Haustiere erlaubt, amenity_Haustierfreundliches and more
         You can then rank these attributes using the importance, if there are several useful ones you can also make some of them low importance, e.g. 1-4.
