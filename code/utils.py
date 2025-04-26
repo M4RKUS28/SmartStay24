@@ -65,12 +65,36 @@ def chatGPT_to_list(dict_input: dict[str, object]):
     hard_list = []
 
     dict_input = dict_input.get("features")
-    dict_input = {key: (value['value'], value['importance']) for key, value in dict_input.items()}
 
-    for name, (value, importance) in dict_input.items():
-        if (importance == 10):
-            hard_list.append((name, value))
+    for key, value in dict_input.items():
+        if (value['importance'] == 10):
+            hard_list.append((key, value['value']))
         else:
-            soft_list.append((name, value, importance))
+            soft_list.append((key, value['value'], value['importance']))
 
     return hard_list, soft_list
+
+test_case_3 = {
+    "status": "success",
+    "features": {
+        "available_rooms": {"value": ">=2", "importance": 9},
+        "has_pool": {"value": "=yes", "importance": 7},
+        "pets_allowed": {"value": "=true", "importance": 5},
+        "free_breakfast": {"value": "=included", "importance": 6},
+        "wifi_quality": {"value": ">8", "importance": 8},
+        "distance_to_airport": {"value": "<15", "importance": 4},
+        "customer_service_rating": {"value": ">9", "importance": 10},
+        "gym_access": {"value": "=available", "importance": 3},
+        "parking_availability": {"value": "=yes", "importance": 5},
+        "restaurant_quality": {"value": ">7.5", "importance": 7},
+    }
+}
+
+hard_list, soft_list = chatGPT_to_list(test_case_3)
+print("Hard List:")
+for item in hard_list:
+    print(item)
+print("__________")
+print("Soft List:")
+for item in soft_list:
+    print(item)
