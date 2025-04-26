@@ -13,7 +13,7 @@ const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://smart-stay24.de/a
 export const getHotelRecommendations = async (query, city = 'Copenhagen') => {
   try {
     // Try to fetch from the real API
-    const response = await fetch(`${API_BASE_URL}/query/`, {
+    const response = await fetch(`${API_BASE_URL}/query`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
