@@ -3,6 +3,7 @@ import json
 import os
 from query_to_json import query_to_dict
 from dotenv import load_dotenv
+import pandas as pd
 
 # Load the environment variables from .env file
 load_dotenv(dotenv_path="../.env")
@@ -49,4 +50,17 @@ def find_matching_hotels(
     # Step 5: Return the list of hotel names that match the query.
 
 if __name__ == '__main__':
+    # Step 1: Load the parquet file
+    df = pd.read_parquet('your_file.parquet')
+
+    # Step 2: Convert it to the desired dict format
+    hotels_dict = {}
+
+    for _, row in df.iterrows():
+        hotel_name = row["name"]
+        # Drop the 'name' from the values dictionary if you don't want it repeated
+        row_dict = row.to_dict()
+        hotels_dict[hotel_name] = row_dict
+
+    # hotels_dict is now in your format
     find_matching_hotels("Stylish, modern hotel that not only offers great design but also serves an good breakfast.", None)

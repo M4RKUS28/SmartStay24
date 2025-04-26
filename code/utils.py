@@ -64,8 +64,6 @@ def chatGPT_to_list(dict_input: dict[str, object]):
     soft_list = []
     hard_list = []
 
-    dict_input = dict_input.get("features")
-
     for key, value in dict_input.items():
         if (value['importance'] == 10):
             hard_list.append((key, value['value']))
