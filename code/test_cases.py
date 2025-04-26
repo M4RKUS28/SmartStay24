@@ -1,5 +1,7 @@
 from code.app import find_matching_hotels
 import pandas as pd
+import csv
+
 
 
 if __name__ == "__main__":
@@ -16,14 +18,17 @@ if __name__ == "__main__":
         row_dict = row.to_dict()
         hotels_dict[hotel_name] = row_dict
 
-    is_valid_queries = [
-        ("I'm travelling with a dog and need a parking space.", 1),
-        ("I'm looking for a hotel with a breathtaking view and a luxurious wellness center where I can truly relax.", 0),
-    ]
+    data = []
+    with open('your_file.csv', newline='', encoding='utf-8') as csvfile:
+        reader = csv.reader(csvfile)
+        for row in reader:
+            text = row[0]
+            number = int(row[1])
+            data.append((text, number))
 
     points = 0
-    for querie, is_valid in is_valid_queries:
+    for querie, is_valid in data:
         result = find_matching_hotels(querie, hotels_dict)
         if (result is None and is_valid == 0) or (result is not None and is_valid == 1):
             points += 1
-    score = points / len(is_valid_queries)
+    score = points / len(data)
