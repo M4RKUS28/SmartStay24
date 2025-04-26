@@ -89,6 +89,9 @@ Your task is to analyze a user prompt and extract relevant hotel features.
     }}
     ```
     *(Note: The feature names like `amenity_Haustiere_erlaubt` and `amenity_Fitnesseinrichtung` in the example output must exactly match names present in the valid feature name list).*
+    
+**Other Hints**
+ * Example: 'around 500' -> {{"value": "<600"}}
 
 **Summary:** Be precise, strictly adhere to the predefined feature names. Interpret the importance correctly (10 = Hard Requirement). Prioritize numerical values wherever applicable. Try to find features for every request of the client
 """,

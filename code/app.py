@@ -50,7 +50,7 @@ def find_matching_hotels(
     #print(dream_hotel)
     hotel_list = check24_to_list(hotels)
     hard_list, soft_list = chatGPT_to_list(dream_hotel)
-    #print(f"Hard_List: {hard_list}\n Soft_List: {soft_list}")
+    print(f"Hard_List: {hard_list}\n Soft_List: {soft_list}")
     filtered_hotels = filter_hotels(hotel_list, hard_list)
     #print(f"Length of Filtered List: {len(filtered_hotels)}")
     #for hotel in filtered_hotels:
@@ -70,7 +70,7 @@ def find_matching_hotels(
 
 if __name__ == "__main__":
     # Step 1: Load the parquet file
-    df = pd.read_parquet("../data/hotels/resultlist_Mallorca.parquet")
+    df = pd.read_parquet("../data/hotels/resultlist_Kopenhagen.parquet")
 
     # Step 2: Convert it to the desired dict format
     hotels_dict = {}
@@ -90,8 +90,10 @@ if __name__ == "__main__":
         "Find me a hotel with rating at least 9.3 and cheaper than 40 EUR per night.",
         "I want to make a vacation on the beach.",
         "What is a good recipe for pancakes?",
+        "Show me a hotel with a pool",
+        "Accessible hotel close to the beach, around $150 a night"
     ]
-    hotels = find_matching_hotels(example_queries[0], hotels_dict)
+    hotels = find_matching_hotels(example_queries[-1], hotels_dict)
     print(hotels)
     if hotels is not None:
         print(f"Amount of Hotels found: {len(hotels)}")

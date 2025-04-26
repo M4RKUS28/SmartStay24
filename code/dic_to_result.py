@@ -19,8 +19,10 @@ def fulfills_attribute(hotel_dict, filter_attribute, filter_value):
         if float(hotel_dict.get(filter_attribute)) < float(filter_value[1:]):
             return False
     else:
-        if str(hotel_dict.get(filter_attribute)) != filter_value[1:]:
-            return False
+        if isinstance(hotel_dict.get(filter_attribute), (int, float)):
+            return float(hotel_dict.get(filter_attribute)) == float(filter_value[1:])
+        else:
+            return str(hotel_dict.get(filter_attribute)) == str(filter_value[1:])
     return True
 
 
@@ -68,7 +70,6 @@ def rank_hotels(hotels: list[dict[str, object]], soft_list: list[(str, object, i
             if fulfills_attribute(hotel_dict, filter_attribute, filter_value):
                 hotel_importance += filter_importance
         result_list.append((hotel_dict.get("name") if hotel_dict.get("name") is not None else hotel_dict.get("hotel_name"), hotel_importance))
-        #result_list.append((hotel_dict.get("name"), hotel_importance))
     result_list.sort(key=lambda x: x[1], reverse=True)
     result_list = [x[0] for x in result_list]
     return result_list[:10]
