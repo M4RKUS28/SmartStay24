@@ -16,8 +16,8 @@ def dict_to_list(dict_input: dict[str, (str, int)]):
             hard_list.append((name, value))
         else:
             soft_list.append((name, value, importance))
-    soft_list.sort(key = lambda x: x[2])
-    soft_list = [(name, value) for name, value, _ in soft_list]
+    #soft_list.sort(key = lambda x: x[2])
+    #soft_list = [(name, value) for name, value, _ in soft_list]
 
     return hard_list, soft_list
 
