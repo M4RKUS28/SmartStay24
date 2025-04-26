@@ -42,14 +42,12 @@ def find_matching_hotels(
     Returns:
         list[str] | None: List of hotel_names that match the query, or None if the query is not hotel related.
     """
+    # Logging
+    log(query, str(hotels))
     # Get attribute list
     att_list = check24_to_attribute_list(hotels)
     dream_hotel = query_to_dict(client, query, att_list)
-    if dream_hotel is None:
-        log(query, str(hotels))
-        return None
     print(dream_hotel)
-    log(query, str(hotels))
     hotel_list = check24_to_list(hotels)
     hard_list, soft_list = chatGPT_to_list(dream_hotel)
     print(f"Hard_List: {hard_list}\n Soft_List: {soft_list}")
