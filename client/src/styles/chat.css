@@ -75,6 +75,24 @@
   background-color: rgba(8, 116, 196, 0.05);
 }
 
+/* Add these new styles to client/src/styles/chat.css */
+
+.hotel-details {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hotel-price {
+  background-color: white;
+  color: var(--check24-blue);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: bold;
+  border: 1px solid var(--check24-light-blue);
+}
+
+/* Update existing hotel-item to better accommodate the new layout */
 .hotel-item {
   background-color: white;
   padding: 10px 12px;
