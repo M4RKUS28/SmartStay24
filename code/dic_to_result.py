@@ -13,7 +13,7 @@ def fulfills_attribute(hotel_dict, filter_attribute, filter_value):
     Returns:
         Boolean: True, if the hotel satisfies the attribute.
     """
-    if hotel_dict.get(filter_attribute) is None or math.isnan(hotel_dict.get(filter_attribute)):
+    if hotel_dict.get(filter_attribute) is None or math.isnan("hotel_dict.get(filter_attribute)"):
         return False
     if filter_value[:1] == "<":
         if float(hotel_dict.get(filter_attribute)) > float(filter_value[1:]):
