@@ -59,7 +59,7 @@ def chatGPT_to_list(dict_input: dict[str, object]):
 
     Returns:
         hard_list: List of attributes with importance = 10.
-        soft_list: List of remaining attributes ordered by importance.
+        soft_list: List of remaining attributes.
     """
     soft_list = []
     hard_list = []
