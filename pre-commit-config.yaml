@@ -1,0 +1,118 @@
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+    -   id: check-yaml
+    -   id: end-of-file-fixer
+    -   id: trailing-whitespace
+    -   id: check-added-large-files
+    -   id: check-json
+    -   id: debug-statements
+    -   id: requirements-txt-fixer
+
+-   repo: https://github.com/pycqa/isort
+    rev: 5.13.2
+    hooks:
+    -   id: isort
+        args: ["--profile", "black"]
+
+-   repo: https://github.com/psf/black
+    rev: 24.1.1
+    hooks:
+    -   id: black
+        language_version: python3.12
+
+-   repo: local
+    hooks:
+    -   id: python-version-check
+        name: Check Python Version
+        entry: |
+            command -v python3.12 > /dev/null || (echo "Error: Python 3.12 is required but not found. Please install Python 3.12" && exit 1) && python3.12 -c 'import sys; assert sys.version_info.minor == 12 and sys.version_info.major == 3, "Python version must be exactly 3.12"'
+        language: system
+        pass_filenames: false
+
+    -   id: project-structure
+        name: Check Project Structure
+        entry: |
+            bash -c '
+            if [ ! -f "requirements.txt" ]; then
+                echo "Error: requirements.txt is missing"
+                exit 1
+            fi
+            if [ ! -d "code" ]; then
+                echo "Error: code directory is missing"
+                exit 1
+            fi
+            if [ ! -f "code/app.py" ]; then
+                echo "Error: code/app.py is missing"
+                exit 1
+            fi
+            echo "All required files and directories are present"
+            '
+        language: system
+        pass_filenames: false
+
+    -   id: function-argument-signature
+        name: Check Function Argument Signature
+        entry: |
+            python3 -c '
+            import ast
+            with open("code/app.py") as f:
+                tree = ast.parse(f.read())
+            for node in ast.walk(tree):
+                if isinstance(node, ast.FunctionDef) and node.name == "find_matching_hotels":
+                    args = [arg.arg for arg in node.args.args]
+                    assert len(args) == 2 and args[0] == "query" and args[1] == "hotels", f"Expected arguments (query, hotels) but got {args}"
+                    print("Function signature check passed")
+                    exit(0)
+            print("Error: find_matching_hotels function not found")
+            exit(1)
+            '
+        language: system
+        files: ^code/app\.py$
+
+    -   id: basic-return-types
+        name: Check Basic Return Types
+        entry: |
+            python3 -c '
+            import ast
+            with open("code/app.py") as f:
+                tree = ast.parse(f.read())
+            for node in ast.walk(tree):
+                if isinstance(node, ast.FunctionDef) and node.name == "find_matching_hotels":
+                    returns = node.returns
+                    # Check that it is a union type (|)
+                    assert isinstance(returns, ast.BinOp) and isinstance(returns.op, ast.BitOr), "Return type must use |"
+                    # Check left side is list[str]
+                    assert isinstance(returns.left, ast.Subscript), "Left side must be a list type"
+                    assert isinstance(returns.left.value, ast.Name) and returns.left.value.id == "list", "Left side must be list"
+                    assert isinstance(returns.left.slice, ast.Name) and returns.left.slice.id == "str", "List must contain str"
+                    # Check right side is None
+                    assert isinstance(returns.right, ast.Constant) and returns.right.value is None, "Right side must be None"
+                    print("Return type check passed")
+                    exit(0)
+            print("Error: find_matching_hotels function not found")
+            exit(1)
+            '
+        language: system
+        files: ^code/app\.py$
+
+    -   id: import-test
+        name: Run Import Test
+        entry: |
+            python3.12 -c '
+            try:
+                from code.app import find_matching_hotels
+                # Test with a simple example
+                test_hotels = {"hotel1": {"name": "Test Hotel"}}
+                result = find_matching_hotels("test query", test_hotels)
+                print("✅ Successfully imported and called find_matching_hotels")
+                exit(0)
+            except Exception as e:
+                print(f"❌ Error: {str(e)}")
+                exit(1)
+            '
+        language: system
+        files: ^code/app\.py$
+        pass_filenames: false
+        verbose: true
