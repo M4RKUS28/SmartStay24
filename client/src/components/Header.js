@@ -11,8 +11,8 @@ const Header = ({ apiAvailable }) => {
         </div>
       </div>
       <nav className="header-nav">
-        <a href="#" className="nav-item">Hilfe</a>
-        <a href="#" className="nav-item">Kontakt</a>
+        <a href="#" className="nav-item">Help</a>
+        <a href="#" className="nav-item">Contact</a>
         {apiAvailable !== undefined && (
           <span className={`nav-item status-indicator ${apiAvailable ? 'online' : 'offline'}`}>
             {apiAvailable ? 'Live' : 'Demo'}

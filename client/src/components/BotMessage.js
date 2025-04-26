@@ -20,8 +20,8 @@ const BotMessage = ({ content }) => {
   // Get the appropriate message for special cases
   const getSpecialMessage = (content) => {
     return content === "No hotels found"
-      ? "Leider konnte ich keine Hotels finden, die Ihren Wünschen entsprechen. Versuchen Sie es mit anderen Kriterien."
-      : "Es tut mir leid, aber ich verstehe Ihre Anfrage nicht. Bitte geben Sie eine hotelbezogene Anfrage ein.";
+      ? "Sorry, I couldn't find any hotels that match your preferences. Please try with different criteria."
+      : "I'm sorry, but I don't understand your request. Please enter a hotel-related query.";
   };
 
   return (
@@ -33,7 +33,7 @@ const BotMessage = ({ content }) => {
         {isHotelList(content) ? (
           <>
             <TypingEffect
-              content="Hier sind einige Hotel-Empfehlungen für Sie:"
+              content="Here are some hotel recommendations for you:"
               typingSpeed={4}
               onComplete={() => setIsTypingComplete(true)}
             />
