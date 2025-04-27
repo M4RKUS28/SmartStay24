@@ -1,0 +1,152 @@
+# SmartStay24 🏨🔍 - AI-Powered Hotel Recommendation System
+
+
+On April 25-27, 2025, our team participated in the AI Makeathon. Inspired by the challenges in modern travel booking, we proudly present SmartStay24—an intelligent hotel recommendation system developed for the CHECK24 Data Science Challenge that understands natural language queries, extracts user preferences, and provides personalized hotel recommendations.
+
+Try it out: https://smart-stay24.de/
+
+![SmartStay24 Logo](assets/SmartStay.png)
+
+---
+
+## Problem Statement
+
+Finding the perfect hotel that meets all of a traveler's needs is often challenging:
+
+- **Natural Language Understanding**: Traditional booking systems struggle to understand complex, conversational requests
+- **Preference Prioritization**: Distinguishing between must-have features and nice-to-have amenities
+- **Personalized Recommendations**: Providing relevant options based on individual preferences rather than generic listings
+
+Our mission was to design an algorithm that could:
+- Parse natural language queries into structured data
+- Filter hotels based on non-negotiable requirements
+- Sort and rank remaining options based on weighted preferences
+- Present users with the most relevant hotel options
+
+---
+
+## How It Works
+
+
+SmartStay24 operates in three main stages:
+
+### 1. Parse 🗣️➡️🧩
+- Transforms natural language commands into structured data (JSON)
+- Identifies key features and assigns importance weights
+- Distinguishes between hard requirements and soft preferences
+
+![SmartStay24 Logo](assets/Slide4.png)
+
+### 2. Filter ⚙️
+- Eliminates hotels that don't meet critical "hard" requirements
+- Creates a shortlist of viable options that satisfy the must-have criteria
+
+![SmartStay24 Logo](assets/Slide5.png)
+
+### 3. Sort 📊
+- Ranks remaining hotels based on weighted soft requirements
+- Uses a scoring formula that factors in preference importance
+- Returns a maximum of 10 hotels in descending order of relevance
+
+![SmartStay24 Logo](assets/Slide8.png)
+
+---
+
+## Key Features
+
+- **Natural Language Processing**: Understands conversational queries without requiring specific formatting
+- **Multi-City Support**: Works with hotel databases from Copenhagen, Mallorca, and New York
+- **Weighted Preference Model**: Distinguishes between essential features and nice-to-have amenities
+- **Intelligent Ranking**: Uses a sophisticated algorithm to provide the most relevant recommendations first
+- **User-Friendly Interface**: Presents results in a clean, easy-to-understand format
+
+---
+
+## Technology Stack
+
+- **Backend**: Python with NLP capabilities
+- **API Integration**: OpenAI models (o3-mini, gpt-4o, gpt-4o mini)
+- **Data Processing**: Advanced parsing and filtering algorithms
+- **Visualization**: Interactive user interface for demonstration
+
+---
+
+## Project Highlights
+
+- Handles three distinct types of user queries:
+  1. Prompts with fully or partially matching hotels
+  2. Prompts with no matching hotels
+  3. Irrelevant prompts outside the hotel domain
+  
+- Optimized for both accuracy and performance:
+  - 70% of scoring based on recommendation precision
+  - 10% based on response time
+  - 20% based on creativity and presentation
+
+---
+
+## Demo
+
+![SmartStay24 Logo](assets/Slide9.png)
+
+SmartStay24 features a user-friendly chat interface where users can make natural language requests:
+
+Example: 
+> "I'm looking for a hotel with a pool and a sauna. Having breakfast would be nice and maybe a gym."
+
+The system parses this query, identifies the requirements (pool, sauna as high priority; breakfast, gym as lower priority), and returns matching hotels sorted by relevance.
+
+---
+
+## Installation and Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/SmartStay24.git
+
+# Navigate to the project directory
+cd SmartStay24
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the application
+python main.py
+```
+
+---
+
+## Usage
+
+The core of our system is the `find_matching_hotel()` function that processes queries and returns recommendations:
+
+```python
+from smartstay24 import find_matching_hotel
+
+# Example query
+query = "I'm looking for a family-friendly hotel that has a nice indoor pool and a relaxing sauna where we can unwind after a long day"
+
+# Get recommendations
+results = find_matching_hotel(query)
+
+# Display results
+for hotel in results:
+    print(f"{hotel.name} - Rating: {hotel.rating}")
+```
+
+---
+
+## 🛠️ Contributors
+
+Developed with 💻 by:
+
+- Paul
+- Markus
+- Luca
+- Sebastian
+
+---
+
+## Acknowledgements
+
+A heartfelt thanks to CHECK24 for organizing this challenge and providing the opportunity to work on such an exciting project!
