@@ -9,6 +9,7 @@ from dotenv import load_dotenv
 from openai import AzureOpenAI
 
 # Load the environment variables from .env file..
+load_dotenv(dotenv_path=".env")
 load_dotenv(dotenv_path="../.env")
 
 # Initialize the Azure OpenAI client
@@ -25,7 +26,7 @@ def find_matching_hotels_extended(
     att_list = check24_to_attribute_list(hotels)
     dream_hotel = query_to_dict(client, query, att_list)
     if dream_hotel is None:
-        return None
+        return None, None, None
 
     hotel_list = check24_to_list(hotels)
     hard_list, soft_list = chatGPT_to_list(dream_hotel)
@@ -86,7 +87,7 @@ def find_matching_hotels(
 
 if __name__ == "__main__":
     # Step 1: Load the parquet file
-    df = pd.read_parquet("../data/hotels/resultlist_Mallorca.parquet")
+    df = pd.read_parquet("./data/hotels/resultlist_Mallorca.parquet")
 
     # Step 2: Convert it to the desired dict format
     hotels_dict = {}
