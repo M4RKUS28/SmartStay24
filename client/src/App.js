@@ -65,6 +65,7 @@ function App() {
     setMessages(prevMessages => [...prevMessages, newBotMessage]);
   };
 
+
   const handleSendMessage = async (message) => {
     // Add user message to chat
     const newUserMessage = {
@@ -95,14 +96,27 @@ function App() {
       // Small delay for natural conversation flow
       await new Promise(resolve => setTimeout(resolve, 800));
 
-      // Get recommendations from API (will fall back to simulation if API fails)
-      // Pass the current city to the API if needed
+      // Get recommendations from API
       const response = await getHotelRecommendations(message, currentCity);
+
+      let content;
+
+      // Handle different response types
+      if (response === null) {
+        // If response is null (invalid query)
+        content = "Invalid request";
+      } else if (Array.isArray(response) && response.length === 0) {
+        // If response is an empty array (no matching hotels)
+        content = "No hotels found";
+      } else {
+        // Otherwise use the actual response (hotel list or specific message)
+        content = response;
+      }
 
       const newBotMessage = {
         id: messages.length + 2,
         type: 'bot',
-        content: response
+        content: content
       };
 
       setMessages(prevMessages => [...prevMessages, newBotMessage]);
@@ -112,7 +126,7 @@ function App() {
       const errorMessage = {
         id: messages.length + 2,
         type: 'bot',
-        content: 'I\'m sorry, but an error has occurred. Please try again.'
+        content: 'I\'m sorry, but an error has occurred while searching for hotels. Please try again later.'
       };
 
       setMessages(prevMessages => [...prevMessages, errorMessage]);

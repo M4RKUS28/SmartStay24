@@ -53,10 +53,8 @@ export const getHotelRecommendations = async (query, city = 'Copenhagen') => {
     // Default to empty array if response format is unexpected
     return [];
   } catch (error) {
-    console.warn('API request failed, falling back to simulation', error);
-
-    // Fall back to simulation - pass the city to the simulation function
-    return simulateHotelRecommendation(query, city);
+    console.error('API request failed:', error);
+    throw error;
   }
 };
 
