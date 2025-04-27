@@ -95,14 +95,42 @@ function App() {
       // Small delay for natural conversation flow
       await new Promise(resolve => setTimeout(resolve, 800));
 
-      // Get recommendations from API (will fall back to simulation if API fails)
-      // Pass the current city to the API if needed
+      // Get recommendations from API
       const response = await getHotelRecommendations(message, currentCity);
+
+      let content;
+
+      // Handle the improved response format
+      if (response && typeof response === 'object' && response.type) {
+        // Using the new structured response format
+        switch (response.type) {
+          case 'invalid_request':
+            content = "Invalid request";
+            break;
+          case 'no_hotels_found':
+            content = "No hotels found";
+            break;
+          case 'hotels_found':
+            content = response.hotels;
+            break;
+          default:
+            content = "No hotels found";
+        }
+      } else if (Array.isArray(response)) {
+        // Legacy array response
+        content = response.length > 0 ? response : "No hotels found";
+      } else if (response === null) {
+        // Legacy null response
+        content = "Invalid request";
+      } else {
+        // Any other response (e.g. string)
+        content = response;
+      }
 
       const newBotMessage = {
         id: messages.length + 2,
         type: 'bot',
-        content: response
+        content: content
       };
 
       setMessages(prevMessages => [...prevMessages, newBotMessage]);
@@ -112,7 +140,7 @@ function App() {
       const errorMessage = {
         id: messages.length + 2,
         type: 'bot',
-        content: 'I\'m sorry, but an error has occurred. Please try again.'
+        content: 'I\'m sorry, but an error has occurred while searching for hotels. Please try again later.'
       };
 
       setMessages(prevMessages => [...prevMessages, errorMessage]);

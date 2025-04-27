@@ -84,8 +84,8 @@ def add_message(message: MessageRequest):
         print(f"Amount of Hotels found: {len(hotels)}")
 
     if hotels is None or hard is None or soft is None:
-        print("No hotels found.")
-        return {"recommendations": []}
+        print("Invalid Query")
+        return {"recommendations": None}
     
     allowed_keys = build_allowed_keys(hard, soft)
     # print(f"Allowed keys: {allowed_keys}")

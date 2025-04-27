@@ -1,4 +1,4 @@
-// src/components/BotMessage.js
+// src/components/chat/BotMessage.js
 import React, { useState } from 'react';
 import HotelList from './HotelList';
 import { VscRobot } from "react-icons/vsc";

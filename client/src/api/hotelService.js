@@ -8,7 +8,7 @@ const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://smart-stay24.de/a
  * Sends a hotel recommendation request to the server
  * @param {string} query - The user's search query
  * @param {string} city - The selected city (Copenhagen, Mallorca, New York)
- * @returns {Promise} - Promise resolving to hotel recommendations
+ * @returns {Promise} - Promise resolving to hotel recommendations or appropriate response code
  */
 export const getHotelRecommendations = async (query, city = 'Copenhagen') => {
   try {
@@ -34,29 +34,48 @@ export const getHotelRecommendations = async (query, city = 'Copenhagen') => {
     const data = await response.json();
     console.log('API response:', data);
 
-    // Handle different response formats
-    // The API might return "No hotels found" or "Invalid request" as string responses
-    if (typeof data === 'string') {
-      return data;
+    // Handle different response formats:
+
+    // Case 1: If recommendations is null, it's an invalid query
+    if (data && data.recommendations === null) {
+      return { type: 'invalid_request' };
     }
 
-    // It might return an object with recommendations array
-    if (data && data.recommendations) {
-      return data.recommendations;
+    // Case 2: If recommendations is an empty array, no matching hotels
+    if (data && Array.isArray(data.recommendations) && data.recommendations.length === 0) {
+      return { type: 'no_hotels_found' };
     }
 
-    // Or it might return an array directly
+    // Case 3: If recommendations has hotels, return them
+    if (data && Array.isArray(data.recommendations) && data.recommendations.length > 0) {
+      return {
+        type: 'hotels_found',
+        hotels: data.recommendations
+      };
+    }
+
+    // Handle direct array response (maintain backward compatibility)
     if (Array.isArray(data)) {
+      return data.length > 0
+        ? { type: 'hotels_found', hotels: data }
+        : { type: 'no_hotels_found' };
+    }
+
+    // Handle string responses (maintain backward compatibility)
+    if (typeof data === 'string') {
+      if (data === 'Invalid request') {
+        return { type: 'invalid_request' };
+      } else if (data === 'No hotels found') {
+        return { type: 'no_hotels_found' };
+      }
       return data;
     }
 
-    // Default to empty array if response format is unexpected
-    return [];
+    // Default fallback for unexpected response format
+    return { type: 'no_hotels_found' };
   } catch (error) {
-    console.warn('API request failed, falling back to simulation', error);
-
-    // Fall back to simulation - pass the city to the simulation function
-    return simulateHotelRecommendation(query, city);
+    console.error('API request failed:', error);
+    throw error;
   }
 };
 
