@@ -80,18 +80,16 @@ def add_message(message: MessageRequest):
     # print("Hard:", hard)
     # print("Soft:", soft)
 
-    allowed_keys = build_allowed_keys(hard, soft)
-    # print(f"Allowed keys: {allowed_keys}")
-
     if hotels is not None:
         print(f"Amount of Hotels found: {len(hotels)}")
 
-    if hotels is None:
+    if hotels is None or hard is None or soft is None:
         print("No hotels found.")
         return {"recommendations": []}
     
-    # Return the hotels found
-
+    allowed_keys = build_allowed_keys(hard, soft)
+    # print(f"Allowed keys: {allowed_keys}")
+    
     recom = { "recommendations": [
             clean_nan({
                 **hotels_dict.get(name, {}),
