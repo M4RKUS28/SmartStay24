@@ -17,8 +17,7 @@
 @media (max-width: 768px) {
   /* Ensure the header is appropriate size */
   .header {
-    padding: 15px 16px;
-    height: var(--header-height);
+    padding: 25px 16px;
   }
 
   .logo-text {
@@ -80,8 +79,7 @@
 /* Small devices (phones) */
 @media (max-width: 480px) {
   .header {
-    padding: 12px 12px;
-    height: var(--header-height);
+    padding: 22px 12px;
     /* Make header fixed to prevent jumping */
     position: fixed;
     top: 0;
@@ -93,15 +91,13 @@
 
   /* Add padding to top of content to account for fixed header */
   .content-wrapper {
-    padding-top: var(--header-height, 50px);
+    padding-top: 50px;
   }
 
   /* Make chat container flexible with keyboard */
   .app {
     display: flex;
     flex-direction: column;
-    height: calc(100% - var(--header-height, 50px));
-    max-height: calc(100vh - var(--header-height, 50px));
     position: relative;
   }
 
@@ -178,8 +174,7 @@
 /* Landscape orientation on mobile */
 @media (max-height: 500px) and (orientation: landscape) {
   .header {
-    height: 40px;
-    padding: 6px 10px;
+    padding: 12px 10px;
   }
 
   .message {
@@ -199,6 +194,8 @@
 @media (max-height: 400px) {
   .header {
     position: absolute;
+    padding: 12px 10px;
+
   }
 
   .app {

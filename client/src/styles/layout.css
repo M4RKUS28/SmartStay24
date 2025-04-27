@@ -89,13 +89,38 @@
   font-style: italic;
 }
 
+
 .logo-arrow {
   position: absolute;
   bottom: -3px;
   right: 4px;
-  width: 30px;
+  width: 1.5vw;
   height: auto;
   filter: brightness(0) invert(1);
+}
+
+/* Responsive layout styles */
+@media (max-width: 1200px) {
+  .logo-arrow {
+    position: absolute;
+    bottom: -3px;
+    right: 4px;
+    width: 2vw;
+    height: auto;
+    filter: brightness(0) invert(1);
+  }
+}
+
+  /* Responsive layout styles */
+@media (max-width: 500px) {
+  .logo-arrow {
+    position: absolute;
+    bottom: -3px;
+    right: 4px;
+    width: 3vw;
+    height: auto;
+    filter: brightness(0) invert(1);
+  }
 }
 
 .header-nav {
@@ -219,7 +244,7 @@
   }
 
   .logo-text {
-    font-size: 10px;
+    font-size: 11px;
   }
 
   .city-selector {
@@ -228,6 +253,6 @@
 
   .city-option {
     padding: 3px 6px;
-    font-size: 11px;
+    font-size: 12px;
   }
 }
