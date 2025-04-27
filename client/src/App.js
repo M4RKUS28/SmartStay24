@@ -65,7 +65,6 @@ function App() {
     setMessages(prevMessages => [...prevMessages, newBotMessage]);
   };
 
-
   const handleSendMessage = async (message) => {
     // Add user message to chat
     const newUserMessage = {
@@ -101,15 +100,30 @@ function App() {
 
       let content;
 
-      // Handle different response types
-      if (response === null) {
-        // If response is null (invalid query)
+      // Handle the improved response format
+      if (response && typeof response === 'object' && response.type) {
+        // Using the new structured response format
+        switch (response.type) {
+          case 'invalid_request':
+            content = "Invalid request";
+            break;
+          case 'no_hotels_found':
+            content = "No hotels found";
+            break;
+          case 'hotels_found':
+            content = response.hotels;
+            break;
+          default:
+            content = "No hotels found";
+        }
+      } else if (Array.isArray(response)) {
+        // Legacy array response
+        content = response.length > 0 ? response : "No hotels found";
+      } else if (response === null) {
+        // Legacy null response
         content = "Invalid request";
-      } else if (Array.isArray(response) && response.length === 0) {
-        // If response is an empty array (no matching hotels)
-        content = "No hotels found";
       } else {
-        // Otherwise use the actual response (hotel list or specific message)
+        // Any other response (e.g. string)
         content = response;
       }
 
