@@ -103,7 +103,7 @@ def add_message(message: MessageRequest):
     return recom
 
 
-@app.get("/api/health/")
+@app.get("/api/health")
 def read_root():
     """
     Root endpoint to check if the server is running.
