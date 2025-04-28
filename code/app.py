@@ -8,7 +8,7 @@ import pandas as pd
 from dotenv import load_dotenv
 #from openai import AzureOpenAI
 from google import genai
-
+from google.generativeai.types import GenerationConfig # For explicit schema passing
 
 
 # Load the environment variables from .env file..

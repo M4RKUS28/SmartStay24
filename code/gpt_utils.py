@@ -1,22 +1,42 @@
 from pathlib import Path
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, List
+from pydantic import BaseModel, ConfigDict, Field # Added Field for potential clarity if needed
+from google.generativeai.types import GenerationConfig # For explicit schema passing
 
-from pydantic import BaseModel, ConfigDict
 
 
 # GPT structure for the feature
-class FeatureDetail(BaseModel):
-    value: str
-    importance: int
-
-    model_config = ConfigDict(extra="allow")  # Allow extra fields
+#class FeatureDetail(BaseModel):
+#    value: str
+#    importance: int#
+#
+#    model_config = ConfigDict(extra="allow")  # Allow extra fields
 
 
 # Main GPT structure
-class HotelFeatures(BaseModel):
-    status: str
-    features: Optional[Dict[str, FeatureDetail]] = None
+#class HotelFeatures(BaseModel):
+#    status: str
+#    features: Optional[Dict[str, FeatureDetail]] = None
 
+
+
+# --- Pydantic Models ---
+class FeatureDetail(BaseModel):
+    value: str
+    importance: int
+    model_config = ConfigDict(extra="allow")  # Allow extra fields in the *output* data
+
+class HotelFeatures(BaseModel):
+    status: str = Field(description="Indicates if the extraction was successful ('success') or failed ('error').")
+    features: Optional[Dict[str, FeatureDetail]] = Field(
+        default=None,
+        description="A dictionary where keys are extracted feature names (e.g., 'location', 'pool', 'price_range') and values are FeatureDetail objects."
+    )
+    model_config = ConfigDict(
+        # It's generally better practice *not* to allow extra fields on the top-level model
+        # unless you specifically need them. Let the FeatureDetail handle extra fields if needed.
+        extra="forbid"
+    )
 
 # Systemnachricht, die das JSON-Format strikt vorgibt
 system_message_user_prompt_to_standard_json = lambda attributes: {
