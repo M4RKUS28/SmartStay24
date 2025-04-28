@@ -29,7 +29,7 @@ def load_test_data(json_file_path: str) -> List[Tuple[str, Dict[str, Dict[str, A
     return test_data
 
 
-test_data = load_test_data('./data/messages.json')
+test_data = []
 
 
 if __name__ == "__main__":

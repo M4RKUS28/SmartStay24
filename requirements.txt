@@ -12,4 +12,4 @@ pre_commit
 pyarrow
 pydantic
 requests
-google
+google-generativeai
