@@ -6,18 +6,26 @@ from code.utils import chatGPT_to_list, check24_to_attribute_list, check24_to_li
 
 import pandas as pd
 from dotenv import load_dotenv
-from openai import AzureOpenAI
+#from openai import AzureOpenAI
+from google import genai
+
+
 
 # Load the environment variables from .env file..
 load_dotenv(dotenv_path=".env")
 load_dotenv(dotenv_path="../.env")
 
 # Initialize the Azure OpenAI client
-client = AzureOpenAI(
-    azure_endpoint=os.environ.get("AZURE_OPENAI_ENDPOINT"),
-    api_key=os.environ.get("AZURE_OPENAI_API_KEY"),
-    api_version="2025-01-01-preview",  # As specified in your project description
-)
+#client = AzureOpenAI(
+#    azure_endpoint=os.environ.get("AZURE_OPENAI_ENDPOINT"),
+#    api_key=os.environ.get("AZURE_OPENAI_API_KEY"),
+#    api_version="2025-01-01-preview",  # As specified in your project description
+#)
+
+
+
+client = genai.Client(api_key=os.environ.get("API_KEY"))
+
 
 def find_matching_hotels_extended(
     query: str, hotels: dict[str, dict[str, object]]

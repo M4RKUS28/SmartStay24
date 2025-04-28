@@ -14,14 +14,23 @@ def query_to_dict(client, user_query: str, att_list: List[str]) -> dict[str, str
 
     start = time.time()
     try:
-        response = client.beta.chat.completions.parse(
-            model="gpt-4o-0806-eu",
-            messages=[
-                system_message_user_prompt_to_standard_json(att_list),
-                {"role": "user", "content": user_query},
-            ],
-            response_format=HotelFeatures,
-            temperature=0,
+        #response = client.beta.chat.completions.parse(
+        #    model="gpt-4o-0806-eu",
+        #    messages=[
+        #        system_message_user_prompt_to_standard_json(att_list),
+        #        {"role": "user", "content": user_query},
+        #    ],
+        #    response_format=HotelFeatures,
+        #    temperature=0,
+        #)
+
+        response = client.models.generate_content(
+            model='gemini-2.0-flash',
+            contents="system_message: " + system_message_user_prompt_to_standard_json(att_list) + "\n" + "user_message: " + user_query,
+            config={
+                'response_mime_type': 'application/json',
+                'response_schema': HotelFeatures,
+            },
         )
     except Exception as e:
         print(e)
