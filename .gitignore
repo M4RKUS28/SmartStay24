@@ -50,3 +50,6 @@ htmlcov/
 
 # Logs
 *.log
+
+.env
+.env.*
