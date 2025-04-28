@@ -43,7 +43,7 @@ def query_to_dict(client, user_query: str, att_list: List[str]) -> dict[str, str
         # Parse the response to extract the JSON content
         # openai: json_response = json.loads(response.choices[0].message.content)
         # gemni
-        json_response = response.text
+        json_response = response.parsed
         if json_response.get("status") == "success":
             return json_response.get("features", {})
         else:
