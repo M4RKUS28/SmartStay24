@@ -4,6 +4,8 @@ from code.gpt_utils import HotelFeatures, system_message_user_prompt_to_standard
 from typing import List
 from google import genai
 from google.generativeai.types import GenerationConfig # For explicit schema passing
+from typing import Any, Dict, Optional, List
+
 
 def query_to_dict(client, user_query: str, att_list: List[str]) -> Optional[Dict[str, FeatureDetail]]:
     """
