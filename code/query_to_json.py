@@ -6,7 +6,7 @@ from google import genai
 from google.generativeai.types import GenerationConfig # For explicit schema passing
 from typing import Any, Dict, Optional, List
 
-from gpt_utils import FeatureDetail
+from code.gpt_utils import FeatureDetail
 
 
 def query_to_dict(client, user_query: str, att_list: List[str]) -> Optional[Dict[str, FeatureDetail]]:
