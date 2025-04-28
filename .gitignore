@@ -53,3 +53,4 @@ htmlcov/
 
 .env
 .env.*
+.env*
