@@ -19,23 +19,29 @@ from google.generativeai.types import GenerationConfig # For explicit schema pas
 #    features: Optional[Dict[str, FeatureDetail]] = None
 
 
-# --- Pydantic Models ---
+# Inner structure for each feature
 class FeatureDetail(BaseModel):
-    value: str
-    importance: int
-    model_config = ConfigDict(extra="allow")  # Allow extra fields in the *output* data
+    # Using str based on example. Use Any if value can truly be non-string JSON types.
+    value: str = Field(..., description="The specific value extracted for the feature.")
+    importance: int = Field(..., description="An integer score indicating the importance (e.g., 1-100).")
 
+    # Allow extra fields *within* a feature's details, just in case the LLM adds minor notes,
+    # but it's often better to forbid if you want strict adherence. Let's try forbidding first.
+    # model_config = ConfigDict(extra="allow")
+    model_config = ConfigDict(extra="forbid", title="FeatureDetail") # Use title for clearer schema
+
+# Main structure matching the target output
 class HotelFeatures(BaseModel):
-    status: str = Field(description="Indicates if the extraction was successful ('success') or failed ('error').")
+    status: str = Field(..., description="Indicates if extraction was 'success' or 'error'.", examples=["success", "error"])
     features: Optional[Dict[str, FeatureDetail]] = Field(
-        default=None,
-        description="A dictionary where keys are extracted feature names (e.g., 'location', 'pool', 'price_range') and values are FeatureDetail objects."
+        default=None, # Important: allows null when status is 'error'
+        description="A dictionary of extracted features. Keys are feature names (string), values are FeatureDetail objects. Null if status is 'error'."
     )
-    model_config = ConfigDict(
-        # It's generally better practice *not* to allow extra fields on the top-level model
-        # unless you specifically need them. Let the FeatureDetail handle extra fields if needed.
-        extra="forbid"
-    )
+
+    # Forbid extra fields at the top level - we only want 'status' and 'features'
+    model_config = ConfigDict(extra="forbid", title="HotelFeaturesExtraction") # Use title for clearer schema
+
+
 
 # Systemnachricht, die das JSON-Format strikt vorgibt
 system_message_user_prompt_to_standard_json = lambda attributes: {
@@ -109,6 +115,18 @@ Your task is to analyze a user prompt and extract relevant hotel features.
       }}
     }}
     ```
+    Detailed Requirements:
+    - The root object MUST have exactly two keys: "status" and "features".
+    - "status" (string): Must be either "success" (if features were extracted) or "error" (if no features found or query unclear).
+    - "features" (object or null):
+        - If status is "success", this MUST be a JSON object.
+            - Keys within "features" are the names of the extracted hotel features (strings, e.g., "rating", "price").
+            - Values within "features" MUST be JSON objects (FeatureDetail).
+            - Each FeatureDetail object MUST have exactly two keys:
+                - "value" (string): The specific requirement for the feature (e.g., ">9.3", "<40", "near Eiffel Tower", "included").
+                - "importance" (integer): The importance score (e.g., 100, 70, 50).
+        - If status is "error", this MUST be `null`.
+
     *(Note: The feature names like `amenity_Haustiere_erlaubt` and `amenity_Fitnesseinrichtung` in the example output must exactly match names present in the valid feature name list).*
     
 **Other Hints**
