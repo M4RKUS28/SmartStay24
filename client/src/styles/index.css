@@ -219,7 +219,6 @@ body.keyboard-open .message-input {
 .info-button {
   background: none;
   border: none;
-  color: inherit; /* Or specific color */
   font: inherit;
   cursor: pointer;
   padding: 0;
