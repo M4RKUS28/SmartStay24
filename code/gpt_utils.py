@@ -1,13 +1,15 @@
 from pathlib import Path
 from typing import Any, Dict, Optional
 
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 
 # GPT structure for the feature
 class FeatureDetail(BaseModel):
     value: str
     importance: int
+
+    model_config = ConfigDict(extra="allow")  # Allow extra fields
 
 
 # Main GPT structure
