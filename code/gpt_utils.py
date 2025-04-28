@@ -1,14 +1,26 @@
 from pathlib import Path
 from typing import Any, Dict, Optional
 
-from pydantic import BaseModel
+from pydantic import BaseModel, validator
 
 
 # GPT structure for the feature
+# Alternative approach: Update your model definition
 class FeatureDetail(BaseModel):
     value: str
     importance: int
-
+    
+    # Allow properties field and extract from it if needed
+    properties: Optional[Dict[str, Any]] = None
+    
+    # Custom validator to handle nested properties structure
+    @validator('value', 'importance', pre=True)
+    def extract_from_properties(cls, v, values):
+        if 'properties' in values and values['properties'] is not None:
+            props = values['properties']
+            if cls.field in props:
+                return props[cls.field]
+        return v
 
 # Main GPT structure
 class HotelFeatures(BaseModel):
