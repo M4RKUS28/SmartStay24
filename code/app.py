@@ -24,7 +24,7 @@ load_dotenv(dotenv_path="../.env")
 #)
 
 
-genai.configure(api_key=api_key)
+genai.configure(api_key=os.environ.get("API_KEY"))
 model_name = "models/gemini-2.5-flash-preview-04-17"
 print(f"Using model: {model_name}")
 
