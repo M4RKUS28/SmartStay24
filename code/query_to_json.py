@@ -30,8 +30,8 @@ def query_to_dict(model: genai.GenerativeModel, user_query: str, att_list: List[
         response = model.generate_content(
             contents=full_prompt,
             generation_config=GenerationConfig(
-                response_mime_type='application/json',
-                response_schema=schema
+                response_mime_type='application/json'#,
+#                response_schema=schema
             ),
         )
         # ... (rest of the function remains the same as the previous correct version) ...
