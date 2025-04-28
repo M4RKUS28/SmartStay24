@@ -32,7 +32,10 @@ def query_to_dict(client, user_query: str, att_list: List[str]) -> dict[str, str
                 'response_schema': HotelFeatures,
             },
         )
-        print(response.parsed)
+        # Get raw JSON first before applying schema validation
+        raw_response = json.loads(response.text)
+        print("Raw response:", raw_response)
+        
 
     except Exception as e:
         print(e)
