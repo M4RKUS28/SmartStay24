@@ -1,7 +1,10 @@
 # SmartStay24 🏨🔍 - AI-Powered Hotel Recommendation System
 
 
-On April 25-27, 2025, our team participated in the AI Makeathon. Inspired by the challenges in modern travel booking, we proudly present SmartStay24—an intelligent hotel recommendation system developed for the CHECK24 Data Science Challenge that understands natural language queries, extracts user preferences, and provides personalized hotel recommendations.
+#### 🥇 Winner of the CHECK24 Makeathon 2025 Challenge!
+Out of 25 competing teams at the AI Makeathon (April 25–27, 2025), we proudly secured 1st place and had the incredible opportunity to pitch SmartStay24 in front of over 500 participants!
+
+Inspired by the challenges in modern travel booking, we proudly present SmartStay24—an intelligent hotel recommendation system developed for the CHECK24 Data Science Challenge that understands natural language queries, extracts user preferences, and provides personalized hotel recommendations.
 
 Try it out: https://smart-stay24.de/
 
@@ -25,6 +28,22 @@ Our mission was to design an algorithm that could:
 
 ---
 
+## Project Highlights
+
+- Handles three distinct types of user queries:
+  1. Prompts with fully or partially matching hotels
+  2. Prompts with no matching hotels
+  3. Irrelevant prompts outside the hotel domain
+  
+- Optimized for both accuracy and performance:
+  - 70% of scoring based on recommendation precision
+  - 10% based on response time
+  - 20% based on creativity and presentation
+
+![SmartStay24 Logo](assets/results.png)
+
+---
+
 ## How It Works
 
 
@@ -41,7 +60,7 @@ SmartStay24 operates in three main stages:
 - Eliminates hotels that don't meet critical "hard" requirements
 - Creates a shortlist of viable options that satisfy the must-have criteria
 
-![SmartStay24 Logo](assets/Slide5.png)
+![SmartStay24 Logo](assets/Slide6.png)
 
 ### 3. Sort 📊
 - Ranks remaining hotels based on weighted soft requirements
@@ -67,21 +86,7 @@ SmartStay24 operates in three main stages:
 - **Backend**: Python with NLP capabilities
 - **API Integration**: OpenAI models (o3-mini, gpt-4o, gpt-4o mini)
 - **Data Processing**: Advanced parsing and filtering algorithms
-- **Visualization**: Interactive user interface for demonstration
-
----
-
-## Project Highlights
-
-- Handles three distinct types of user queries:
-  1. Prompts with fully or partially matching hotels
-  2. Prompts with no matching hotels
-  3. Irrelevant prompts outside the hotel domain
-  
-- Optimized for both accuracy and performance:
-  - 70% of scoring based on recommendation precision
-  - 10% based on response time
-  - 20% based on creativity and presentation
+- **Visualization**: Interactive user interface for demonstration using React
 
 ---
 
@@ -97,12 +102,12 @@ Example:
 The system parses this query, identifies the requirements (pool, sauna as high priority; breakfast, gym as lower priority), and returns matching hotels sorted by relevance.
 
 ---
+## Installation
 
-## Installation and Setup
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/SmartStay24.git
+git clone https://github.com/M4RKUS28/SmartStay24
 
 # Navigate to the project directory
 cd SmartStay24
@@ -110,8 +115,41 @@ cd SmartStay24
 # Install dependencies
 pip install -r requirements.txt
 
-# Run the application
-python main.py
+# Use function
+from code.app import find_matching_hotels
+
+```
+
+---
+
+
+## Installation and Setup (Frontend + Backend)
+
+```bash
+# Clone the repository
+git clone https://github.com/M4RKUS28/SmartStay24
+
+# Navigate to the project directory
+cd SmartStay24
+
+# Install dependencies
+pip install -r requirements.txt
+pip install -r backend/requirements.txt
+
+# Create .env file with API_KEY="Google Api Key"
+
+# Run the backend
+uvicorn backend.main:app --host 127.0.0.1 --port 8086
+
+# Build the front end
+
+# Change IP to your server IP in client/src/api/hotelService.js
+# build client
+cd client
+npm install
+npm run build
+
+# host client and server, redirect /api/to backend with nginx
 ```
 
 ---
@@ -138,12 +176,14 @@ for hotel in results:
 
 ## 🛠️ Contributors
 
-Developed with 💻 by:
+Developed with 🧡 by:
 
-- Paul
-- Markus
-- Luca
-- Sebastian
+- Paul Vorderbrügge
+- Markus Huber
+- Luca Bozzetti
+- Sebastian Rogg
+
+![SmartStay24 Logo](assets/Slide11.png)
 
 ---
 
