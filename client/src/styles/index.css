@@ -208,3 +208,125 @@ body.keyboard-open .message-input {
     padding-bottom: 80px; /* Extra padding to ensure input is visible */
   }
 }
+
+
+
+
+/* Header styles */
+/* src/index.css or your main CSS file */
+
+/* Style for the Info button (optional, adjust as needed) */
+.info-button {
+  background: none;
+  border: none;
+  color: inherit; /* Or specific color */
+  font: inherit;
+  cursor: pointer;
+  padding: 0;
+  margin: 0 10px; /* Adjust spacing like other nav items */
+}
+
+.info-button:hover {
+  /* Add hover effect if desired */
+  text-decoration: underline;
+}
+
+
+/* Popup Overlay */
+.info-popup-overlay {
+  position: fixed; /* Stay in place */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Dim background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it's on top */
+  padding: 20px; /* Add padding for smaller screens */
+  box-sizing: border-box;
+}
+
+/* Popup Container */
+.info-popup {
+  background-color: white;
+  padding: 30px 40px; /* More padding */
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  max-width: 650px; /* Limit width */
+  width: 90%; /* Responsive width */
+  max-height: 90vh; /* Limit height */
+  overflow-y: auto; /* Allow scrolling if content overflows */
+  position: relative; /* Needed for absolute positioning of close button */
+  color: #333; /* Set default text color */
+  line-height: 1.6;
+}
+
+/* Close Button */
+.info-popup .close-button {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 2rem; /* Make it larger */
+  font-weight: bold;
+  color: #888;
+  cursor: pointer;
+  line-height: 1; /* Adjust line height for better positioning */
+  padding: 5px;
+}
+
+.info-popup .close-button:hover {
+  color: #333;
+}
+
+/* Popup Content Styling */
+.info-popup h1 {
+  color: #005ea8; /* CHECK24 Blue */
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.8rem;
+}
+
+.info-popup h2 {
+  color: #e67e22; /* Orange/Gold for emphasis */
+  font-size: 1.3rem;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.info-popup h3 {
+  margin-top: 25px;
+  margin-bottom: 10px;
+  color: #555;
+  font-size: 1.1rem;
+}
+
+.info-popup p {
+  margin-bottom: 15px;
+}
+
+.info-popup hr {
+  border: 0;
+  height: 1px;
+  background-color: #eee;
+  margin: 25px 0;
+}
+
+.info-popup .contributors-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 5px;
+}
+
+.info-popup .contributors-list li {
+  margin-bottom: 5px;
+  font-size: 1rem;
+}
+
+/* Add heart color if desired */
+.info-popup h3 span { /* If you wrap the heart in a span */
+   color: #e74c3c; /* Red heart */
+}
