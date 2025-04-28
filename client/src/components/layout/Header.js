@@ -51,7 +51,7 @@ const Header = ({ apiAvailable, onCityChange }) => {
 
           <nav className="header-nav">
             {/* Add the Info button here */}
-            <button onClick={toggleInfoPopup} className="nav-item info-button">
+            <button onClick={toggleInfoPopup} className="nav-item hinfo-button">
               Info
             </button>
             <a href="https://github.com/M4RKUS28/SmartStay24" className="nav-item">Github</a>

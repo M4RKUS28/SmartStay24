@@ -216,7 +216,7 @@ body.keyboard-open .message-input {
 /* src/index.css or your main CSS file */
 
 /* Style for the Info button (optional, adjust as needed) */
-.info-button {
+.hinfo-button {
   background: none;
   border: none;
   font: inherit;
@@ -225,7 +225,7 @@ body.keyboard-open .message-input {
   margin: 0 10px; /* Adjust spacing like other nav items */
 }
 
-.info-button:hover {
+.hinfo-button:hover {
   /* Add hover effect if desired */
   text-decoration: underline;
 }
