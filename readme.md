@@ -97,7 +97,7 @@ Example:
 The system parses this query, identifies the requirements (pool, sauna as high priority; breakfast, gym as lower priority), and returns matching hotels sorted by relevance.
 
 ---
-## Installation Algorithm
+## Installation
 
 
 ```bash
