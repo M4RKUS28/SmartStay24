@@ -32,6 +32,8 @@ def query_to_dict(client, user_query: str, att_list: List[str]) -> dict[str, str
                 'response_schema': HotelFeatures,
             },
         )
+        print(response.parsed)
+
     except Exception as e:
         print(e)
         return None
