@@ -97,12 +97,12 @@ Example:
 The system parses this query, identifies the requirements (pool, sauna as high priority; breakfast, gym as lower priority), and returns matching hotels sorted by relevance.
 
 ---
+## Installation Algorithm
 
-## Installation and Setup
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/SmartStay24.git
+git clone https://github.com/M4RKUS28/SmartStay24
 
 # Navigate to the project directory
 cd SmartStay24
@@ -110,8 +110,41 @@ cd SmartStay24
 # Install dependencies
 pip install -r requirements.txt
 
-# Run the application
-python main.py
+# Use function
+from code.app import find_matching_hotels
+
+```
+
+---
+
+
+## Installation and Setup (Frontend + Backend)
+
+```bash
+# Clone the repository
+git clone https://github.com/M4RKUS28/SmartStay24
+
+# Navigate to the project directory
+cd SmartStay24
+
+# Install dependencies
+pip install -r requirements.txt
+pip install -r backend/requirements.txt
+
+# Create .env file with API_KEY="Google Api Key"
+
+# Run the backend
+uvicorn backend.main:app --host 127.0.0.1 --port 8086
+
+# Build the front end
+
+# Change IP to your server IP in client/src/api/hotelService.js
+# build client
+cd client
+npm install
+npm run build
+
+# host client and server, redirect /api/to backend with nginx
 ```
 
 ---
