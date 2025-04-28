@@ -19,7 +19,6 @@ from google.generativeai.types import GenerationConfig # For explicit schema pas
 #    features: Optional[Dict[str, FeatureDetail]] = None
 
 
-
 # --- Pydantic Models ---
 class FeatureDetail(BaseModel):
     value: str

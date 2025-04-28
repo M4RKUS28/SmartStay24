@@ -1,5 +1,6 @@
 import json
 import os
+import sys
 from code.dic_to_result import filter_hotels, rank_hotels
 from code.query_to_json import query_to_dict
 from code.utils import chatGPT_to_list, check24_to_attribute_list, check24_to_list
@@ -7,7 +8,7 @@ from code.utils import chatGPT_to_list, check24_to_attribute_list, check24_to_li
 import pandas as pd
 from dotenv import load_dotenv
 #from openai import AzureOpenAI
-from google import genai
+import google.generativeai as genai
 from google.generativeai.types import GenerationConfig # For explicit schema passing
 
 
@@ -23,9 +24,16 @@ load_dotenv(dotenv_path="../.env")
 #)
 
 
+genai.configure(api_key=api_key)
+model_name = "models/gemini-2.5-flash-preview-04-17"
+print(f"Using model: {model_name}")
 
-client = genai.Client(api_key=os.environ.get("API_KEY"))
-
+try:
+    # *** Get the GenerativeModel instance ***
+    client = genai.GenerativeModel(model_name)
+except Exception as e:
+    print(f"Error initializing model '{model_name}': {e}")
+    sys.exit()
 
 def find_matching_hotels_extended(
     query: str, hotels: dict[str, dict[str, object]]
