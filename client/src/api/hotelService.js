@@ -23,7 +23,7 @@ export const getHotelRecommendations = async (query, city = 'Copenhagen') => {
         city // Include the city in the request
       }),
       // Set timeout to not wait too long if server is slow
-      signal: AbortSignal.timeout(5000)
+      signal: AbortSignal.timeout(25000)
     });
 
     // Check if the response is ok
