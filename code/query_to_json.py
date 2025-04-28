@@ -5,7 +5,7 @@ from typing import List
 from google import genai
 from google.generativeai.types import GenerationConfig # For explicit schema passing
 
-def query_to_dict(client: genai.GenerativeModel, user_query: str, att_list: List[str]) -> Optional[Dict[str, FeatureDetail]]:
+def query_to_dict(client, user_query: str, att_list: List[str]) -> Optional[Dict[str, FeatureDetail]]:
     """
     Convert user message to a dictionary of extracted features using Gemini.
     """
