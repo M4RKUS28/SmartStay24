@@ -1,45 +1,43 @@
 from pathlib import Path
 from typing import Any, Dict, Optional, List
 from pydantic import BaseModel, ConfigDict, Field # Added Field for potential clarity if needed
-from google.generativeai.types import GenerationConfig # For explicit schema passing
-
 
 
 # GPT structure for the feature
-#class FeatureDetail(BaseModel):
-#    value: str
-#    importance: int#
-#
-#    model_config = ConfigDict(extra="allow")  # Allow extra fields
+class FeatureDetail(BaseModel):
+    value: str
+    importance: int#
+
+    model_config = ConfigDict(extra="allow")  # Allow extra fields
 
 
 # Main GPT structure
-#class HotelFeatures(BaseModel):
-#    status: str
-#    features: Optional[Dict[str, FeatureDetail]] = None
+class HotelFeatures(BaseModel):
+    status: str
+    features: Optional[Dict[str, FeatureDetail]] = None
 
 
 # Inner structure for each feature
-class FeatureDetail(BaseModel):
-    # Using str based on example. Use Any if value can truly be non-string JSON types.
-    value: str = Field(..., description="The specific value extracted for the feature.")
-    importance: int = Field(..., description="An integer score indicating the importance (e.g., 1-100).")
-
-    # Allow extra fields *within* a feature's details, just in case the LLM adds minor notes,
-    # but it's often better to forbid if you want strict adherence. Let's try forbidding first.
-    # model_config = ConfigDict(extra="allow")
-    model_config = ConfigDict(extra="forbid", title="FeatureDetail") # Use title for clearer schema
+#class FeatureDetail(BaseModel):
+#    # Using str based on example. Use Any if value can truly be non-string JSON types.
+#    value: str = Field(..., description="The specific value extracted for the feature.")
+#    importance: int = Field(..., description="An integer score indicating the importance (e.g., 1-100).")#
+#
+#    # Allow extra fields *within* a feature's details, just in case the LLM adds minor notes,
+#    # but it's often better to forbid if you want strict adherence. Let's try forbidding first. 
+#   # model_config = ConfigDict(extra="allow")
+#   model_config = ConfigDict(extra="forbid", title="FeatureDetail") # Use title for clearer schema
 
 # Main structure matching the target output
-class HotelFeatures(BaseModel):
-    status: str = Field(..., description="Indicates if extraction was 'success' or 'error'.", examples=["success", "error"])
-    features: Optional[Dict[str, FeatureDetail]] = Field(
-        default=None, # Important: allows null when status is 'error'
-        description="A dictionary of extracted features. Keys are feature names (string), values are FeatureDetail objects. Null if status is 'error'."
-    )
-
-    # Forbid extra fields at the top level - we only want 'status' and 'features'
-    model_config = ConfigDict(extra="forbid", title="HotelFeaturesExtraction") # Use title for clearer schema
+#class HotelFeatures(BaseModel):
+#    status: str = Field(..., description="Indicates if extraction was 'success' or 'error'.", examples=["success", "error"])
+#    features: Optional[Dict[str, FeatureDetail]] = Field(
+#        default=None, # Important: allows null when status is 'error'
+#        description="A dictionary of extracted features. Keys are feature names (string), values are FeatureDetail objects. Null if status is 'error'."
+#    )#
+#
+#    # Forbid extra fields at the top level - we only want 'status' and 'features'
+#    model_config = ConfigDict(extra="forbid", title="HotelFeaturesExtraction") # Use title for clearer schema
 
 
 
