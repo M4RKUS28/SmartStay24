@@ -25,7 +25,7 @@ def query_to_dict(client, user_query: str, att_list: List[str]) -> dict[str, str
         #)
 
         response = client.models.generate_content(
-            model='gemini-2.0-flash',
+            model='gemini-2.5-flash-preview-04-17',
             contents="system_message: " + str( system_message_user_prompt_to_standard_json(att_list)) + "\n" + "user_message: " + user_query,
             config={
                 'response_mime_type': 'application/json',
