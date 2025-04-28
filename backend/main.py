@@ -80,6 +80,8 @@ def add_message(message: MessageRequest):
     # print("Hard:", hard)
     # print("Soft:", soft)
 
+    print("Query:", message.query, " City:", message.city, " Hard:", hard, " Soft:", soft, " Hotels:", hotels)
+
     if hotels is not None:
         print(f"Amount of Hotels found: {len(hotels)}")
 
