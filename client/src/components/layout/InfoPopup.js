@@ -19,7 +19,7 @@ const InfoPopup = ({ onClose }) => {
         <h2>🥇 Winner of the CHECK24 AI Makeathon 2025 Challenge!</h2>
 
         <p>
-          Out of 25 competing teams at the AI Makeathon (April 25–27, 2025), we proudly secured 1st place and had the incredible opportunity to pitch SmartStay24 in front of over 500 participants!
+          Out of 32 competing teams at the AI Makeathon (April 25–27, 2025), we proudly secured 1st place and had the incredible opportunity to pitch SmartStay24 in front of over 500 participants!
         </p>
 
         <p>

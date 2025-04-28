@@ -3,33 +3,61 @@ import math
 
 def fulfills_attribute(hotel_dict, filter_attribute, filter_value):
     """
-    Checks whether the given hotel satisfies the filter_attribute
+    Checks whether the given hotel satisfies the filter_attribute.
 
     Args:
-        hotels_dict (dict): The hotels to be filtered.
+        hotel_dict (dict): The hotel data.
         filter_attribute (str): The attribute to filter by.
-        filter_value (str): The value the attribute should hold
+        filter_value (str): The value the attribute should hold (e.g., "<5", ">9.0", "=Pool", "Restaurant").
 
     Returns:
         Boolean: True, if the hotel satisfies the attribute.
     """
+    hotel_value = hotel_dict.get(filter_attribute)
 
-    if hotel_dict.get(filter_attribute) is None:
+    # --- Basic Checks --- and     # Handle NaN explicitly if it occurs in your data
+    if hotel_value is None or (isinstance(hotel_value, float) and math.isnan(hotel_value)):
         return False
-    if isinstance(hotel_dict.get(filter_attribute), (float)) and math.isnan(hotel_dict.get(filter_attribute)):
-        return False
-    if filter_value[:1] == "<":
-        if float(hotel_dict.get(filter_attribute)) > float(filter_value[1:]):
+
+    # --- Parse Operator and Target Value ---
+    operator = ""
+    target_value_str = filter_value
+
+    if filter_value and filter_value[:1] in ('<', '>', '='):
+        operator = filter_value[:1]
+        target_value_str = filter_value[1:]
+
+    # --- Perform Comparison ---
+    if operator in ("<", ">"):
+        try:
+            # Numeric comparison required for < and >
+            hotel_val_numeric = float(hotel_value)
+            target_val_numeric = float(target_value_str)
+
+            if operator == "<":
+                return hotel_val_numeric < target_val_numeric
+            else: # operator == ">"
+                return hotel_val_numeric > target_val_numeric
+
+        except (ValueError, TypeError):
+            # If either value isn't a valid float, '<' or '>' comparison fails
             return False
-    elif filter_value[:1] == ">":
-        if float(hotel_dict.get(filter_attribute)) < float(filter_value[1:]):
-            return False
-    else:
-        if isinstance(hotel_dict.get(filter_attribute), (int, float)):
-            return float(hotel_dict.get(filter_attribute)) == float(filter_value[1:])
-        else:
-            return str(hotel_dict.get(filter_attribute)) == str(filter_value[1:])
-    return True
+
+    else: # Operator is '=' or empty (treat empty as '=')
+        # Try numeric comparison first, if possible and sensible
+        try:
+            # Attempt conversion - will raise error if not possible
+            hotel_val_numeric = float(hotel_value)
+            target_val_numeric = float(target_value_str)
+
+            # If both successfully converted, compare numerically
+            # Use tolerance for float equality if needed, but direct == is often ok here
+            return hotel_val_numeric == target_val_numeric
+
+        except (ValueError, TypeError):
+            # If numeric conversion/comparison fails, fall back to string comparison.
+            # This handles cases like amenity="Pool", name="Hotel ABC", or even distance="Near"
+            return str(hotel_value) == str(target_value_str)
 
 
 def filter_hotels(hotels: list[dict[str, object]], hard_list: list[(str, str)]):
