@@ -2,7 +2,7 @@
 
 
 #### 🥇 Winner of the CHECK24 AI Makeathon 2025 Challenge!
-Out of 32 competing teams at the ![https://makeathon.tum-ai.com](AI Makeathon) (April 25–27, 2025), we proudly secured 1st place and had the incredible opportunity to pitch SmartStay24 in front of over 500 participants!
+Out of 32 competing teams at the !(https://makeathon.tum-ai.com)[AI Makeathon] (April 25–27, 2025), we proudly secured 1st place and had the incredible opportunity to pitch SmartStay24 in front of over 500 participants!
 
 Inspired by the challenges in modern travel booking, we proudly present SmartStay24—an intelligent hotel recommendation system developed for the CHECK24 AI Makeathon Challenge that understands natural language queries, extracts user preferences, and provides personalized hotel recommendations.
 
