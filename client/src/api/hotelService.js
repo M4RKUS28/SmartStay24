@@ -2,7 +2,7 @@
 import { simulateHotelRecommendation } from '../utils/SimulateResponse';
 
 // API base URL - should be configurable for different environments
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://smart-stay24.de/api';
+const API_BASE_URL = process.env.REACT_APP_API_URL || '/api';
 
 /**
  * Sends a hotel recommendation request to the server
