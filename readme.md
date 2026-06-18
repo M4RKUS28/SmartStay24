@@ -6,7 +6,7 @@ Out of 32 competing teams at the [AI Makeathon](https://makeathon.tum-ai.com) (A
 
 Inspired by the challenges in modern travel booking, we proudly present SmartStay24—an intelligent hotel recommendation system developed for the CHECK24 AI Makeathon Challenge that understands natural language queries, extracts user preferences, and provides personalized hotel recommendations.
 
-Try it out: https://smart-stay24.de/
+Try it out: [Smart-Stay](https://smart-stay.m4rkus28.de/)
 
 ![SmartStay24 Logo](assets/SmartStay.png)
 
